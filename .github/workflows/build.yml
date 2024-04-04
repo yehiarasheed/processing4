@@ -7,37 +7,37 @@ jobs:
     name: Run Tests
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        run: actions/checkout@v3
       - name: Update apt
-        uses: apt-get update
+        run: apt-get update
       - name: Install rsync
-        uses: yes | sudo apt-get install rsync
+        run: yes | sudo apt-get install rsync
       - name: Install wget
-        uses: yes | sudo apt-get install wget
+        run: yes | sudo apt-get install wget
       - name: Install ant
-        uses: >
+        run: >
           cd /tmp;
           wget https://dlcdn.apache.org//ant/binaries/apache-ant-1.10.12-bin.zip;
           unzip apache-ant-1.10.12-bin.zip
       - name: Install java
-        uses: >
+        run: >
           cd /tmp;
           wget https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.5%2B8/OpenJDK17U-jdk_x64_linux_hotspot_17.0.5_8.tar.gz;
           tar -xvf OpenJDK17U-jdk_x64_linux_hotspot_17.0.5_8.tar.gz;
       - name: Prepare env
-        uses: >
+        run: >
           cd /tmp;
           echo 'export ANT_HOME="/tmp/apache-ant-1.10.12"' >> .bash_profile;
           echo 'export PATH="$PATH:/tmp/apache-ant-1.10.12/bin"' >> .bash_profile;
           echo 'export JAVA_HOME="/tmp/jdk-17.0.5+8"' >> .bash_profile
       - name: Try build
-        uses: >
+        run: >
           source /tmp/.bash_profile;
           cd build;
           ant clean;
           ant build
       - name: Test
-        uses: >
+        run: >
           source /tmp/.bash_profile;
           cd build;
           ant clean;
