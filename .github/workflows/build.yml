@@ -78,7 +78,7 @@ jobs:
           ant build
       - name: Add artifact
         uses: actions/upload-artifact@v3
-        if: {{ github.ref == 'ref/head/main' }}
+        if: ${{ github.ref == 'ref/head/main' }}
         with:
           name: linux
           path: ./build/linux/work
@@ -119,7 +119,7 @@ jobs:
           ant build
       - name: Add artifact
         uses: actions/upload-artifact@v3
-        if: {{ github.ref == 'ref/head/main' }}
+        if: ${{ github.ref == 'ref/head/main' }}
         with:
           name: macos
           path: ./build/macos/work
@@ -143,7 +143,7 @@ jobs:
           ant build
       - name: Add artifact
         uses: actions/upload-artifact@v3
-        if: {{ github.ref == 'ref/head/main' }}
+        if: ${{ github.ref == 'ref/head/main' }}
         with:
           name: windows
           path: ./build/windows/work
