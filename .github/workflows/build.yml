@@ -42,19 +42,19 @@ jobs:
           cd build;
           ant clean;
           ant test
-  linux:
-    runs-on: ubuntu-latest
-    name: Build Linux
+  distribution:
+    runs-on: macos-latest
+    name: Build Distribution
     needs: [test]
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Update apt
-        run: yes | sudo apt-get update
+      - name: Install brew
+        run: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
       - name: Install rsync
-        run: yes | sudo apt-get install rsync
+        run: brew install rsync
       - name: Install wget
-        run: yes | sudo apt-get install wget
+        run: brew install wget
       - name: Install ant
         run: >
           cd /tmp;
@@ -77,8 +77,3 @@ jobs:
           cd build;
           ant clean;
           ant build
-      - name: Add linux artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: linux
-          path: ./build/linux/work
