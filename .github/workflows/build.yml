@@ -17,8 +17,8 @@ jobs:
       - name: Install ant
         run: >
           cd /tmp;
-          wget https://dlcdn.apache.org//ant/binaries/apache-ant-1.10.12-bin.zip;
-          unzip apache-ant-1.10.12-bin.zip
+          wget https://dlcdn.apache.org//ant/binaries/apache-ant-1.10.14-bin.zip;
+          unzip apache-ant-1.10.14-bin.zip
       - name: Install java
         run: >
           cd /tmp;
@@ -27,8 +27,8 @@ jobs:
       - name: Prepare env
         run: >
           cd /tmp;
-          echo 'export ANT_HOME="/tmp/apache-ant-1.10.12"' >> .bash_profile;
-          echo 'export PATH="$PATH:/tmp/apache-ant-1.10.12/bin"' >> .bash_profile;
+          echo 'export ANT_HOME="/tmp/apache-ant-1.10.14"' >> .bash_profile;
+          echo 'export PATH="$PATH:/tmp/apache-ant-1.10.14/bin"' >> .bash_profile;
           echo 'export JAVA_HOME="/tmp/jdk-17.0.5+8"' >> .bash_profile
       - name: Try build
         run: >
