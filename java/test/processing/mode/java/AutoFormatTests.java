@@ -49,7 +49,7 @@ public class AutoFormatTests {
 
   @Test
   public void bug109() {
-    expectGood("bug109a");
+    expectGood("bug109");
   }
 
   @Test
