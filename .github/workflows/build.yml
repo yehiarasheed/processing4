@@ -70,7 +70,7 @@ jobs:
           cd /tmp;
           echo 'export ANT_HOME="/tmp/apache-ant-1.10.14"' >> .bash_profile;
           echo 'export PATH="$PATH:/tmp/apache-ant-1.10.14/bin"' >> .bash_profile;
-          echo 'export JAVA_HOME="/tmp/jdk-17.0.5+8"' >> .bash_profile
+          echo 'export JAVA_HOME="/tmp/jdk-17.0.5+8/Contents/Home/bin/java"' >> .bash_profile
       - name: Build mac
         run: >
           source /tmp/.bash_profile;
