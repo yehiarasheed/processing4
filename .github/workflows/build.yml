@@ -76,6 +76,12 @@ jobs:
           cd build;
           ant clean;
           ant build
+      - name: Add artifact
+          uses: actions/upload-artifact@v3
+          if: {{ github.ref == 'ref/head/main' }}
+          with:
+            name: linux
+            path: ./build/linux/work
   mac:
     runs-on: macos-latest
     name: Build Mac
@@ -111,6 +117,12 @@ jobs:
           cd build;
           ant clean;
           ant build
+      - name: Add artifact
+          uses: actions/upload-artifact@v3
+          if: {{ github.ref == 'ref/head/main' }}
+          with:
+            name: macos
+            path: ./build/macos/work
   windows:
     runs-on: windows-latest
     name: Build Windows
@@ -129,3 +141,9 @@ jobs:
           cd build;
           ant clean;
           ant build
+      - name: Add artifact
+          uses: actions/upload-artifact@v3
+          if: {{ github.ref == 'ref/head/main' }}
+          with:
+            name: windows
+            path: ./build/windows/work
