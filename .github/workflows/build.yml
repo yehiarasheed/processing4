@@ -7,7 +7,7 @@ jobs:
     name: Run Tests
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Update apt
         run: yes | sudo apt-get update
       - name: Install rsync
@@ -48,7 +48,7 @@ jobs:
     needs: [test]
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Update apt
         run: yes | sudo apt-get update
       - name: Install rsync
@@ -83,7 +83,7 @@ jobs:
     needs: [test]
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Install brew
         run: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
       - name: Install rsync
@@ -109,6 +109,24 @@ jobs:
       - name: Build mac
         run: >
           source /tmp/.bash_profile;
+          cd build;
+          ant clean;
+          ant build
+  windows:
+    runs-on: windows-latest
+    name: Build Windows
+    needs: [test]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up JDK 11 for x64
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'adoptopenjdk'  
+          architecture: x64
+      - name: Build
+        run: >
           cd build;
           ant clean;
           ant build
