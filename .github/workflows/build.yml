@@ -41,4 +41,4 @@ jobs:
           source /tmp/.bash_profile;
           cd build;
           ant clean;
-          if ant test; then exit 0 else exit 1 fi
+          ant test
