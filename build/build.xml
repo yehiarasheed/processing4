@@ -198,6 +198,7 @@
     <set-target platform="${platform}" arch="${os.arch}" />
     <antcall target="${target-platform}-build" />
   </target>
+  -->
 
   <target name="cross-build-macos-aarch64"
           description="Cross-build Processing for Apple Silicon">
@@ -235,6 +236,7 @@
     <antcall target="windows-build" />
   </target>
 
+  <!--
   <target name="run" description="Run Processing.">
     <set-target platform="${platform}" arch="${os.arch}" />
     <antcall target="${target-platform}-run" />

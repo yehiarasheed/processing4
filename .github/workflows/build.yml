@@ -1,0 +1,109 @@
+name: Build
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    name: Run Tests
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Update apt
+        run: yes | sudo apt-get update
+      - name: Install rsync
+        run: yes | sudo apt-get install rsync
+      - name: Install Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          architecture: x64
+      - name: Build
+        run: >
+          cd build;
+          ant clean;
+          ant build
+      - name: Test
+        run: >
+          cd build;
+          ant test
+  linux:
+    runs-on: ubuntu-latest
+    name: Build Linux
+    needs: [test]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Update apt
+        run: yes | sudo apt-get update
+      - name: Install rsync
+        run: yes | sudo apt-get install rsync
+      - name: Install Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          architecture: x64
+      - name: Build linux
+        run: >
+          cd build;
+          ant clean;
+          ant build
+      - name: Add artifact
+        uses: actions/upload-artifact@v3
+        if: ${{ github.ref == 'ref/head/main' }}
+        with:
+          name: linux
+          path: ./build/linux/work
+  mac:
+    runs-on: macos-latest
+    name: Build Mac
+    needs: [test]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install brew
+        run: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+      - name: Install rsync
+        run: brew install rsync
+      - name: Install Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          architecture: x64
+      - name: Build mac
+        run: >
+          cd build;
+          ant clean;
+          ant build
+      - name: Add artifact
+        uses: actions/upload-artifact@v3
+        if: ${{ github.ref == 'ref/head/main' }}
+        with:
+          name: macos
+          path: ./build/macos/work
+  windows:
+    runs-on: windows-latest
+    name: Build Windows
+    needs: [test]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          architecture: x64
+      - name: Build
+        run: >
+          cd build;
+          ant clean;
+          ant build
+      - name: Add artifact
+        uses: actions/upload-artifact@v3
+        if: ${{ github.ref == 'ref/head/main' }}
+        with:
+          name: windows
+          path: ./build/windows/work
