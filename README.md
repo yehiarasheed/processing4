@@ -1,29 +1,37 @@
+<img src="https://processing.org/favicon.svg" width="250">
+
 This repository contains the source code for the [Processing](https://processing.org/) project for people who want to help improve the code.
 
-If you're interested in *using* Processing, get started at the [download](https://processing.org/download) page, or read more about the project at the [home page](https://processing.org/). There are also several [tutorials](https://processing.org/tutorials) that provide a helpful introduction. They are complemented by hundreds of examples that are included with the software itself.
+## Using Processing
+
+If you're interested in *using* Processing, get started at the [processing.org download page](https://processing.org/download), or read more about the project at the [home page](https://processing.org/). There are also several [tutorials](https://processing.org/tutorials) that provide a helpful introduction. They are complemented by hundreds of examples that are included with the software itself.
+
+## Build Instructions
+
+If you want to fix a bug that's been bothering you or want to give back to the project.
+
+[Instructions on how to build the code](build/README.md) are found in a README inside the `build` folder.
+
+For first time contributers there is only a couple steps required to get started
 
 
-# Processing 4.0
+## About the Processing 4.0 release
 
-Processing 4 has [important updates](https://github.com/processing/processing4/wiki/Changes-in-4.0) that prepare the platform for its future. Most significantly, this includes the move to Java 17 as well as major changes to the range of platforms we support (Apple Silicon! Raspberry Pi on 32- and 64-bit ARM!)
+Processing 4 has [important updates](wiki/Changes-in-4.0) that prepare the platform for its future. Most significantly, this includes the move to Java 17 as well as major changes to the range of platforms we support (Apple Silicon! Raspberry Pi on 32- and 64-bit ARM!)
 
 With any luck, many changes should be transparent to most users, in spite of how much is updated behind the scenes. More immediately visible changes include major work on the UI, including “themes” and the ability to change how sketches are named by default.
-
-
-## Building the Code
-
-[Instructions on how to build the code](https://github.com/processing/processing4/blob/master/build/README.md) are found in a README inside the `build` folder.
-
-We've also moved to a new repository for this release so that we could cull a lot of the accumulated mess of the last 20 years, which makes `git clone` (and most other `git` operations) a lot faster.
 
 The work on 4.0 was done by a [tiny number of people](https://github.com/processing/processing4/graphs/contributors?from=2019-10-01&to=2022-08-09&type=c) who continue working on it, unpaid, because they care about it. Please help!
 
 
+
 ## API and Internal Changes
+
+We've moved to a new repository for the 4.0 release so that we could cull a lot of the accumulated mess of the last 20 years, which makes `git clone` (and most other `git` operations) a lot faster.
 
 As with all releases, we'll do [everything possible](https://twitter.com/ben_fry/status/1426282574683516928) to avoid breaking API. However, there will still be tweaks that have to be made. We'll try to keep them minor. Our goal is stability, and keeping everyone's code running.
 
-The full list of changes can be seen in [the release notes for each version](https://github.com/processing/processing4/blob/master/build/shared/revisions.md). <b>The list below only covers changes for developers working on this repository, or that may have an impact on Library, Mode, or Tool development.</b>
+The full list of changes can be seen in [the release notes for each version](build/shared/revisions.md). <b>The list below only covers changes for developers working on this repository, or that may have an impact on Library, Mode, or Tool development.</b>
 
 
 ### Beta 9
@@ -40,7 +48,7 @@ The full list of changes can be seen in [the release notes for each version](htt
 
 * Apple Silicon support should be complete, as far as we know. If you find otherwise, file an issue.
 
-* Check out the long [revisions](https://github.com/processing/processing4/blob/master/build/shared/revisions.md) update for this one. Too much to cover here.
+* Check out the long [revisions](build/shared/revisions.md) update for this one. Too much to cover here.
 
 * Now using Java 17.0.4+8 from [Adoptium](https://adoptium.net/).
 
