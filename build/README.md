@@ -1,5 +1,25 @@
 # How to Build Processing
 
+## IntelliJ IDEA CE
+
+Clone the repository to your machine locally
+
+Download the IntelliJ IDEA Community Edition (Not Ultimate, scroll down for Community Edition) https://www.jetbrains.com/idea/download/
+
+Open the cloned repository in IntelliJ
+
+Click Install Required Plugins on the bottom right
+
+Restart IntelliJ IDEA CE
+
+Select your platform (Windows, MacOS or Linux) in the top right of the window
+
+Click the green Run Icon next to it
+
+
+
+## Manual Approach
+
 The short version:
 
 1. Download and install JDK 17 from <https://adoptium.net/>
@@ -218,8 +238,3 @@ If you're using Eclipse, it'll complain about the lack of `jogl-all-src.jar`. St
     zip -r ../jogl-all-src.jar src
 
 Then copy that `jogl-all-src.jar` file to sit next to the `jogl-all.jar` folder inside `/path/to/processing/core/library`.
-
-
-### IntelliJ
-
-Using Eclipse isn't supported, and I've switched to IntelliJ. However, IntelliJ is baffling enough that I don't have good instructions yet on how to develop inside there. If you and IntelliJ have a better relationship than I do, [please help!](https://github.com/processing/processing4/issues/275)
