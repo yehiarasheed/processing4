@@ -1,15 +1,14 @@
 ## Welcome to Processing!
 
-## Bug Report?
+## Found a Bug?
 
-We have a page on [troubleshooting](https://github.com/processing/processing/wiki/Troubleshooting) common problems. Check there first!
+First, please visit our [troubleshooting](https://github.com/processing/processing/wiki/Troubleshooting) page for common issues—you might find the answer there!
 
-We also host an [online forum](https://discourse.processing.org/) for coding questions, which is also helpful for general “getting started” queries.
+For coding questions or help getting started, our [online forum](https://discourse.processing.org/) is a fantastic resource. Make sure to read the [forum guidelines](https://discourse.processing.org/t/welcome-to-the-processing-foundation-discourse/8) before posting.
 
-If you don’t find an answer, please let us know by [filing an issue](https://github.com/processing/processing4/issues). We can only fix the things we’ve heard about!
+If your issue remains unresolved after exploring these options, we'd appreciate it if you could [file a bug report](https://github.com/processing/processing4/issues). Your feedback is crucial as it helps us address issues we might not be aware of yet.
 
 Remember, Processing is a labor of love, run by volunteers and offered free of charge. We're here because we believe in this community and genuinely enjoy contributing to it. We always welcome constructive feedback—just keep it friendly and helpful, please! For more tips on how to communicate within the project, take a peek at our Code of Conduct (coming soon).
-
 
 ## Want to Help?
 
