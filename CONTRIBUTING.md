@@ -8,7 +8,7 @@ We also host an [online forum](https://discourse.processing.org/) for coding que
 
 If you don’t find an answer, please let us know by [filing an issue](https://github.com/processing/processing4/issues). We can only fix the things we’ve heard about!
 
-Please keep the tone polite. This project is volunteer work done in our free time. We give it away at no cost. We do this because we think it’s important for the community, and enjoy working on it. Complaints that things *suck*, or are *annoying*, or lectures about things that *must* be fixed are… weird to hear from total strangers (at best), and demotivating (more likely).
+Remember, Processing is a labor of love, run by volunteers and offered free of charge. We're here because we believe in this community and genuinely enjoy contributing to it. We always welcome constructive feedback—just keep it friendly and helpful, please! For more tips on how to communicate within the project, take a peek at our Code of Conduct (coming soon).
 
 
 ## Want to Help?
