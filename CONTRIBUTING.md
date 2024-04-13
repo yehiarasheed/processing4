@@ -10,11 +10,9 @@ If your issue remains unresolved after exploring these options, we'd appreciate 
 
 Remember, Processing is a labor of love, run by volunteers and offered free of charge. We're here because we believe in this community and genuinely enjoy contributing to it. We always welcome constructive feedback—just keep it friendly and helpful, please! For more tips on how to communicate within the project, take a peek at our Code of Conduct (coming soon).
 
-## Want to Help?
+## Interested in Contributing?
 
-Great! The number of contributors on this project is *tiny*, especially relative to the number of users. There are [only one or two people](https://github.com/processing/processing4/graphs/contributors) who actively work on this repository, for instance. We need help!
-
-How to start:
+We're glad to hear that! [Our team is small](https://github.com/processing/processing4/graphs/contributors), and with the large number of users, every extra hand makes a big difference! Here’s how you can start:
 
 * **Help Wanted** – Most [issues marked help wanted](https://github.com/processing/processing4/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22) are a good place to start. Issues are marked with this tag when:
 
