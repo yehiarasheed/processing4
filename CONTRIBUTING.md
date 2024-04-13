@@ -1,21 +1,18 @@
 ## Welcome to Processing!
 
-## Bug Report?
+## Found a Bug?
 
-We have a page on [troubleshooting](https://github.com/processing/processing/wiki/Troubleshooting) common problems. Check there first!
+First, please visit our [troubleshooting](https://github.com/processing/processing/wiki/Troubleshooting) page for common issues—you might find the answer there!
 
-We also host an [online forum](https://discourse.processing.org/) for coding questions, which is also helpful for general “getting started” queries.
+For coding questions or help getting started, our [online forum](https://discourse.processing.org/) is a fantastic resource. Make sure to read the [forum guidelines](https://discourse.processing.org/t/welcome-to-the-processing-foundation-discourse/8) before posting.
 
-If you don’t find an answer, please let us know by [filing an issue](https://github.com/processing/processing4/issues). We can only fix the things we’ve heard about!
+If your issue remains unresolved after exploring these options, we'd appreciate it if you could [file a bug report](https://github.com/processing/processing4/issues). Your feedback is crucial as it helps us address issues we might not be aware of yet.
 
-Please keep the tone polite. This project is volunteer work done in our free time. We give it away at no cost. We do this because we think it’s important for the community, and enjoy working on it. Complaints that things *suck*, or are *annoying*, or lectures about things that *must* be fixed are… weird to hear from total strangers (at best), and demotivating (more likely).
+Remember, Processing is a labor of love, run by volunteers and offered free of charge. We're here because we believe in this community and genuinely enjoy contributing to it. We always welcome constructive feedback—just keep it friendly and helpful, please! For more tips on how to communicate within the project, take a peek at our Code of Conduct (coming soon).
 
+## Interested in Contributing?
 
-## Want to Help?
-
-Great! The number of contributors on this project is *tiny*, especially relative to the number of users. There are [only one or two people](https://github.com/processing/processing4/graphs/contributors) who actively work on this repository, for instance. We need help!
-
-How to start:
+We're glad to hear that! [Our team is small](https://github.com/processing/processing4/graphs/contributors), and with the large number of users, every extra hand makes a big difference! Here’s how you can start:
 
 * **Help Wanted** – Most [issues marked help wanted](https://github.com/processing/processing4/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22) are a good place to start. Issues are marked with this tag when:
 
