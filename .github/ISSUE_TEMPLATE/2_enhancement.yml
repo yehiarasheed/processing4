@@ -8,7 +8,7 @@ body:
   attributes:
     label: Most relevant area for this enhancement?
     description: Choose the most relevant area for the proposed feature or improvement.
-    multiple: false
+    multiple: true
     options:
         - Accessibility
         - Core/Environment/Rendering
@@ -27,6 +27,8 @@ body:
         - Unit testing
         - Internationalization
         - Other (specify if possible)
+  validations:
+    required: true
         
 - type: input
   attributes:
