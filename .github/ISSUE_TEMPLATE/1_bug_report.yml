@@ -60,10 +60,19 @@ body:
 - type: textarea
   attributes:
     label: snippet
-    description: If applicable, include a code snippet that produces the error.
+    description: If applicable, include a minimal sketch that produces the error.
     value: |
-      ```java
-      // Paste your code here :)
+      ```processing
+
+      // Paste your code below :)
+
+      void setup() {
+      
+      }
+      
+      void draw() {
+      
+      }
       ```
   validations:
     required: false
