@@ -2,10 +2,7 @@
 
 Processing is a flexible software sketchbook and a programming language designed for learning how to code.
 
-This repository contains the source code for the [Processing](https://processing.org/) project for people who want to help improve the code. It consists of two main parts:
-
-1. **The Core Library:** This includes essential components such as the graphics renderer, event handling, input/output (I/O) functions, and mathematical utilities.
-2. **The Processing Development Environment (PDE):** This includes a text editor, a compiler, a contributions manager, and other tools to assist with writing and managing code.
+This repository contains the source code for the [Processing](https://processing.org/) project for people who want to help improve the code.
 
 ## Using Processing
 
@@ -17,6 +14,12 @@ If you want to fix a bug that's been bothering you or want to give back to the p
 To get started, clone this repository to your machine and build the code. For instructions, check out our guide on [How to Build Processing](build/README.md).
 
 We welcome new contributors. The work on Processing 4.0 was done by a [tiny number of people](https://github.com/processing/processing4/graphs/contributors?from=2019-10-01&to=2022-08-09&type=c). Every contribution helps!
+
+### Structure of the Repository
+The Processing software consists of two main parts:
+
+1. **The Core Library:** This includes essential components such as the graphics renderer, event handling, input/output (I/O) functions, and mathematical utilities.
+2. **The Processing Development Environment (PDE):** This includes a text editor, a pre-processor, a contributions manager, and other tools to assist with writing and managing code.
 
 ### About the Processing 4.0 release
 
