@@ -1,5 +1,5 @@
 name: 🐛 Found a Bug
-description: Report broken or incorrect behavior in Processing 4. For help with your own code, please visit our forum at discourse.processing.org instead.
+description: Report broken or incorrect behavior in Processing 4. (For help with your own code, please visit our forum at discourse.processing.org instead).
 labels: [bug]
 body:
 - type: dropdown
