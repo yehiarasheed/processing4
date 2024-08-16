@@ -2,7 +2,7 @@ name: 🐛 Found a Bug
 description: Report broken or incorrect behavior in Processing 4. For help with your own code, please visit our forum at discourse.processing.org instead.
 labels: [bug]
 body:
-- type: checkboxes
+- type: dropdown
   id: sub-area
   attributes:
     label: Most appropriate sub-area of Processing 4?
