@@ -40,7 +40,7 @@ body:
 - type: input
   attributes:
     label: Operating system 
-    description: Ex: Windows/MacOSX/Linux/Android/iOS along with version
+    description: "Ex: Windows/MacOSX/Linux/Android/iOS along with version"
   validations:
     required: true
     
