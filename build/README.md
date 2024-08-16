@@ -2,21 +2,14 @@
 
 ## IntelliJ IDEA CE
 
-Clone the repository to your machine locally
+First, [download the IntelliJ IDEA Community Edition](https://www.jetbrains.com/idea/download/). Make sure to select the "Community Edition", not "Ultimate". The Community Edition is free and built on open-source software. You may need to scroll down to find the download link. Then:
 
-Download the IntelliJ IDEA Community Edition (Not Ultimate, scroll down for Community Edition) https://www.jetbrains.com/idea/download/
-
-Open the cloned repository in IntelliJ
-
-Click Install Required Plugins on the bottom right
-
-Restart IntelliJ IDEA CE
-
-Select your platform (Windows, MacOS or Linux) in the top right of the window
-
-Click the green Run Icon next to it
-
-
+1. Clone the Processing4 repository to your machine locally
+1. Open the cloned repository in IntelliJ IDEA CE
+1. Click `Install Required Plugins` on the bottom right
+1. Restart IntelliJ IDEA CE
+1. Select your platform (Windows, MacOS or Linux) in the top right of the window
+1. Click the green Run Icon next to it
 
 ## Manual Approach
 
