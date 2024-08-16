@@ -29,3 +29,24 @@ Processing 4 has [important updates](wiki/Changes-in-4.0) that prepare the platf
 With any luck, many changes should be transparent to most users, in spite of how much is updated behind the scenes. More immediately visible changes include major work on the UI, including “themes” and the ability to change how sketches are named by default.
 
 As with all releases, we did [everything possible](https://twitter.com/ben_fry/status/1426282574683516928) to avoid breaking API. However, there were still tweaks that we had to make. We tried to keep them minor. Our goal is stability, and keeping everyone's code running.
+
+## Contact Information
+
+For assistance with your own sketches, projects, or code, please post your question on the Processing forum: https://discourse.processing.org/. Our community is full of experienced developers and users who are eager to help. We’re incredibly grateful for the support and knowledge shared by everyone on the forum over the years. Before you post, please take a moment to read the [guidelines on asking questions](https://discourse.processing.org/t/guidelines-asking-questions/2147) to make sure you get the best possible help.
+
+For more details about Processing itself, feel free to reach out to us. Here are the best ways to contact us:
+
+- **Email**: For inquiries about the Processing software, contact [hello@processing.org](mailto:hello@processing.org).
+- **Processing Foundation**: For anything else, please reach out to [foundation@processingfoundation.org](mailto:foundation@processingfoundation.org).
+
+## License & Copyright
+
+- The **core library** is licensed under the GNU Lesser General Public License version 2.1 ([LGPL-2.1](https://www.gnu.org/licenses/old-licenses/lgpl-2.1.en.html)).
+- Everything else including the **PDE** is licensed under the GNU General Public License version 2 ([GPL-2.0](https://www.gnu.org/licenses/old-licenses/gpl-2.0.html)).
+- The **reference**, including the JavaDoc comments, is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License ([CC-BY-NC-SA-4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)).
+
+For complete licensing information about the Processing core library and software, see [LICENSE.md](LICENSE.md)
+
+For licensing information about the Processing website see the [processing-website README](https://github.com/processing/processing-website/blob/main/README.md#licenses).
+
+Copyright (c) 2015-now The Processing Foundation
