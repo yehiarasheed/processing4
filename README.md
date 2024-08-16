@@ -12,12 +12,11 @@ This repository contains the source code for the [Processing](https://processing
 If you're interested in *using* Processing, get started at the [processing.org download page](https://processing.org/download), or read more about the project at the [home page](https://processing.org/). There are also several [tutorials](https://processing.org/tutorials) that provide a helpful introduction. They are complemented by hundreds of examples that are included with the software itself.
 
 ## Contributing to Processing
-
-We welcome new contributors! The work on 4.0 was done by a [tiny number of people](https://github.com/processing/processing4/graphs/contributors?from=2019-10-01&to=2022-08-09&type=c). Every contribution helps.
-
 If you want to fix a bug that's been bothering you or want to give back to the project, you're in the right place!
 
 To get started, clone this repository to your machine and build the code. For instructions, check out our guide on [How to Build Processing](build/README.md).
+
+We welcome new contributors. The work on Processing 4.0 was done by a [tiny number of people](https://github.com/processing/processing4/graphs/contributors?from=2019-10-01&to=2022-08-09&type=c). Every contribution helps!
 
 ### About the Processing 4.0 release
 
