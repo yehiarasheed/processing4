@@ -17,7 +17,7 @@ We welcome new contributors! The work on 4.0 was done by a [tiny number of peopl
 
 If you want to fix a bug that's been bothering you or want to give back to the project, you're in the right place!
 
-To get started, see the [instructions on how to build the code](build/README.md).
+To get started, see the [instructions on how to build Processing on your machine](build/README.md).
 
 ### About the Processing 4.0 release
 
