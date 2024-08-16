@@ -28,7 +28,7 @@ body:
         - Internationalization
         - Other (specify if possible)
         
-- type: input
+- type: textarea
   attributes:
     label: Desired enhancement
     description: Describe the improvement you'd like to see with that existing feature
