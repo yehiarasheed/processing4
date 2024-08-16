@@ -2,6 +2,7 @@ name: 🐛 Found a Bug
 description: Report broken or incorrect behavior in Processing 4. (For help with your own code, please visit our forum at discourse.processing.org instead).
 labels: [bug]
 body:
+
 - type: dropdown
   id: sub-area
   attributes:
@@ -26,18 +27,21 @@ body:
         - Unit testing
         - Internationalization
         - Other (specify if possible)
+        
 - type: input
   attributes:
     label: Processing version 
     description: Go to Help > About Processing and look in the bottom-right corner for the version number. It also appears in the title bar of every editor window.
   validations:
-    required: false
+    required: true
+    
 - type: input
   attributes:
     label: Operating system 
     description: "Ex: Windows/MacOSX/Linux/Android/iOS along with version"
   validations:
-    required: false
+    required: true
+    
 - type: textarea
   attributes:
     label: Steps to reproduce this 
@@ -50,6 +54,7 @@ body:
       3."
   validations:
     required: true
+    
 - type: textarea
   attributes:
     label: snippet
@@ -60,6 +65,7 @@ body:
       ```
   validations:
     required: false
+    
 - type: textarea
   attributes:
     label: Additional context
