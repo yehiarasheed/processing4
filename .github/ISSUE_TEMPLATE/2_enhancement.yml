@@ -37,7 +37,7 @@
 - type: textarea
   attributes:
     label: Possible drawbacks
-    description: Consider any possible drawbacks or challenges related to the implementation of this feature.
+    description: Consider any possible drawbacks or challenges related to the implementation of this enhancement.
   validations:
     required: false
 - type: textarea
