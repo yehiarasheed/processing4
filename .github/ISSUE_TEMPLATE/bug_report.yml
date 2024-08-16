@@ -11,6 +11,7 @@ body:
     options:
         - Accessibility
         - Core/Environment/Rendering
+        - PDE
         - Data
         - Events
         - Image
