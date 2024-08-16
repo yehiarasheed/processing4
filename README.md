@@ -32,7 +32,7 @@ As with all releases, we did [everything possible](https://twitter.com/ben_fry/s
 
 ## Contact Information
 
-For assistance with your own sketches, projects, or code, please post your question on the Processing forum: https://discourse.processing.org/. Our community is full of experienced developers and users who are eager to help. We’re incredibly grateful for the support and knowledge shared by everyone on the forum over the years. Before you post, please take a moment to read the [guidelines on asking questions](https://discourse.processing.org/t/guidelines-asking-questions/2147) to make sure you get the best possible help.
+For assistance with your own sketches, projects, or code, please post your question on the Processing forum: https://discourse.processing.org/. Our community is full of experienced developers and users who are eager to help. Before you post, please take a moment to read the [guidelines on asking questions](https://discourse.processing.org/t/guidelines-asking-questions/2147) to make sure you get the best possible help. We’re incredibly grateful for the support and knowledge shared by everyone on the forum over the years. 
 
 For more details about Processing itself, feel free to reach out to us. Here are the best ways to contact us:
 
