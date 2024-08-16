@@ -6,7 +6,7 @@ This repository contains the source code for the [Processing](https://processing
 
 ## Using Processing
 
-If you're interested in *using* Processing, get started at the [processing.org download page](https://processing.org/download), or read more about the project at the [home page](https://processing.org/). There are also several [tutorials](https://processing.org/tutorials) that provide a helpful introduction. They are complemented by hundreds of examples that are included with the software itself.
+If you're interested in *using* Processing, head over to the [download page](https://processing.org/download), or read more about the project on the [Processing website](https://processing.org/). There are also several [tutorials](https://processing.org/tutorials) that provide a helpful introduction. They are complemented by hundreds of examples that are included with the software itself.
 
 ## Contributing to Processing
 If you want to fix a bug that's been bothering you or want to give back to the project, you're in the right place!
