@@ -1,10 +1,12 @@
-- type: dropdown
-  id: feature-area
-  attributes:
-    label: Relevant sub-area for this feature?
-    description: Choose the sub-area most relevant to your feature request.
-    multiple: true
-    options:
+fields:
+
+  - type: dropdown
+    id: feature-area
+    attributes:
+      label: Relevant sub-area for this feature?
+      description: Choose the sub-area most relevant to your feature request.
+      multiple: true
+      options:
         - Accessibility
         - Core/Environment/Rendering
         - PDE
@@ -22,27 +24,35 @@
         - Unit testing
         - Internationalization
         - Other (specify if possible)
-- type: textarea
-  attributes:
-    label: Feature description
-    description: Describe the feature in detail. Include how it should work and its intended impact.
-  validations:
-    required: true
-- type: textarea
-  attributes:
-    label: Benefits
-    description: Outline how this feature would benefit users or improve Processing.
-  validations:
-    required: true
-- type: textarea
-  attributes:
-    label: Possible challenges
-    description: Discuss any possible challenges or considerations in implementing this feature.
-  validations:
-    required: false
-- type: textarea
-  attributes:
-    label: Additional context
-    description: Provide any other information, links, or screenshots that could help illustrate the feature.
-  validations:
-    required: false
+        
+  - type: textarea
+    id: feature-description
+    attributes:
+      label: Feature description
+      description: Describe the feature in detail. Include how it should work and its intended impact.
+    validations:
+      required: true
+      
+  - type: textarea
+    id: benefits
+    attributes:
+      label: Benefits
+      description: Outline how this feature would benefit users or improve Processing.
+    validations:
+      required: true
+      
+  - type: textarea
+    id: challenges
+    attributes:
+      label: Possible challenges
+      description: Discuss any possible challenges or considerations in implementing this feature.
+    validations:
+      required: false
+      
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context
+      description: Provide any other information, links, or screenshots that could help illustrate the feature.
+    validations:
+      required: false
