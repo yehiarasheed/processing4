@@ -1,3 +1,8 @@
+name: 💡 Existing Feature Enhancement
+description: Suggest an improvement for an existing feature of Processing.
+labels: [enhancement]
+body:
+
 - type: dropdown
   id: feature-area
   attributes:
@@ -22,24 +27,28 @@
         - Unit testing
         - Internationalization
         - Other (specify if possible)
+        
 - type: input
   attributes:
     label: Desired enhancement
     description: Describe the improvement you'd like to see with that existing feature
   validations:
     required: true
+    
 - type: textarea
   attributes:
     label: Potential benefits
     description: Explain how this enhancement could benefit users or improve Processing.
   validations:
     required: true
+    
 - type: textarea
   attributes:
     label: Possible drawbacks
     description: Consider any possible drawbacks or challenges related to the implementation of this enhancement.
   validations:
     required: false
+    
 - type: textarea
   attributes:
     label: Additional context
