@@ -28,6 +28,13 @@ body:
         - Internationalization
         - Other (specify if possible)
         
+- type: input
+  attributes:
+    label: Feature to enhance
+    description: Name the feature you'd like to see enhanced
+  validations:
+    required: true
+
 - type: textarea
   attributes:
     label: Desired enhancement
