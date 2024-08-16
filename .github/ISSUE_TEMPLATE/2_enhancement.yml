@@ -2,6 +2,7 @@ name: 💡 Existing Feature Enhancement
 description: Suggest an improvement for an existing feature of Processing.
 labels: [enhancement]
 body:
+
 - type: dropdown
   id: feature-area
   attributes:
@@ -28,30 +29,35 @@ body:
         - Other (specify if possible)
   validations:
     required: true
+    
 - type: input
   attributes:
     label: Feature to enhance
     description: Which existing feature of Processing would be improved by this enhancement?
   validations:
     required: true
+    
 - type: textarea
   attributes:
     label: Desired enhancement
-    description: Describe the improvement you'd like to see with that existing feature
+    description: Describe the improvement you’d like to see with that existing feature
   validations:
     required: true
+    
 - type: textarea
   attributes:
     label: Potential benefits
     description: Explain how this enhancement could benefit users or improve Processing.
   validations:
-    required: true
+    required: false
+    
 - type: textarea
   attributes:
     label: Possible drawbacks
     description: Consider any possible drawbacks or challenges related to the implementation of this enhancement.
   validations:
     required: false
+    
 - type: textarea
   attributes:
     label: Additional context
