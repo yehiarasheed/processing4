@@ -1,4 +1,7 @@
-fields:
+name: 🌱 New Feature Request
+description: Request adding a new feature to Processing
+labels: [new feature]
+body:
 
   - type: dropdown
     id: feature-area
