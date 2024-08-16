@@ -31,7 +31,7 @@
 - type: textarea
   attributes:
     label: Benefits
-    description: Outline the potential benefits this feature would offer to the Processing community.
+    description: Outline how this feature would benefit users or improve Processing.
   validations:
     required: true
 - type: textarea
