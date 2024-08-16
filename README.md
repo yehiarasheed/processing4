@@ -8,6 +8,9 @@ This repository contains the source code for the [Processing](https://processing
 
 If you're interested in *using* Processing, head over to the [download page](https://processing.org/download), or read more about the project on the [Processing website](https://processing.org/). There are also several [tutorials](https://processing.org/tutorials) that provide a helpful introduction. They are complemented by hundreds of examples that are included with the software itself.
 
+## Getting Help 
+For assistance with your own sketches, projects, or code, please post your question on the Processing forum: https://discourse.processing.org/. Our community is full of experienced developers and knowledgeable users who are eager to help. Before you post, please take a moment to read the [guidelines on asking questions](https://discourse.processing.org/t/guidelines-asking-questions/2147) to make sure you get the best possible help. We’re incredibly grateful for the support and knowledge shared by everyone on the forum over the years.
+
 ## Contributing to Processing
 If you want to fix a bug that's been bothering you or want to give back to the project, you're in the right place!
 
@@ -34,9 +37,6 @@ With any luck, many changes should be transparent to most users, in spite of how
 As with all releases, we did [everything possible](https://twitter.com/ben_fry/status/1426282574683516928) to avoid breaking API. However, there were still tweaks that we had to make. We tried to keep them minor. Our goal is stability, and keeping everyone's code running.
 
 ## Contact Information
-
-For assistance with your own sketches, projects, or code, please post your question on the Processing forum: https://discourse.processing.org/. Our community is full of experienced developers and users who are eager to help. Before you post, please take a moment to read the [guidelines on asking questions](https://discourse.processing.org/t/guidelines-asking-questions/2147) to make sure you get the best possible help. We’re incredibly grateful for the support and knowledge shared by everyone on the forum over the years. 
-
 For more details about Processing itself, feel free to reach out to us. Here are the best ways to contact us:
 
 - **Email**: For inquiries about the Processing software, contact [hello@processing.org](mailto:hello@processing.org).
