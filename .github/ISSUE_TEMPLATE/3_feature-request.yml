@@ -27,6 +27,8 @@ body:
         - Unit testing
         - Internationalization
         - Other (specify if possible)
+    validations:
+      required: true
         
   - type: textarea
     id: feature-description
