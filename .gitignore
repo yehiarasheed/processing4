@@ -93,3 +93,10 @@ bin-test
 # VS Code Java project files
 .project
 .vscode/
+
+.gradle
+core/build/
+gradlew
+gradlew.bat
+gradle/wrapper/gradle-wrapper.properties
+gradle/wrapper/gradle-wrapper.jar
