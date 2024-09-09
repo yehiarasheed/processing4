@@ -12,11 +12,11 @@ If you're interested in *using* Processing, head over to the [download page](htt
 For assistance with your own sketches, projects, or code, please post your question on the Processing forum: https://discourse.processing.org/. Our community is full of experienced developers and knowledgeable users who are eager to help. Before you post, please take a moment to read the [guidelines on asking questions](https://discourse.processing.org/t/guidelines-asking-questions/2147) to make sure you get the best possible help. We’re incredibly grateful for the support and knowledge shared by everyone on the forum over the years.
 
 ## Contributing to Processing
+We welcome new contributors. The work on Processing 4.0 was done by a [tiny number of people](https://github.com/processing/processing4/graphs/contributors?from=2019-10-01&to=2022-08-09&type=c). Every contribution helps!
+
 If you want to fix a bug that's been bothering you or want to give back to the project, you're in the right place!
 
 To get started, clone this repository to your machine and build the code. For instructions, check out our guide on [How to Build Processing](build/README.md).
-
-We welcome new contributors. The work on Processing 4.0 was done by a [tiny number of people](https://github.com/processing/processing4/graphs/contributors?from=2019-10-01&to=2022-08-09&type=c). Every contribution helps!
 
 ### Structure of the Repository
 The Processing software consists of two main parts:
@@ -37,10 +37,18 @@ With any luck, many changes should be transparent to most users, in spite of how
 As with all releases, we did [everything possible](https://twitter.com/ben_fry/status/1426282574683516928) to avoid breaking API. However, there were still tweaks that we had to make. We tried to keep them minor. Our goal is stability, and keeping everyone's code running.
 
 ## Contact Information
-For more details about Processing itself, feel free to reach out to us. Here are the best ways to contact us:
+For technical support or troubleshooting with your project, please post on the [Processing Forum](https://discourse.processing.org/).
 
-- **Email**: For inquiries about the Processing software, contact [hello@processing.org](mailto:hello@processing.org).
-- **Processing Foundation**: For anything else, please reach out to [foundation@processingfoundation.org](mailto:foundation@processingfoundation.org).
+For bug reports or feature requests, please [create an issue](https://github.com/processing/processing4/issues).
+
+For non-technical inquiries, here’s how to get in touch:
+
+- For press inquiries, general information about the Processing software, or other non-technical questions, contact [hello@processing.org](mailto:hello@processing.org).
+- For anything related to the Processing Foundation or broader topics beyond the software, please reach out to [foundation@processingfoundation.org](mailto:foundation@processingfoundation.org).
+
+---
+
+This version now includes guidance for bug reports and feature requests. How does this look?
 
 ## License & Copyright
 
