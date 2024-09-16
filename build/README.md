@@ -202,23 +202,6 @@ ant linux-dist
 
 Regardless, the distributable ends up in `build/{os}/work` where `{os}` is the target OS.
 
-
-### Code Signing
-
-Mac builds require code signing, due to [Apple requirements](https://support.apple.com/en-us/HT202491) issue. This is not executed by default by `ant dist` or `ant macosx-dist`. One can sign the resulting `.app` file though via:
-
-```
-/usr/bin/codesign --force --sign "Developer ID Application: Certificate Common Name" Processing.app/Contents/PlugIns/jdk-...
-/usr/bin/codesign --force --sign "Developer ID Application: Certificate Common Name" Processing.app
-```
-
-Note that one will need to complete the `jdk-...` string to be something like `jdk-17.0.2+8` depending on the build. Anyway, this will require an [Apple Developer ID](https://developer.apple.com/developer-id/).
-
-This is not strictly required especially if you are using your own app build.
-
-Eventually we'll want to sign [Windows releases](https://github.com/processing/processing4/issues/25), and [exported applications](https://github.com/processing/processing4/issues/173). If you have experience with this, please help!
-
-
 ## Using an IDE for development (Eclipse or IntelliJ)
 
 ### Eclipse
