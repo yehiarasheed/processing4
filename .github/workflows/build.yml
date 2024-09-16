@@ -60,7 +60,6 @@ jobs:
       - name: Build Release
         run: ant -noinput -buildfile build/build.xml ${{ matrix.os_prefix }}-dist -Dversion="${{ github.sha }}"
       - name: Add artifact
-        if: ${{ github.ref == 'ref/head/main' }}
         uses: actions/upload-artifact@v3
         id: upload
         with:
