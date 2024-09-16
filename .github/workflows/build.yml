@@ -60,8 +60,7 @@ jobs:
       - name: Build Release
         run: ant -noinput -buildfile build/build.xml ${{ matrix.os_prefix }}-dist -Dversion="${{ github.sha }}"
       - name: Add artifact
-        uses: actions/upload-artifact@v3
-        id: upload
+        uses: actions/upload-artifact@v4
         with:
           name: processing-${{github.sha}}${{ matrix.os_prefix }}-${{ matrix.arch }}
           path:  ./build/${{ matrix.os_prefix }}/processing-${{github.sha}}-${{ matrix.os_prefix}}-*
