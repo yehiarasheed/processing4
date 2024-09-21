@@ -8,23 +8,33 @@ ourselves.
 
 ## Instructions
 
-Use [Raspberry Pi Imager](https://www.raspberrypi.com/software/) to download
-Raspberry PI OS lite (32bit) to an SD card
+### Gathering your Tools
 
-Use the settings to set up a proper hostname and user account.
+You will need:
 
-Take the written SD card and put it into the Raspberry PI
+- A Raspberry Pi
+- A micro SD card
+- An SD card reader
+- A computer
 
-Power it up and wait for it to boot
+### Flashing the SD Card
+1. Install and open [**Raspberry Pi Imager**](https://www.raspberrypi.com/software/) on your computer
+2. In **Raspberry Pi Imager**:
+  - Select your Raspberry Pi model
+  - Select "Raspberry PI OS lite (32bit)" as the OS (you may need to look into the sub-menus)
+  - Select your SD card
+  - Click NEXT
+3. Edit the OS settings:
+  - Set a hostname (e.g. `processing.local`)
+  - Set a username and password
+  - Go to the SERVICES tab and enable SSH with password authentication
+  - Click SAVE and Apply the OS customisation settings
 
-SSH into the Raspberry PI
-
-Follow Githubs instructions on how to set up a self-hosted runner
-https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/adding-self-hosted-runners
-
-Use all the default values in the `./config.sh` setup step
-
-Use Github instructions to setup the runner as a services so it runs on boot
-https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/configuring-the-self-hosted-runner-application-as-a-service
+### Configuring the Raspberry Pi
+1. Take the written SD card and put it into the Raspberry PI
+2. Power it up and wait for it to boot
+3. SSH into the Raspberry Pi using the hostname, username, and password you set earlier
+4. Follow Github's [instructions on how to set up a self-hosted runner](https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/adding-self-hosted-runners). _Note: Use all the default values in the `./config.sh` setup step_
+6. Use Github [instructions to setup the runner as a services](https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/configuring-the-self-hosted-runner-application-as-a-service) so it runs on boot.
 
 Done.
