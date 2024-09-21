@@ -34,7 +34,9 @@ You will need:
 1. Take the written SD card and put it into the Raspberry PI
 2. Power it up and wait for it to boot
 3. SSH into the Raspberry Pi using the hostname, username, and password you set earlier
-4. Follow Github's [instructions on how to set up a self-hosted runner](https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/adding-self-hosted-runners). _Note: Use all the default values in the `./config.sh` setup step_
-6. Use Github [instructions to setup the runner as a services](https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/configuring-the-self-hosted-runner-application-as-a-service) so it runs on boot.
+4. Follow Github's [instructions on how to set up a self-hosted runner](https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/adding-self-hosted-runners). _Note: In the `./config.sh` setup step, you will be prompted to enter a name and other settings. Use default settings by pressing ENTER for each prompt._
+5. Verify that the new runner appears in the list of runners on GitHub.
+6. Quit the the runner in the terminal (we will set it up to run automatically on boot).
+7. Use Github [instructions to setup the runner as a services](https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/configuring-the-self-hosted-runner-application-as-a-service) so it runs on boot.
 
 Done.
