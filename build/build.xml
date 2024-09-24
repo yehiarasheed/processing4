@@ -510,7 +510,7 @@
                name="Processing"
                displayName="Processing"
                executableName="Processing"
-               identifier="org.processingfoundation.four"
+               identifier="org.processing.app"
                signature="Pde4"
                icon="macos/processing.icns"
                copyright="© The Processing Foundation"
@@ -811,7 +811,16 @@
     -->
 
     <property name="unpack.jssc" value="macos/work/Processing.app/Contents/Java/modes/java/libraries/serial/library/jssc" />
-    <unzip src="${unpack.jssc}.jar" dest="${unpack.jssc}" />
+    <unzip src="${unpack.jssc}.jar" dest="${unpack.jssc}-unpack" />
+
+    <property name="unpack.core" value="macos/work/Processing.app/Contents/Java/core" />
+    <unzip src="${unpack.core}.jar" dest="${unpack.core}-unpack" />
+
+    <property name="unpack.jna" value="macos/work/Processing.app/Contents/Java/jna" />
+    <unzip src="${unpack.jna}.jar" dest="${unpack.jna}-unpack" />
+
+    <property name="unpack.core2" value="macos/work/Processing.app/Contents/Java/core/library/core" />
+    <unzip src="${unpack.core2}.jar" dest="${unpack.core2}-unpack" />
 
     <!-- <unzip src="macos/work/Processing.app/Contents/Java/modes/java/libraries/serial/library/jssc.jar" dest="macos/work/Processing.app/Contents/Java/modes/java/libraries/serial/library/jssc" /> -->
 
@@ -853,14 +862,20 @@
     <zip destfile="${unpack.jogl}.jar" basedir="${unpack.jogl}" />
     <zip destfile="${unpack.gluegen}.jar" basedir="${unpack.gluegen}" />
     -->
-    <zip destfile="${unpack.jssc}.jar" basedir="${unpack.jssc}" />
+    <zip destfile="${unpack.jssc}.jar" basedir="${unpack.jssc}-unpack" />
+    <zip destfile="${unpack.core}.jar" basedir="${unpack.core}-unpack" />
+    <zip destfile="${unpack.jna}.jar" basedir="${unpack.jna}-unpack" />
+    <zip destfile="${unpack.core2}.jar" basedir="${unpack.core2}-unpack" />
 
     <!-- delete the temporary directories w/ the jar contents -->
     <!--
     <delete dir="${unpack.jogl}" />
     <delete dir="${unpack.gluegen}" />
     -->
-    <delete dir="${unpack.jssc}" />
+    <delete dir="${unpack.jssc}-unpack" />
+    <delete dir="${unpack.core}-unpack" />
+    <delete dir="${unpack.jna}-unpack" />
+    <delete dir="${unpack.core2}-unpack" />
 
     <!-- sign the outer application, now that we've finished all the contents -->
     <exec executable="/usr/bin/codesign" dir="macos/work" failonerror="true">
