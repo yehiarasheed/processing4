@@ -510,7 +510,7 @@
                name="Processing"
                displayName="Processing"
                executableName="Processing"
-               identifier="org.processing.four"
+               identifier="org.processingfoundation.four"
                signature="Pde4"
                icon="macos/processing.icns"
                copyright="© The Processing Foundation"
