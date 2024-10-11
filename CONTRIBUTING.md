@@ -8,8 +8,6 @@ For coding questions or help getting started, our [online forum](https://discour
 
 If your issue remains unresolved after exploring these options, we'd appreciate it if you could [file a bug report](https://github.com/processing/processing4/issues). Your feedback is crucial as it helps us address issues we might not be aware of yet.
 
-Remember, Processing is a labor of love, run by volunteers and offered free of charge. We're here because we believe in this community and genuinely enjoy contributing to it. We always welcome constructive feedback—just keep it friendly and helpful, please! For more tips on how to communicate within the project, take a peek at our Code of Conduct (coming soon).
-
 ## Interested in Contributing?
 
 We're glad to hear that! [Our team is small](https://github.com/processing/processing4/graphs/contributors), and with the large number of users, every extra hand makes a big difference! Here’s how you can start:
