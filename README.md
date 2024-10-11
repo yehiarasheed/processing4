@@ -12,19 +12,23 @@ If you're interested in *using* Processing, head over to the [download page](htt
 For assistance with your own sketches, projects, or code, please post your question on the Processing forum: https://discourse.processing.org/. Our community is full of experienced developers and knowledgeable users who are eager to help. Before you post, please take a moment to read the [guidelines on asking questions](https://discourse.processing.org/t/guidelines-asking-questions/2147) to make sure you get the best possible help. We’re incredibly grateful for the support and knowledge shared by everyone on the forum over the years.
 
 ## Contributing to Processing
-We welcome new contributors. The work on Processing 4.0 was done by a [tiny number of people](https://github.com/processing/processing4/graphs/contributors?from=2019-10-01&to=2022-08-09&type=c). Every contribution helps!
+We welcome new contributors. If you want to fix a bug that's been bothering you or want to give back to the project, you're in the right place!
 
-If you want to fix a bug that's been bothering you or want to give back to the project, you're in the right place!
+For detailed guidelines on how to contribute, please refer to our [CONTRIBUTING.md].
 
-To get started, clone this repository to your machine and build the code. For instructions, check out our guide on [How to Build Processing](build/README.md).
+## Building Processing
 
-### Structure of the Repository
-The Processing software consists of two main parts:
+Building Processing locally on your machine will let you troubleshoot and make sure your contributions work as intended before submitting them to this repository. It also gives you the flexibility to experiment and learn more about how Processing is structured.
 
-1. **The Core Library:** This includes essential components such as the graphics renderer, event handling, input/output (I/O) functions, and mathematical utilities.
-2. **The Processing Development Environment (PDE):** This includes a text editor, a pre-processor, a contributions manager, and other tools to assist with writing and managing code.
+For a quick start: 
+1. Fork and clone the repository.
+1. Open it in IntelliJ IDEA.
+1. Install the required Ant plugin.
+1. Hit Run.
 
-### About the Processing 4.0 release
+For more information and detailed instructions, follow our [How to Build Processing](build/README.md) guide.
+
+## About the Processing 4.0 release
 
 We've moved to a new repository for the 4.0 release so that we could cull a lot of the accumulated mess of the last 20 years. This made `git clone` (and most other `git` operations) a lot faster.
 
@@ -45,10 +49,6 @@ For non-technical inquiries, here’s how to get in touch:
 
 - For press inquiries, general information about the Processing software, or other non-technical questions, contact [hello@processing.org](mailto:hello@processing.org).
 - For anything related to the Processing Foundation or broader topics beyond the software, please reach out to [foundation@processingfoundation.org](mailto:foundation@processingfoundation.org).
-
----
-
-This version now includes guidance for bug reports and feature requests. How does this look?
 
 ## License & Copyright
 
