@@ -12,9 +12,7 @@ If you're interested in *using* Processing, head over to the [download page](htt
 For assistance with your own sketches, projects, or code, please post your question on the Processing forum: https://discourse.processing.org/. Our community is full of experienced developers and knowledgeable users who are eager to help. Before you post, please take a moment to read the [guidelines on asking questions](https://discourse.processing.org/t/guidelines-asking-questions/2147) to make sure you get the best possible help. We’re incredibly grateful for the support and knowledge shared by everyone on the forum over the years.
 
 ## Contributing to Processing
-We welcome new contributors. If you want to fix a bug that's been bothering you or want to give back to the project, you're in the right place!
-
-For detailed guidelines on how to contribute, please refer to our [CONTRIBUTING.md].
+We welcome new contributors. If you want to fix a bug that's been bothering you or want to give back to the project, you're in the right place! Please see our [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines on how to contribute.
 
 ## Building Processing
 
