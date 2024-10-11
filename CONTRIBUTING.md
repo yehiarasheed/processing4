@@ -10,7 +10,7 @@ If your issue remains unresolved after exploring these options, we'd appreciate 
 
 ## Interested in Contributing?
 
-We're glad to hear that! [Our team is small](https://github.com/processing/processing4/graphs/contributors), and with the large number of users, every extra hand makes a big difference! Here’s how you can start:
+We're glad to hear that! Every extra hand makes a big difference. Here’s how you can start:
 
 * **Help Wanted** – Most [issues marked help wanted](https://github.com/processing/processing4/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22) are a good place to start. Issues are marked with this tag when:
 
