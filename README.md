@@ -21,7 +21,7 @@ Building Processing locally on your machine will let you troubleshoot and make s
 For a quick start: 
 1. Fork and clone the repository.
 1. Open it in IntelliJ IDEA.
-1. Install the required Ant plugin.
+1. Install the required [Ant plugin](https://plugins.jetbrains.com/plugin/23025-ant).
 1. Hit Run.
 
 For more information and detailed instructions, follow our [How to Build Processing](build/README.md) guide.
