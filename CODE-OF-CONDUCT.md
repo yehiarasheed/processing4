@@ -6,7 +6,7 @@ Processing is a flexible software sketchbook and a language for learning how to 
 
 We make room for people to get involved in the project at any point they wish. This means that we:
 
-* Welcome contributors at any stage of their programming journey, from newcomers to professionals;
+* Welcome contributors at any stage of their journey, from newcomers to professionals;
 * Do not assume knowledge or imply there are things that somebody should know;
 * Understand that people are the experts of their own experiences, and bring a variety of valid perspectives to the development of open source projects;
 * Know that contribution is not just limited to code, and can also include working on documentation, filing issues and bug reports, and other important forms of input;
@@ -14,7 +14,7 @@ We make room for people to get involved in the project at any point they wish. T
 
 ## Our Standards
 
-All developers who contribute to the Processing project agree to abide by the following code of conduct.
+All contributors to the Processing project agree to abide by the following code of conduct.
 
 ### Respect other people
 
