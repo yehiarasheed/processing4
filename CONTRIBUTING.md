@@ -1,5 +1,15 @@
 ## Welcome to Processing!
 
+Thanks for your interest in contributing to Processing! Processing is a collaborative project with contributions from many volunteers. Our community is always looking for contributors and appreciates involvement in all forms. We acknowledge that not everyone has the capacity, time, or financial means to participate actively or in the same ways. We want to expand the meaning of the word “contributor.” Whether you're an experienced developer or just starting out, we value your involvement. Your unique perspectives, skills, and experiences enrich our community, and we encourage you to get involved in a way that works for you. It includes documentation, teaching, writing code, making art, writing, design, activism, organizing, curating, or anything else you might imagine. The [p5.js contribute page](https://p5js.org/contribute/) gives a great overview of different ways to get involved and contribute.
+
+The Processing project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification, recognizing all types of contributions, not just code. We use the @all-contributors bot to handle adding people to the README.md file. You can ask the @all-contributors bot to add you in an issue or PR comment like so:
+
+```
+@all-contributors please add @[your GitHub handle] for [your contribution type]
+```
+
+We recognize a variety of contribution types such as `design`, `documentation`, `eventOrganizing`, and `mentoring`, among others. You can find the full list of recognized contribution types [here](https://allcontributors.org/docs/en/emoji-key). We usually add contributors automatically after merging a PR, but feel free to request addition yourself if needed. For contributions wich don't involve a Pull Request, please comment on [this issue](https://github.com/processing/processing4-carbon-aug-19/issues/839) to add yourself.
+
 ## Found a Bug?
 
 First, please visit our [troubleshooting](https://github.com/processing/processing/wiki/Troubleshooting) page for common issues—you might find the answer there!
