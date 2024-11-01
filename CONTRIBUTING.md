@@ -18,9 +18,7 @@ For coding questions or help getting started, our [online forum](https://discour
 
 If your issue remains unresolved after exploring these options, we'd appreciate it if you could [file a bug report](https://github.com/processing/processing4/issues). Your feedback is crucial as it helps us address issues we might not be aware of yet.
 
-## Interested in Contributing?
-
-We're glad to hear that! Every extra hand makes a big difference. Here’s how you can start:
+## Making Your First Contribution
 
 * **Help Wanted** – Most [issues marked help wanted](https://github.com/processing/processing4/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22) are a good place to start. Issues are marked with this tag when:
 
