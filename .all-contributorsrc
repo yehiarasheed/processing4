@@ -38,200 +38,183 @@
     },
     {
       "login": "anadroid",
-      "contributions": {"code": [191, 222]}
+      "contributions": ["code"]
     },
     {
       "login": "arnoudvanderleer",
-      "contributions": {"code": [459]}
+      "contributions": ["code"]
     },
     {
       "login": "arya-gupta",
-      "contributions": {"code": [655]}
-    },
-    {
-      "login": "benfry",
-      "contributions": {
-        "maintenance": [556, 655, 659, 660, 661, 678, 690, 696, 728, 745, 746, 752, 757, 758, 759, 772, 776, 782],
-        "code": [70, 758]
-      }
+      "contributions": ["code"]
     },
     {
       "login": "bsapozhnikov",
-      "contributions": {"code": [659]}
+      "contributions": ["code"]
     },
     {
       "login": "cathiecode",
-      "contributions": {"code": [225]}
+      "contributions": ["code"]
     },
     {
       "login": "clarvel",
-      "contributions": {"code": [759]}
+      "contributions": ["code"]
     },
     {
       "login": "codeanticode",
-      "contributions": {"code": [313, 314, 316, 363, 367, 418, 432, 433, 435, 470]}
+      "contributions": ["code"]
     },
     {
       "login": "cyberflamego",
-      "contributions": {"code": [757]}
+      "contributions": ["code"]
     },
     {
       "login": "dzaima",
-      "contributions": {"code": [216, 274, 493]}
+      "contributions": ["code"]
     },
     {
       "login": "efratror",
-      "contributions": {
-        "maintenance": [676],
-        "code": [678, 690]
-      }
+      "contributions": ["maintenance", "code"]
     },
     {
       "login": "ghost",
-      "contributions": {"maintenance": [669, 767]}
+      "contributions": ["maintenance"]
     },
     {
       "login": "guilhermesilveira",
-      "contributions": {"code": [479]}
+      "contributions": ["code"]
     },
     {
       "login": "hectorcarral",
-      "contributions": {"code": [480, 481]}
+      "contributions": ["code"]
     },
     {
       "login": "hkiel",
-      "contributions": {"code": [483]}
+      "contributions": ["code"]
     },
     {
       "login": "hx2a",
-      "contributions": {"code": [776, 782]}
+      "contributions": ["code"]
     },
     {
       "login": "jaysonh",
-      "contributions": {"code": [198]}
+      "contributions": ["code"]
     },
     {
       "login": "kgtkr",
-      "contributions": {"code": [564]}
+      "contributions": ["code"]
     },
     {
       "login": "knupel",
-      "contributions": {"code": [41]}
+      "contributions": ["code"]
     },
     {
       "login": "lesleywagner",
-      "contributions": {"code": [539]}
+      "contributions": ["code"]
     },
     {
       "login": "letorbi",
-      "contributions": {"code": [215]}
+      "contributions": ["code"]
     },
     {
       "login": "maharal",
-      "contributions": {"code": [146, 147]}
+      "contributions": ["code"]
     },
     {
       "login": "mglst",
-      "contributions": {"code": [660]}
+      "contributions": ["code"]
     },
     {
       "login": "minimaximize",
-      "contributions": {"code": [49, 51]}
+      "contributions": ["code"]
     },
     {
       "login": "montardon",
-      "contributions": {"code": [661]}
+      "contributions": ["code"]
     },
     {
       "login": "mvaladas",
-      "contributions": {"code": [728]}
+      "contributions": ["code"]
     },
     {
       "login": "nking07049925",
-      "contributions": {"code": [175]}
+      "contributions": ["code"]
     },
     {
       "login": "oseph",
-      "contributions": {"code": [183, 184]}
+      "contributions": ["code"]
     },
     {
       "login": "peonix0",
-      "contributions": {"code": [696]}
+      "contributions": ["code"]
     },
     {
       "login": "qazcetelic",
-      "contributions": {"code": [513]}
+      "contributions": ["code"]
     },
     {
       "login": "robog-two",
-      "contributions": {"code": [495]}
+      "contributions": ["code"]
     },
     {
       "login": "runemadsen",
-      "contributions": {"code": [132, 168]}
+      "contributions": ["code"]
     },
     {
       "login": "rupeshkumar22",
-      "contributions": {"code": [329, 498]}
+      "contributions": ["code"]
     },
     {
       "login": "rzats",
-      "contributions": {"code": [301, 585]}
+      "contributions": ["code"]
     },
     {
       "login": "sableraf",
-      "contributions": {"code": [258, 542, 605]}
+      "contributions": ["code"]
     },
     {
       "login": "sampottinger",
-      "contributions": {
-        "maintenance": [692, 715, 716, 721, 729],
-        "code": [
-          1, 5, 12, 13, 15, 18, 20, 30, 33, 34, 37, 38, 40, 42, 45, 60, 68, 74, 75, 76, 85, 88,
-          91, 93, 95, 96, 103, 105, 107, 123, 125, 138, 139, 152, 219, 229, 230, 246, 257, 288,
-          384, 392, 400, 474, 502, 504, 577, 597, 609, 622, 635, 636, 637, 715, 716, 721, 752, 772
-        ]
-      }
+      "contributions": ["maintenance", "code"]
     },
     {
       "login": "sashashura",
-      "contributions": {"code": [556]}
+      "contributions": ["code"]
     },
     {
       "login": "shahnoor-khan",
-      "contributions": {"maintenance": [665]}
+      "contributions": ["maintenance"]
     },
     {
       "login": "thomasleplus",
-      "contributions": {"code": [266]}
+      "contributions": ["code"]
     },
     {
       "login": "tn8001",
-      "contributions": {"code": [436, 461, 462]}
+      "contributions": ["code"]
     },
     {
       "login": "trikaphundo",
-      "contributions": {"code": [554, 574, 745, 746]}
+      "contributions": ["code"]
     },
     {
       "login": "urbanskimichal",
-      "contributions": {"code": [100]}
+      "contributions": ["code"]
     },
     {
       "login": "vepo",
-      "contributions": {"code": [599]}
+      "contributions": ["code"]
     },
     {
       "login": "villares",
-      "contributions": {"code": [133, 134]}
+      "contributions": ["code"]
     },
     {
       "login": "willrabalais04",
-      "contributions": {"code": [692, 729]}
+      "contributions": ["code"]
     },
     {
       "login": "yblake",
-      "contributions": {"code": [172]}
+      "contributions": ["code"]
     }
   ],
   "repoType": "github",
