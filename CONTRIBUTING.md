@@ -8,7 +8,7 @@ The Processing project follows the [all-contributors](https://github.com/kentcdo
 @all-contributors please add @[your GitHub handle] for [your contribution type]
 ```
 
-We recognize a variety of contribution types such as `design`, `documentation`, `eventOrganizing`, and `mentoring`, among others. You can find the full list of recognized contribution types [here](https://allcontributors.org/docs/en/emoji-key). We usually add contributors automatically after merging a PR, but feel free to request addition yourself if needed. For contributions wich don't involve a Pull Request, please comment on [this issue](https://github.com/processing/processing4-carbon-aug-19/issues/839) to add yourself.
+We usually add contributors automatically after merging a PR, but feel free to request addition yourself by commenting on [this issue](https://github.com/processing/processing4-carbon-aug-19/issues/839).
 
 ## Found a Bug?
 
