@@ -1,4 +1,16 @@
 {
   "projectName": "processing4-carbon-aug-19",
   "projectOwner": "processing"
+  "files": [
+      "README.md"
+    ],
+  "imageSize": 120,
+  "contributorsPerLine": 6,
+  "commit": true,
+  "contributors": [],
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true,
+  "commitConvention": "angular",
+  "commitType": "docs"
 }
