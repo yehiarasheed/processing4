@@ -71,6 +71,13 @@ Copyright (c) 2015-now The Processing Foundation
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="16.66%"><a href="http://reas.com"><img src="https://avatars.githubusercontent.com/u/677774?v=4?s=120" width="120px;" alt="Casey Reas"/><br /><sub><b>Casey Reas</b></sub></a><br /><a href="https://github.com/processing/processing4-carbon-aug-19/commits?author=REAS" title="Code">💻</a> <a href="#ideas-REAS" title="Ideas, Planning, & Feedback">🤔</a> <a href="#infra-REAS" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#mentoring-REAS" title="Mentoring">🧑‍🏫</a> <a href="#content-REAS" title="Content">🖋</a> <a href="#talk-REAS" title="Talks">📢</a> <a href="#tutorial-REAS" title="Tutorials">✅</a></td>
+    </tr>
+  </tbody>
+</table>
 
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
