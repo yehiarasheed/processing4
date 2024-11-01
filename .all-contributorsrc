@@ -1,9 +1,7 @@
 {
   "projectName": "processing4-carbon-aug-19",
   "projectOwner": "processing",
-  "files": [
-    "README.md"
-  ],
+  "files": ["README.md"],
   "imageSize": 120,
   "contributorsPerLine": 6,
   "commit": true,
@@ -21,7 +19,9 @@
         "maintenance",
         "content",
         "talk"
-      ],
+      ]
+    },
+    {
       "login": "REAS",
       "name": "Casey Reas",
       "avatar_url": "https://avatars.githubusercontent.com/u/677774?v=4",
@@ -35,6 +35,203 @@
         "talk",
         "tutorial"
       ]
+    },
+    {
+      "login": "anadroid",
+      "contributions": {"code": [191, 222]}
+    },
+    {
+      "login": "arnoudvanderleer",
+      "contributions": {"code": [459]}
+    },
+    {
+      "login": "arya-gupta",
+      "contributions": {"code": [655]}
+    },
+    {
+      "login": "benfry",
+      "contributions": {
+        "maintenance": [556, 655, 659, 660, 661, 678, 690, 696, 728, 745, 746, 752, 757, 758, 759, 772, 776, 782],
+        "code": [70, 758]
+      }
+    },
+    {
+      "login": "bsapozhnikov",
+      "contributions": {"code": [659]}
+    },
+    {
+      "login": "cathiecode",
+      "contributions": {"code": [225]}
+    },
+    {
+      "login": "clarvel",
+      "contributions": {"code": [759]}
+    },
+    {
+      "login": "codeanticode",
+      "contributions": {"code": [313, 314, 316, 363, 367, 418, 432, 433, 435, 470]}
+    },
+    {
+      "login": "cyberflamego",
+      "contributions": {"code": [757]}
+    },
+    {
+      "login": "dzaima",
+      "contributions": {"code": [216, 274, 493]}
+    },
+    {
+      "login": "efratror",
+      "contributions": {
+        "maintenance": [676],
+        "code": [678, 690]
+      }
+    },
+    {
+      "login": "ghost",
+      "contributions": {"maintenance": [669, 767]}
+    },
+    {
+      "login": "guilhermesilveira",
+      "contributions": {"code": [479]}
+    },
+    {
+      "login": "hectorcarral",
+      "contributions": {"code": [480, 481]}
+    },
+    {
+      "login": "hkiel",
+      "contributions": {"code": [483]}
+    },
+    {
+      "login": "hx2a",
+      "contributions": {"code": [776, 782]}
+    },
+    {
+      "login": "jaysonh",
+      "contributions": {"code": [198]}
+    },
+    {
+      "login": "kgtkr",
+      "contributions": {"code": [564]}
+    },
+    {
+      "login": "knupel",
+      "contributions": {"code": [41]}
+    },
+    {
+      "login": "lesleywagner",
+      "contributions": {"code": [539]}
+    },
+    {
+      "login": "letorbi",
+      "contributions": {"code": [215]}
+    },
+    {
+      "login": "maharal",
+      "contributions": {"code": [146, 147]}
+    },
+    {
+      "login": "mglst",
+      "contributions": {"code": [660]}
+    },
+    {
+      "login": "minimaximize",
+      "contributions": {"code": [49, 51]}
+    },
+    {
+      "login": "montardon",
+      "contributions": {"code": [661]}
+    },
+    {
+      "login": "mvaladas",
+      "contributions": {"code": [728]}
+    },
+    {
+      "login": "nking07049925",
+      "contributions": {"code": [175]}
+    },
+    {
+      "login": "oseph",
+      "contributions": {"code": [183, 184]}
+    },
+    {
+      "login": "peonix0",
+      "contributions": {"code": [696]}
+    },
+    {
+      "login": "qazcetelic",
+      "contributions": {"code": [513]}
+    },
+    {
+      "login": "robog-two",
+      "contributions": {"code": [495]}
+    },
+    {
+      "login": "runemadsen",
+      "contributions": {"code": [132, 168]}
+    },
+    {
+      "login": "rupeshkumar22",
+      "contributions": {"code": [329, 498]}
+    },
+    {
+      "login": "rzats",
+      "contributions": {"code": [301, 585]}
+    },
+    {
+      "login": "sableraf",
+      "contributions": {"code": [258, 542, 605]}
+    },
+    {
+      "login": "sampottinger",
+      "contributions": {
+        "maintenance": [692, 715, 716, 721, 729],
+        "code": [
+          1, 5, 12, 13, 15, 18, 20, 30, 33, 34, 37, 38, 40, 42, 45, 60, 68, 74, 75, 76, 85, 88,
+          91, 93, 95, 96, 103, 105, 107, 123, 125, 138, 139, 152, 219, 229, 230, 246, 257, 288,
+          384, 392, 400, 474, 502, 504, 577, 597, 609, 622, 635, 636, 637, 715, 716, 721, 752, 772
+        ]
+      }
+    },
+    {
+      "login": "sashashura",
+      "contributions": {"code": [556]}
+    },
+    {
+      "login": "shahnoor-khan",
+      "contributions": {"maintenance": [665]}
+    },
+    {
+      "login": "thomasleplus",
+      "contributions": {"code": [266]}
+    },
+    {
+      "login": "tn8001",
+      "contributions": {"code": [436, 461, 462]}
+    },
+    {
+      "login": "trikaphundo",
+      "contributions": {"code": [554, 574, 745, 746]}
+    },
+    {
+      "login": "urbanskimichal",
+      "contributions": {"code": [100]}
+    },
+    {
+      "login": "vepo",
+      "contributions": {"code": [599]}
+    },
+    {
+      "login": "villares",
+      "contributions": {"code": [133, 134]}
+    },
+    {
+      "login": "willrabalais04",
+      "contributions": {"code": [692, 729]}
+    },
+    {
+      "login": "yblake",
+      "contributions": {"code": [172]}
     }
   ],
   "repoType": "github",
