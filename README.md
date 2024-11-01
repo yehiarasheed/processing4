@@ -68,7 +68,7 @@ Copyright (c) 2015-now The Processing Foundation
 
 ## Contributors
 
-If you contributed to Processing in any way shape or form, add yourself to the contributors list [here](https://github.com/processing/processing4-carbon-aug-19/issues/839)!
+Add yourself to the contributors list [here](https://github.com/processing/processing4-carbon-aug-19/issues/839)!
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
