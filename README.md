@@ -17,9 +17,6 @@ For assistance with your own sketches, projects, or code, please post your quest
 ## Contributing to Processing
 We welcome new contributors. If you want to fix a bug that's been bothering you or want to give back to the project, you're in the right place! Please see our [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines on how to contribute.
 
-## Expected Behavior 
-Remember, Processing is a labor of love, run in large part by volunteers, and offered free of charge. We're here because we believe in this community and genuinely enjoy contributing to it. We always welcome constructive feedback. Just keep it friendly and helpful, please! For more tips on how to communicate within the project, take a peek at our [Code of Conduct](https://github.com/processing/processing4-carbon-aug-19?tab=coc-ov-file).
-
 ## Building Processing
 
 Building Processing locally on your machine will let you troubleshoot and make sure your contributions work as intended before submitting them to this repository. It also gives you the flexibility to experiment and learn more about how Processing is structured.
@@ -31,6 +28,9 @@ For a quick start:
 1. Hit Run.
 
 For more information and detailed instructions, follow our [How to Build Processing](build/README.md) guide.
+
+## Expected Behavior 
+Remember, Processing is a labor of love, run in large part by volunteers, and offered free of charge. We're here because we believe in this community and genuinely enjoy contributing to it. We always welcome constructive feedback. Just keep it friendly and helpful, please! For more tips on how to communicate within the project, take a peek at our [Code of Conduct](https://github.com/processing/processing4-carbon-aug-19?tab=coc-ov-file).
 
 ## About the Processing 4.0 release
 
