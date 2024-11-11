@@ -34,8 +34,8 @@ dependencies {
 }
 
 mavenPublishing{
-    signAllPublications()
     publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
+    signAllPublications()
 
     pom{
         name.set("Processing Core")
