@@ -1,6 +1,12 @@
 name: Maven Release
 on:
     workflow_dispatch:
+      inputs:
+        version:
+          description: 'Version to release'
+          required: true
+          default: '1.0.0' 
+
 
 jobs:
     publish:
@@ -27,3 +33,5 @@ jobs:
 
             ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.SIGNING_IN_MEMORY_KEY }}
             ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.SIGNING_IN_MEMORY_KEY_PASSWORD }}
+
+            ORG_GRADLE_PROJECT_version: ${{ github.event.inputs.version }}

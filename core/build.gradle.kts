@@ -6,7 +6,6 @@ plugins {
 }
 
 group = "org.processing.core"
-version = "4.3.1"
 
 repositories {
     mavenCentral()
