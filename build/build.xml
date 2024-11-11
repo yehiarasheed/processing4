@@ -28,7 +28,7 @@
   </condition>
 
   <property name="examples.dir"
-            location="../../processing-examples" />
+            location="processing-examples" />
 
   <!-- 17.0.8+7 -->
   <property name="jdk.train" value="17" />

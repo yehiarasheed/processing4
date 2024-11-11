@@ -51,6 +51,11 @@ jobs:
             os_prefix: linux
             arch: aarch64
     steps:
+      - name: Checkout Examples Repository
+        uses: actions/checkout@v4
+        with:
+          repository: processing/processing-examples
+          path: processing-examples
       - name: Checkout Repository
         uses: actions/checkout@v4
       - name: Install Java
