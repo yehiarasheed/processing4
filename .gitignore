@@ -96,3 +96,12 @@ bin-test
 
 # Processing examples
 processing-examples
+
+# Maven ignores
+.gradle
+core/build/
+gradlew
+gradlew.bat
+gradle/wrapper/gradle-wrapper.properties
+gradle/wrapper/gradle-wrapper.jar
+build/publish/

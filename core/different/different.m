@@ -1,7 +1,7 @@
 #import <AppKit/AppKit.h>
 #import <Cocoa/Cocoa.h>
 #import <JavaNativeFoundation/JavaNativeFoundation.h>
-
+// #include <jni.h>
 
 JNIEXPORT void JNICALL Java_processing_core_ThinkDifferent_hideMenuBar
 (JNIEnv *env, jclass clazz, jboolean visible, jboolean kioskMode)
