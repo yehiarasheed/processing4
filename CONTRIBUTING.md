@@ -1,5 +1,15 @@
 ## Welcome to Processing!
 
+Thanks for your interest in contributing to Processing! Processing is a collaborative project with contributions from many volunteers. Our community is always looking for contributors and appreciates involvement in all forms. We acknowledge that not everyone has the capacity, time, or financial means to participate actively or in the same ways. We want to expand the meaning of the word “contributor.” Whether you're an experienced developer or just starting out, we value your involvement. Your unique perspectives, skills, and experiences enrich our community, and we encourage you to get involved in a way that works for you. It includes documentation, teaching, writing code, making art, writing, design, activism, organizing, curating, or anything else you might imagine. The [p5.js contribute page](https://p5js.org/contribute/) gives a great overview of different ways to get involved and contribute.
+
+The Processing project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification, recognizing all types of contributions, not just code. We use the @all-contributors bot to handle adding people to the README.md file. You can ask the @all-contributors bot to add you in an issue or PR comment like so:
+
+```
+@all-contributors please add @[your GitHub handle] for [your contribution type]
+```
+
+We usually add contributors automatically after merging a PR, but feel free to request addition yourself by commenting on [this issue](https://github.com/processing/processing4-carbon-aug-19/issues/839).
+
 ## Found a Bug?
 
 First, please visit our [troubleshooting](https://github.com/processing/processing/wiki/Troubleshooting) page for common issues—you might find the answer there!
@@ -8,11 +18,7 @@ For coding questions or help getting started, our [online forum](https://discour
 
 If your issue remains unresolved after exploring these options, we'd appreciate it if you could [file a bug report](https://github.com/processing/processing4/issues). Your feedback is crucial as it helps us address issues we might not be aware of yet.
 
-Remember, Processing is a labor of love, run by volunteers and offered free of charge. We're here because we believe in this community and genuinely enjoy contributing to it. We always welcome constructive feedback—just keep it friendly and helpful, please! For more tips on how to communicate within the project, take a peek at our Code of Conduct (coming soon).
-
-## Interested in Contributing?
-
-We're glad to hear that! [Our team is small](https://github.com/processing/processing4/graphs/contributors), and with the large number of users, every extra hand makes a big difference! Here’s how you can start:
+## Making Your First Contribution
 
 * **Help Wanted** – Most [issues marked help wanted](https://github.com/processing/processing4/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22) are a good place to start. Issues are marked with this tag when:
 
