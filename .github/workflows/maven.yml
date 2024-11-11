@@ -1,0 +1,21 @@
+name: Maven Release
+on:
+    workflow_dispatch:
+
+jobs:
+    publish:
+        name: Create Processing Core Release on Maven Central
+        runs-on: ubuntu-latest
+        steps:
+        - name: Checkout Repository
+          uses: actions/checkout@v4
+        - name: Setup Gradle
+          uses: gradle/actions/setup-gradle@v3
+        - name: Build with Gradle
+          run: ./gradlew publish
+          env:
+            MAVEN_CENTRAL_USERNAME: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
+            MAVEN_CENTRAL_PASSWORD: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}
+            ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.SIGNING_IN_MEMORY_KEY }}
+            ORG_GRADLE_PROJECT_signingInMemoryKeyId: ${{ secrets.SIGNING_IN_MEMORY_KEY_ID }}
+            ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.SIGNING_IN_MEMORY_KEY_PASSWORD }}
