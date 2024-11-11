@@ -25,7 +25,7 @@ jobs:
           echo "build_number=$BUILD_NUMBER" >> $GITHUB_OUTPUT
           echo "version=$VERSION" >> $GITHUB_OUTPUT
   publish:
-    name: Create Processing Core Release on Maven Central
+    name: Publish Processing Core to Maven Central
     runs-on: ubuntu-latest
     needs: version
     steps:
@@ -92,7 +92,7 @@ jobs:
         uses: cedx/setup-ant@v3
       - name: Write to todo.txt
         run: |
-          echo "${{ needs.version.outputs.build_number }} (${{ needs.version.outputs.version }})" >> todo.txt
+          echo "${{ needs.version.outputs.build_number }} (${{ needs.version.outputs.version }})" > todo.txt
       - name: Install Certificates for Code Signing
         if: ${{ matrix.os_prefix == 'macos' }}
         uses: apple-actions/import-codesign-certs@v3
