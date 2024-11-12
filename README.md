@@ -277,6 +277,7 @@ Add yourself to the contributors list [here](https://github.com/processing/proce
     </tr>
     <tr>
       <td align="center" valign="top" width="16.66%"><a href="https://www.codelerity.com/"><img src="https://avatars.githubusercontent.com/u/3975960?v=4?s=120" width="120px;" alt="Neil C Smith"/><br /><sub><b>Neil C Smith</b></sub></a><br /><a href="#infra-neilcsmith-net" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
+      <td align="center" valign="top" width="16.66%"><a href="http://www.katehollenbach.com"><img src="https://avatars.githubusercontent.com/u/78966?v=4?s=120" width="120px;" alt="kate hollenbach"/><br /><sub><b>kate hollenbach</b></sub></a><br /><a href="https://github.com/processing/processing4-carbon-aug-19/commits?author=kjhollen" title="Code">💻</a> <a href="#platform-kjhollen" title="Packaging/porting to new platform">📦</a> <a href="#mentoring-kjhollen" title="Mentoring">🧑‍🏫</a> <a href="https://github.com/processing/processing4-carbon-aug-19/issues?q=author%3Akjhollen" title="Bug reports">🐛</a></td>
     </tr>
   </tbody>
 </table>
