@@ -2,9 +2,6 @@ name: Releases
 on:
   release:
     types: [published]
-  push:
-    tags:
-      - processing-*
 
 jobs:
   version:
