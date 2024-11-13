@@ -5,7 +5,7 @@ plugins {
     id("com.vanniktech.maven.publish") version "0.30.0"
 }
 
-group = "org.processing.core"
+group = "org.processing"
 
 repositories {
     mavenCentral()
