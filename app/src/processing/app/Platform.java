@@ -430,6 +430,9 @@ public class Platform {
         return new File(home);
       }else{
         // TODO make platform independent
+        //      Windows: C:\Program Files\Eclipse Adoptium\jdk-17*
+        //    macOS/Linux: /usr/lib/jvm/, /opt/, /Library/Java/JavaVirtualMachines/
+
         return new File("/Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home");
       }
     }

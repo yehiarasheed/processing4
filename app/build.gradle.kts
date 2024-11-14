@@ -10,12 +10,16 @@ group = rootProject.group
 
 repositories{
     mavenCentral()
+    google()
     maven { url = uri("https://jogamp.org/deployment/maven") }
 }
 
 sourceSets{
     main{
         java{
+            srcDirs("src")
+        }
+        kotlin{
             srcDirs("src")
         }
         resources{
@@ -45,9 +49,11 @@ compose.desktop {
             linux {
                 iconFile = project.file("../build/linux/processing.png")
             }
-            buildTypes.release.proguard{
-                optimize = false
-            }
+
+            // Allow swing to use the system look and feel
+            jvmArgs(
+                "-Dapple.awt.application.appearance=system"
+            )
         }
     }
 }
@@ -60,6 +66,15 @@ dependencies {
 
     implementation(project(":core"))
     runtimeOnly(project(":java"))
+
+    implementation(compose.runtime)
+    implementation(compose.foundation)
+    implementation(compose.material)
+    implementation(compose.ui)
+    implementation(compose.components.resources)
+    implementation(compose.components.uiToolingPreview)
+
+    implementation(compose.desktop.currentOs)
 }
 
 tasks.register<Copy>("addCore"){

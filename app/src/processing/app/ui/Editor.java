@@ -71,6 +71,8 @@ import processing.app.laf.PdeMenuItemUI;
 import processing.app.syntax.*;
 import processing.core.*;
 
+import static processing.app.ui.JVMManagerKt.addJDKManger;
+
 
 /**
  * Main editor panel for the Processing Development Environment.
@@ -217,6 +219,8 @@ public abstract class Editor extends JFrame implements RunnerListener {
 
     header = createHeader();
     upper.add(header);
+
+    addJDKManger(upper);
 
     textarea = createTextArea();
     textarea.setRightClickPopup(new TextAreaPopup());
