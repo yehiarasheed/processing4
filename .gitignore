@@ -102,3 +102,4 @@ processing-examples
 core/build/
 build/publish/
 app/build
+java/build/

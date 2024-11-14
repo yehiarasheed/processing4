@@ -8,6 +8,9 @@
       <module name="processing.core" target="17" />
       <module name="processing.core.main" target="17" />
       <module name="processing.core.test" target="17" />
+      <module name="processing.java" target="17" />
+      <module name="processing.java.main" target="17" />
+      <module name="processing.java.test" target="17" />
     </bytecodeTargetLevel>
   </component>
 </project>

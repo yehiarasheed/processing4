@@ -2,7 +2,8 @@ rootProject.name = "processing"
 include(
     "core",
     "core:different",
-    "app"
+    "app",
+    "java"
 )
 
 pluginManagement {

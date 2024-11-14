@@ -14,10 +14,10 @@ repositories{
 sourceSets{
     main{
         java{
-            srcDirs("src/processing/app")
+            srcDirs("src")
         }
         resources{
-            srcDirs("../build/shared/")
+            srcDirs("src","../build/shared/")
         }
     }
 }
@@ -35,7 +35,6 @@ dependencies {
     implementation("net.java.dev.jna:jna:5.12.1")
     implementation("net.java.dev.jna:jna-platform:5.12.1")
 
-
     implementation(project(":core"))
-//    runtimeOnly(project(":java"))
+    runtimeOnly(project(":java"))
 }

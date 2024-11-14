@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.linked.project.id=":java:test" external.linked.project.path="$MODULE_DIR$/../../../java" external.root.project.path="$MODULE_DIR$/../../.." external.system.id="GRADLE" external.system.module.group="processing" external.system.module.type="sourceSet" external.system.module.version="unspecified" type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <output-test url="file://$MODULE_DIR$/../../../java/build/classes/java/test" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../../../java/build/generated-src/antlr/test" />
+    <content url="file://$MODULE_DIR$/../../../java/src/test" />
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="processing.java.main" />
+    <orderEntry type="library" name="Gradle: org.antlr:antlr4:4.13.1" level="project" />
+    <orderEntry type="module" module-name="processing.app.main" />
+    <orderEntry type="module" module-name="processing.core.main" />
+    <orderEntry type="library" name="Gradle: org.eclipse.jdt:org.eclipse.jdt.core:3.37.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.classpath-explorer:classpath-explorer:1.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.netbeans.api:org-netbeans-swing-outline:RELEASE210" level="project" />
+    <orderEntry type="library" name="Gradle: org.apache.ant:ant:1.10.14" level="project" />
+    <orderEntry type="library" name="Gradle: org.eclipse.lsp4j:org.eclipse.lsp4j:0.22.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.jsoup:jsoup:1.17.2" level="project" />
+    <orderEntry type="library" name="Gradle: org.antlr:antlr4-runtime:4.13.1" level="project" />
+    <orderEntry type="library" name="Gradle: org.antlr:ST4:4.3.4" level="project" />
+    <orderEntry type="library" name="Gradle: org.antlr:antlr-runtime:3.5.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.abego.treelayout:org.abego.treelayout.core:1.0.3" level="project" />
+    <orderEntry type="library" name="Gradle: com.ibm.icu:icu4j:72.1" level="project" />
+    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.9.23" level="project" />
+    <orderEntry type="library" name="Gradle: org.eclipse.platform:org.eclipse.core.resources:3.20.100" level="project" />
+    <orderEntry type="library" name="Gradle: org.eclipse.platform:org.eclipse.core.filesystem:1.10.300" level="project" />
+    <orderEntry type="library" name="Gradle: org.eclipse.platform:org.eclipse.text:3.14.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.eclipse.platform:org.eclipse.core.runtime:3.31.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.eclipse.jdt:ecj:3.37.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.netbeans.api:org-openide-util-ui:RELEASE210" level="project" />
+    <orderEntry type="library" name="Gradle: org.apache.ant:ant-launcher:1.10.14" level="project" />
+    <orderEntry type="library" name="Gradle: org.eclipse.lsp4j:org.eclipse.lsp4j.jsonrpc:0.22.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.jetbrains:annotations:13.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.eclipse.platform:org.eclipse.core.expressions:3.9.300" level="project" />
+    <orderEntry type="library" name="Gradle: org.eclipse.platform:org.eclipse.osgi:3.19.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.eclipse.platform:org.eclipse.equinox.registry:3.12.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.eclipse.platform:org.eclipse.equinox.common:3.19.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.eclipse.platform:org.eclipse.equinox.preferences:3.11.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.eclipse.platform:org.eclipse.core.commands:3.12.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.eclipse.platform:org.eclipse.core.jobs:3.15.200" level="project" />
+    <orderEntry type="library" name="Gradle: org.eclipse.platform:org.eclipse.core.contenttype:3.9.300" level="project" />
+    <orderEntry type="library" name="Gradle: org.eclipse.platform:org.eclipse.equinox.app:1.7.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.netbeans.api:org-openide-util:RELEASE210" level="project" />
+    <orderEntry type="library" name="Gradle: org.netbeans.api:org-openide-util-lookup:RELEASE210" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.code.gson:gson:2.10.1" level="project" />
+    <orderEntry type="library" name="Gradle: org.osgi:org.osgi.service.prefs:1.1.2" level="project" />
+    <orderEntry type="library" name="Gradle: org.osgi:osgi.annotation:8.0.1" level="project" />
+    <orderEntry type="module" module-name="processing.java.main" scope="RUNTIME" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: com.formdev:flatlaf:3.4.1" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: net.java.dev.jna:jna-platform:5.12.1" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: net.java.dev.jna:jna:5.12.1" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.jogamp.gluegen:gluegen-rt:2.5.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.jogamp.jogl:jogl-all:2.5.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: antlr:antlr:2.7.7" level="project" />
+  </component>
+  <component name="TestModuleProperties" production-module="processing.java.main" />
+</module>
