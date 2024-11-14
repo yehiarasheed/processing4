@@ -4,6 +4,7 @@ plugins {
 
 repositories{
     mavenCentral()
+    google()
     maven { url = uri("https://jogamp.org/deployment/maven") }
 }
 

@@ -3,7 +3,7 @@ import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 plugins{
     id("java")
     kotlin("jvm") version "1.9.23"
-    id("org.jetbrains.compose") version "1.6.11"
+    id("org.jetbrains.compose") version "1.7.1"
 }
 
 group = rootProject.group
@@ -58,6 +58,8 @@ compose.desktop {
     }
 }
 
+val compottieVersion = "2.0.0-rc02"
+
 dependencies {
     implementation("com.formdev:flatlaf:3.4.1")
 
@@ -75,6 +77,8 @@ dependencies {
     implementation(compose.components.uiToolingPreview)
 
     implementation(compose.desktop.currentOs)
+
+    implementation("io.github.alexzhirkevich:compottie:${compottieVersion}")
 }
 
 tasks.register<Copy>("addCore"){
