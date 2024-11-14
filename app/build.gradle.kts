@@ -26,6 +26,9 @@ sourceSets{
 compose.desktop {
     application {
         mainClass = "processing.app.ui.Splash"
+        nativeDistributions{
+            includeAllModules = true
+        }
     }
 }
 
