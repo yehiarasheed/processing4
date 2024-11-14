@@ -1,3 +1,5 @@
+import org.jetbrains.compose.desktop.application.dsl.TargetFormat
+
 plugins{
     id("java")
     kotlin("jvm") version "1.9.23"
@@ -28,6 +30,9 @@ compose.desktop {
         mainClass = "processing.app.ui.Splash"
         nativeDistributions{
             includeAllModules = true
+            targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
+            packageName = "Processing"
+            packageVersion = rootProject.version as String
         }
     }
 }

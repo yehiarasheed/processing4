@@ -426,7 +426,12 @@ public class Platform {
   static public File getJavaHome() {
     var home = System.getProperty("java.home");
     if(home != null){
-      return new File(home);
+      if(new File(home, "bin/java").exists()){
+        return new File(home);
+      }else{
+        // TODO make platform independent
+        return new File("/Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home");
+      }
     }
     if (Platform.isMacOS()) {
       //return "Contents/PlugIns/jdk1.7.0_40.jdk/Contents/Home/jre/bin/java";
