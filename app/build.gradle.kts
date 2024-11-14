@@ -28,11 +28,26 @@ sourceSets{
 compose.desktop {
     application {
         mainClass = "processing.app.ui.Splash"
+
         nativeDistributions{
             includeAllModules = true
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
             packageName = "Processing"
             packageVersion = rootProject.version as String
+
+            macOS{
+                bundleID = "org.processingfoundation.processing.app"
+                iconFile = project.file("../build/macos/processing.icns")
+            }
+            windows{
+                iconFile = project.file("../build/windows/processing.ico")
+            }
+            linux {
+                iconFile = project.file("../build/linux/processing.png")
+            }
+            buildTypes.release.proguard{
+                optimize = false
+            }
         }
     }
 }
