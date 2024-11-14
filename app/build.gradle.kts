@@ -38,3 +38,13 @@ dependencies {
     implementation(project(":core"))
     runtimeOnly(project(":java"))
 }
+
+tasks.register<Copy>("addCore"){
+    dependsOn(project(":core").tasks.jar)
+    from("../core/build/libs/")
+    include("*.jar")
+    into("build/resources/main/core/library")
+}
+tasks.jar { dependsOn("addCore") }
+tasks.processResources{ finalizedBy("addCore") }
+

@@ -424,6 +424,10 @@ public class Platform {
   }
 
   static public File getJavaHome() {
+    var home = System.getProperty("java.home");
+    if(home != null){
+      return new File(home);
+    }
     if (Platform.isMacOS()) {
       //return "Contents/PlugIns/jdk1.7.0_40.jdk/Contents/Home/jre/bin/java";
       File[] plugins = getContentFile("../PlugIns").listFiles((dir, name) -> dir.isDirectory() &&
