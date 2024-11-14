@@ -2,8 +2,15 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/app/processing4-app.iml" filepath="$PROJECT_DIR$/app/processing4-app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/core/processing4-core.iml" filepath="$PROJECT_DIR$/core/processing4-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/processing.iml" filepath="$PROJECT_DIR$/.idea/modules/processing.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/processing.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/processing.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/processing.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/processing.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/processing.app.test.iml" filepath="$PROJECT_DIR$/.idea/modules/app/processing.app.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/processing.core.iml" filepath="$PROJECT_DIR$/.idea/modules/core/processing.core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/different/processing.core.different.iml" filepath="$PROJECT_DIR$/.idea/modules/core/different/processing.core.different.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/processing.core.main.iml" filepath="$PROJECT_DIR$/.idea/modules/core/processing.core.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/processing.core.test.iml" filepath="$PROJECT_DIR$/.idea/modules/core/processing.core.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/build/macos/appbundler/processing4-appbundler.iml" filepath="$PROJECT_DIR$/build/macos/appbundler/processing4-appbundler.iml" />
       <module fileurl="file://$PROJECT_DIR$/core/methods/processing4-core-preproc.iml" filepath="$PROJECT_DIR$/core/methods/processing4-core-preproc.iml" />
       <module fileurl="file://$PROJECT_DIR$/java/libraries/dxf/processing4-dxf.iml" filepath="$PROJECT_DIR$/java/libraries/dxf/processing4-dxf.iml" />
       <module fileurl="file://$PROJECT_DIR$/java/processing4-java.iml" filepath="$PROJECT_DIR$/java/processing4-java.iml" />
@@ -12,7 +19,6 @@
       <module fileurl="file://$PROJECT_DIR$/java/libraries/pdf/processing4-pdf.iml" filepath="$PROJECT_DIR$/java/libraries/pdf/processing4-pdf.iml" />
       <module fileurl="file://$PROJECT_DIR$/java/libraries/serial/processing4-serial.iml" filepath="$PROJECT_DIR$/java/libraries/serial/processing4-serial.iml" />
       <module fileurl="file://$PROJECT_DIR$/java/libraries/svg/processing4-svg.iml" filepath="$PROJECT_DIR$/java/libraries/svg/processing4-svg.iml" />
-      <module fileurl="file://$PROJECT_DIR$/build/macos/appbundler/processing4-appbundler.iml" filepath="$PROJECT_DIR$/build/macos/appbundler/processing4-appbundler.iml" />
       <module fileurl="file://$PROJECT_DIR$/build/shared/tools/MovieMaker/processing4-tools-moviemaker.iml" filepath="$PROJECT_DIR$/build/shared/tools/MovieMaker/processing4-tools-moviemaker.iml" />
     </modules>
   </component>
