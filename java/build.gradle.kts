@@ -13,9 +13,6 @@ sourceSets{
         java{
             srcDirs("src", "generated")
         }
-        resources{
-            srcDirs("../build/shared/", "src/main/resources/")
-        }
     }
 }
 
@@ -33,7 +30,7 @@ dependencies{
     implementation("org.jsoup:jsoup:1.17.2")
 }
 
-
+// TODO: This is a temporary workaround until the resources are properly handled
 tasks.register<Copy>("extraResources"){
     from(".")
     include("keywords.txt")

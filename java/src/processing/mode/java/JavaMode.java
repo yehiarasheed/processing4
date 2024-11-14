@@ -62,6 +62,7 @@ public class JavaMode extends Mode {
   
   File resourcesFolder;
 
+  @Deprecated
   @Override
   public File[] getKeywordFiles() {
     var url = JavaMode.class.getClassLoader().getResource("keywords.txt");
@@ -82,6 +83,7 @@ public class JavaMode extends Mode {
     }
     return new File[] { new File(folder, "keywords.txt") };
   }
+  @Deprecated
   public static void copyFromJar(String source, final Path target) throws URISyntaxException, IOException {
     var resource = JavaMode.class.getResource("").toURI();
     var fileSystem = FileSystems.newFileSystem(
