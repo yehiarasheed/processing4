@@ -1,0 +1,5 @@
+In JavaBuild.java line 1086
+change this line:
+ "--add-modules", "javafx.base,javafx.graphics,javafx.swing",
+to this:
+ "--add-modules", "javafx.base,javafx.graphics,javafx.swing,javafx.controls,javafx.media,javafx.web,javafx.fxml",
