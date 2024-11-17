@@ -75,6 +75,8 @@ data class Contribution(
     val minRevision: Int? = null,
     val maxRevision: Int? = null,
     val download: String? = null,
+    val isUpdate: Boolean? = null,
+    val isInstalled: Boolean? = null,
 )
 
 @Serializable
@@ -84,36 +86,20 @@ data class Contributions(
 
 @Composable
 fun contributionsManager(){
-    var contributions by remember { mutableStateOf(arrayOf<Contribution>()) }
-    var localContributions by remember { mutableStateOf(arrayOf<Contribution>()) }
-    val error = remember { mutableStateOf<Exception?>(null) }
+    var contributions by remember { mutableStateOf(listOf<Contribution>()) }
+    var localContributions by remember { mutableStateOf(listOf<Contribution>()) }
+    var error by remember { mutableStateOf<Exception?>(null) }
 
     val preferences = loadPreferences()
-    val sketchBookPath = preferences.getProperty("sketchbook.path.four", Platform.getDefaultSketchbookFolder().path)
 
     LaunchedEffect(preferences){
-        val sketchBook = Path(sketchBookPath)
-        sketchBook.forEachDirectoryEntry{ contents ->
-            val typeName = contents.fileName.toString()
-            if(!contents.isDirectory()) return@forEachDirectoryEntry
-            contents.forEachDirectoryEntry { folder ->
-                if(!folder.isDirectory()) return@forEachDirectoryEntry
-                folder.forEachDirectoryEntry("*.properties"){ entry ->
-                    val props = Properties()
-                    props.load(entry.inputStream())
-
-                    val type: Type = when(typeName){
-                        "libraries" -> Type.library
-                        "modes" -> Type.mode
-                        "tools" -> Type.tool
-                        "examples" -> Type.examples
-                        else -> return@forEachDirectoryEntry
-                    }
-
-                    val contribution = Contribution(
+        try {
+            localContributions = loadContributionProperties(preferences)
+                .map { (type, props) ->
+                    Contribution(
                         id = 0,
                         status = Status.VALID,
-                        source = entry.toString(),
+                        source = "local",
                         type = type,
                         name = props.getProperty("name"),
                         authors = props.getProperty("authors"),
@@ -126,9 +112,9 @@ fun contributionsManager(){
                         maxRevision = props.getProperty("maxRevision")?.toIntOrNull(),
                         download = props.getProperty("download"),
                     )
-                    localContributions += contribution
                 }
-            }
+        } catch (e: Exception){
+            error = e
         }
     }
 
@@ -139,7 +125,7 @@ fun contributionsManager(){
             val connection = url.openConnection()
             val inputStream = connection.getInputStream()
             val yaml = inputStream.readAllBytes().decodeToString()
-            // TODO cache in processing folder
+            // TODO cache yaml in processing folder
 
             val parser = Yaml(
                 configuration = YamlConfiguration(
@@ -160,13 +146,12 @@ fun contributionsManager(){
                     } ?: emptyList()
                     it.copy(authorList = authorList)
                 }
-                .toTypedArray()
         } catch (e: Exception){
-            error.value = e
+            error = e
         }
     }
-    if(error.value != null){
-        Text("Error loading contributions: ${error.value}")
+    if(error != null){
+        Text("Error loading contributions: ${error?.message}")
         return
     }
     if(contributions.isEmpty()){
@@ -174,32 +159,52 @@ fun contributionsManager(){
         return
     }
 
-    val contributionsByType = (contributions + localContributions).groupBy { it.type }
+    val contributionsByType = (contributions + localContributions)
+        .groupBy { it.name }
+        .map { (_, contributions) ->
+            if(contributions.size == 1) return@map contributions.first()
+            else{
+                // check if they all have the same version, otherwise return the newest version
+                val versions = contributions.mapNotNull { it.version }
+                if(versions.toSet().size == 1) return@map contributions.first().copy(isInstalled = true)
+                else{
+                    val newest = contributions.maxByOrNull { it.version?.toIntOrNull() ?: 0 }
+                    if(newest != null) return@map newest.copy(isUpdate = true, isInstalled = true)
+                    else return@map contributions.first().copy(isUpdate = true, isInstalled = true)
+                }
+            }
+        }
+        .groupBy { it.type }
+
     val types = Type.entries
-    val selectedType = remember { mutableStateOf(types.first()) }
-    val contributionsForType = (contributionsByType[selectedType.value] ?: emptyList())
+    var selectedType by remember { mutableStateOf(types.first()) }
+    val contributionsForType = (contributionsByType[selectedType] ?: emptyList())
         .sortedBy { it.name }
 
-    val selectedContribution = remember { mutableStateOf<Contribution?>(null) }
-
+    var selectedContribution by remember { mutableStateOf<Contribution?>(null) }
     Box{
         Column {
             Row{
                 for(type in types){
-                    Text(type.name, modifier = Modifier
-                        .background(if(selectedType.value == type) Color.Gray else Color.Transparent)
+                    Row(modifier = Modifier
+                        .background(if(selectedType == type) Color.Gray else Color.Transparent)
                         .pointerHoverIcon(PointerIcon.Hand)
                         .clickable {
-                            selectedType.value = type
-                            selectedContribution.value = null
+                            selectedType = type
+                            selectedContribution = null
                         }
                         .padding(8.dp)
-                    )
+                    ){
+                        Text(type.name)
+                        val updates = contributionsByType[type]?.count { it.isUpdate == true } ?: 0
+                        if(updates > 0){
+                            Text("($updates)")
+                        }
+                    }
                 }
-                Spacer(modifier = Modifier.weight(1f))
-                Text("Updates")
             }
-            Box{
+
+            Box(modifier = Modifier.weight(1f)){
                 val state = rememberLazyListState()
                 LazyColumn(state = state) {
                     item{
@@ -208,12 +213,17 @@ fun contributionsManager(){
                     items(contributionsForType){ contribution ->
                         Row(modifier = Modifier
                             .pointerHoverIcon(PointerIcon.Hand)
-                            .clickable { selectedContribution.value = contribution }
+                            .clickable { selectedContribution = contribution }
                             .padding(8.dp),
                             horizontalArrangement = Arrangement.spacedBy(8.dp)
                         ) {
                             Row(modifier = Modifier.weight(1f)){
-                                Text("status")
+                                if(contribution.isUpdate == true){
+                                    Text("Update")
+                                }else if(contribution.isInstalled == true){
+                                    Text("Installed")
+                                }
+
                             }
                             Row(horizontalArrangement = Arrangement.spacedBy(4.dp), modifier = Modifier.weight(8f)){
                                 Text(contribution.name ?: "Unnamed", fontWeight = FontWeight.Bold)
@@ -235,8 +245,35 @@ fun contributionsManager(){
                     )
                 )
             }
+            ContributionPane(contribution = selectedContribution)
         }
 
     }
 
+}
+
+
+fun loadContributionProperties(preferences: Properties): List<Pair<Type, Properties>>{
+    val result = mutableListOf<Pair<Type, Properties>>()
+    val sketchBook = Path(preferences.getProperty("sketchbook.path.four", Platform.getDefaultSketchbookFolder().path))
+    sketchBook.forEachDirectoryEntry{ contributionsFolder ->
+        if(!contributionsFolder.isDirectory()) return@forEachDirectoryEntry
+        val typeName = contributionsFolder.fileName.toString()
+        val type: Type = when(typeName){
+            "libraries" -> Type.library
+            "modes" -> Type.mode
+            "tools" -> Type.tool
+            "examples" -> Type.examples
+            else -> return@forEachDirectoryEntry
+        }
+        contributionsFolder.forEachDirectoryEntry { contribution ->
+            if(!contribution.isDirectory()) return@forEachDirectoryEntry
+            contribution.forEachDirectoryEntry("*.properties"){ entry ->
+                val props = Properties()
+                props.load(entry.inputStream())
+                result += Pair(type, props)
+            }
+        }
+    }
+    return result
 }
