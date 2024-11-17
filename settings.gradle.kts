@@ -6,12 +6,6 @@ include(
     "java"
 )
 
-pluginManagement {
-    plugins {
-        kotlin("jvm") version "1.9.23"
-    }
-}
-
 buildscript {
     repositories {
         mavenCentral()

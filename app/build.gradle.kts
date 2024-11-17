@@ -2,8 +2,11 @@ import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 
 plugins{
     id("java")
-    kotlin("jvm") version "1.9.23"
-    id("org.jetbrains.compose") version "1.7.1"
+
+    kotlin("jvm") version libs.versions.kotlin
+    alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.jetbrainsCompose)
+    alias(libs.plugins.serialization)
 }
 
 group = rootProject.group
@@ -27,7 +30,6 @@ sourceSets{
         }
     }
 }
-
 
 compose.desktop {
     application {
@@ -79,6 +81,8 @@ dependencies {
     implementation(compose.desktop.currentOs)
 
     implementation("io.github.alexzhirkevich:compottie:${compottieVersion}")
+
+    implementation("com.charleskorn.kaml:kaml:0.65.0")
 }
 
 tasks.register<Copy>("addCore"){

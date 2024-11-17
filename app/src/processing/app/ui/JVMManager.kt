@@ -64,11 +64,11 @@ fun main() = application {
 fun JDKManager(){
     val home = Platform.getJavaHome()
     val valid = File(home, "bin/java").exists()
-//    if(valid) return
+    if(valid) return
 
     val color = Theme.getColor("status.notice.bgcolor")
     val colorText = Theme.getColor("status.notice.fgcolor")
-    val buttonColor =   Theme.getColor("toolbar.button.enabled.field")
+    val buttonColor = Theme.getColor("toolbar.button.enabled.field")
     val buttonTextColor = Theme.getColor("toolbar.button.enabled.glyph")
 
     val fontFamily = FontFamily(
