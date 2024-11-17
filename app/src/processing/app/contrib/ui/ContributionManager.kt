@@ -6,17 +6,13 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.PointerIcon
 import androidx.compose.ui.input.pointer.pointerHoverIcon
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Window
@@ -24,12 +20,22 @@ import androidx.compose.ui.window.application
 import com.charleskorn.kaml.Yaml
 import com.charleskorn.kaml.YamlConfiguration
 import kotlinx.serialization.Serializable
+import processing.app.Platform
 import java.net.URL
+import java.util.*
+import kotlin.io.path.*
 
 
 fun main() = application {
-    Window(onCloseRequest = ::exitApplication) {
-        ContributionsManager()
+    val active = remember { mutableStateOf(true) }
+    if(!active.value){
+        Window(onCloseRequest = ::exitApplication) {
+
+        }
+        return@application
+    }
+    Window(onCloseRequest = { active.value = false }) {
+        contributionsManager()
     }
 }
 
@@ -77,9 +83,55 @@ data class Contributions(
 )
 
 @Composable
-fun ContributionsManager(){
-    val contributions = remember { mutableStateOf(arrayOf<Contribution>()) }
+fun contributionsManager(){
+    var contributions by remember { mutableStateOf(arrayOf<Contribution>()) }
+    var localContributions by remember { mutableStateOf(arrayOf<Contribution>()) }
     val error = remember { mutableStateOf<Exception?>(null) }
+
+    val preferences = loadPreferences()
+    val sketchBookPath = preferences.getProperty("sketchbook.path.four", Platform.getDefaultSketchbookFolder().path)
+
+    LaunchedEffect(preferences){
+        val sketchBook = Path(sketchBookPath)
+        sketchBook.forEachDirectoryEntry{ contents ->
+            val typeName = contents.fileName.toString()
+            if(!contents.isDirectory()) return@forEachDirectoryEntry
+            contents.forEachDirectoryEntry { folder ->
+                if(!folder.isDirectory()) return@forEachDirectoryEntry
+                folder.forEachDirectoryEntry("*.properties"){ entry ->
+                    val props = Properties()
+                    props.load(entry.inputStream())
+
+                    val type: Type = when(typeName){
+                        "libraries" -> Type.library
+                        "modes" -> Type.mode
+                        "tools" -> Type.tool
+                        "examples" -> Type.examples
+                        else -> return@forEachDirectoryEntry
+                    }
+
+                    val contribution = Contribution(
+                        id = 0,
+                        status = Status.VALID,
+                        source = entry.toString(),
+                        type = type,
+                        name = props.getProperty("name"),
+                        authors = props.getProperty("authors"),
+                        url = props.getProperty("url"),
+                        sentence = props.getProperty("sentence"),
+                        paragraph = props.getProperty("paragraph"),
+                        version = props.getProperty("version"),
+                        prettyVersion = props.getProperty("prettyVersion"),
+                        minRevision = props.getProperty("minRevision")?.toIntOrNull(),
+                        maxRevision = props.getProperty("maxRevision")?.toIntOrNull(),
+                        download = props.getProperty("download"),
+                    )
+                    localContributions += contribution
+                }
+            }
+        }
+    }
+
 
     LaunchedEffect(Unit){
         try {
@@ -96,7 +148,7 @@ fun ContributionsManager(){
             )
             val result = parser.decodeFromString(Contributions.serializer(), yaml)
 
-            contributions.value = result.contributions
+            contributions = result.contributions
                 .filter { it.status == Status.VALID }
                 .map {
                     // TODO Parse better
@@ -117,12 +169,12 @@ fun ContributionsManager(){
         Text("Error loading contributions: ${error.value}")
         return
     }
-    if(contributions.value.isEmpty()){
+    if(contributions.isEmpty()){
         Text("Loading contributions...")
         return
     }
 
-    val contributionsByType = contributions.value.groupBy { it.type }
+    val contributionsByType = (contributions + localContributions).groupBy { it.type }
     val types = Type.entries
     val selectedType = remember { mutableStateOf(types.first()) }
     val contributionsForType = (contributionsByType[selectedType.value] ?: emptyList())
@@ -136,6 +188,7 @@ fun ContributionsManager(){
                 for(type in types){
                     Text(type.name, modifier = Modifier
                         .background(if(selectedType.value == type) Color.Gray else Color.Transparent)
+                        .pointerHoverIcon(PointerIcon.Hand)
                         .clickable {
                             selectedType.value = type
                             selectedContribution.value = null
@@ -156,7 +209,8 @@ fun ContributionsManager(){
                         Row(modifier = Modifier
                             .pointerHoverIcon(PointerIcon.Hand)
                             .clickable { selectedContribution.value = contribution }
-                            .padding(8.dp)
+                            .padding(8.dp),
+                            horizontalArrangement = Arrangement.spacedBy(8.dp)
                         ) {
                             Row(modifier = Modifier.weight(1f)){
                                 Text("status")
