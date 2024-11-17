@@ -10,6 +10,8 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.key.Key
+import androidx.compose.ui.input.key.key
 import androidx.compose.ui.input.pointer.PointerIcon
 import androidx.compose.ui.input.pointer.pointerHoverIcon
 import androidx.compose.ui.text.font.FontWeight
@@ -34,7 +36,9 @@ fun main() = application {
         }
         return@application
     }
-    Window(onCloseRequest = { active.value = false }) {
+    Window(
+        onCloseRequest = { active.value = false },
+    ) {
         contributionsManager()
     }
 }
@@ -245,7 +249,10 @@ fun contributionsManager(){
                     )
                 )
             }
-            ContributionPane(contribution = selectedContribution)
+            ContributionPane(
+                contribution = selectedContribution,
+                onClose = { selectedContribution = null }
+            )
         }
 
     }
