@@ -10,6 +10,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.awt.ComposePanel
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.key.Key
 import androidx.compose.ui.input.key.key
@@ -26,6 +27,8 @@ import kotlinx.serialization.Serializable
 import processing.app.Platform
 import java.net.URL
 import java.util.*
+import javax.swing.JFrame
+import javax.swing.SwingUtilities
 import kotlin.io.path.*
 
 
@@ -88,6 +91,24 @@ data class Contribution(
 data class Contributions(
     val contributions: List<Contribution>
 )
+
+fun openContributionsManager(){
+    // open the compose window
+
+    SwingUtilities.invokeLater {
+        val frame = JFrame("Contributions Manager")
+        frame.defaultCloseOperation = JFrame.DISPOSE_ON_CLOSE
+        frame.setSize(800, 600)
+
+        val composePanel = ComposePanel()
+        composePanel.setContent {
+            contributionsManager()
+        }
+
+        frame.contentPane.add(composePanel)
+        frame.isVisible = true
+    }
+}
 
 @Composable
 fun contributionsManager(){

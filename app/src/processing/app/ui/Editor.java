@@ -71,6 +71,7 @@ import processing.app.laf.PdeMenuItemUI;
 import processing.app.syntax.*;
 import processing.core.*;
 
+import static processing.app.contrib.ui.ContributionManagerKt.openContributionsManager;
 import static processing.app.ui.JVMManagerKt.addJDKManger;
 
 
@@ -850,6 +851,12 @@ public abstract class Editor extends JFrame implements RunnerListener {
     sketchMenu.addSeparator();
 
     sketchMenu.add(mode.getImportMenu());
+
+    var newContributions = new JMenuItem("Contributions Manager");
+    newContributions.addActionListener(e -> {
+      openContributionsManager();
+    });
+    sketchMenu.add(newContributions);
 
     item = Toolkit.newJMenuItem(Language.text("menu.sketch.show_sketch_folder"), 'K');
     item.addActionListener(e -> {
