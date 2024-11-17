@@ -1,5 +1,6 @@
 package processing.app.contrib.ui
 
+import androidx.compose.animation.Animatable
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -190,16 +191,28 @@ fun contributionsManager(){
         Column {
             Row{
                 for(type in types){
+                    val background = remember { Animatable(Color.Transparent) }
+                    val color = remember { Animatable(Color.Black) }
+                    LaunchedEffect(selectedType){
+                        if(selectedType == type){
+                            background.animateTo(Color(0xff0251c8))
+                            color.animateTo(Color.White)
+                        }else{
+                            background.animateTo(Color.Transparent)
+                            color.animateTo(Color.Black)
+                        }
+                    }
+
                     Row(modifier = Modifier
-                        .background(if(selectedType == type) Color.Gray else Color.Transparent)
+                        .background(background.value)
                         .pointerHoverIcon(PointerIcon.Hand)
                         .clickable {
                             selectedType = type
                             selectedContribution = null
                         }
-                        .padding(8.dp)
+                        .padding(16.dp, 8.dp)
                     ){
-                        Text(type.name)
+                        Text(type.name, color = color.value)
                         val updates = contributionsByType[type]?.count { it.isUpdate == true } ?: 0
                         if(updates > 0){
                             Text("($updates)")

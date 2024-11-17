@@ -67,7 +67,7 @@ fun ContributionPane(contribution: Contribution?, onClose: () -> Unit) {
 
                             }
                             .pointerHoverIcon(PointerIcon.Hand)
-                            .background(Color(0xff0564ff))
+                            .background(Color(0xff0251c8))
                             .padding(24.dp,12.dp)
                     )
                 }
