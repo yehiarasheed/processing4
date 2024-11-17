@@ -1,5 +1,5 @@
 {
-  "projectName": "processing4-carbon-aug-19",
+  "projectName": "processing4",
   "projectOwner": "processing",
   "files": [
     "README.md"
@@ -1390,6 +1390,16 @@
         "platform",
         "mentoring",
         "bug"
+      ]
+    },
+    {
+      "login": "rishabdev2997",
+      "name": "Rishabdev Tudu",
+      "avatar_url": "https://avatars.githubusercontent.com/u/107137565?v=4",
+      "profile": "https://github.com/rishabdev2997",
+      "contributions": [
+        "doc",
+        "code"
       ]
     }
   ],
