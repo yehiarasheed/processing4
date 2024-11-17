@@ -103,3 +103,4 @@ core/build/
 build/publish/
 app/build
 java/build/
+/build/reports

@@ -3,16 +3,20 @@
   <component name="NewModuleRootManager">
     <output url="file://$MODULE_DIR$/../../../java/build/classes/java/main" />
     <exclude-output />
-    <content url="file://$MODULE_DIR$/../../../java/build/generated-src/antlr/main" />
+    <content url="file://$MODULE_DIR$/../../../java/generated">
+      <sourceFolder url="file://$MODULE_DIR$/../../../java/generated" isTestSource="false" />
+    </content>
     <content url="file://$MODULE_DIR$/../../../java/generated">
       <sourceFolder url="file://$MODULE_DIR$/../../../java/generated" isTestSource="false" />
     </content>
     <content url="file://$MODULE_DIR$/../../../java/src">
       <sourceFolder url="file://$MODULE_DIR$/../../../java/src" isTestSource="false" />
     </content>
+    <content url="file://$MODULE_DIR$/../../../java/src">
+      <sourceFolder url="file://$MODULE_DIR$/../../../java/src" isTestSource="false" />
+    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Gradle: org.antlr:antlr4:4.13.1" level="project" />
     <orderEntry type="module" module-name="processing.app.main" />
     <orderEntry type="module" module-name="processing.core.main" />
     <orderEntry type="library" name="Gradle: org.eclipse.jdt:org.eclipse.jdt.core:3.37.0" level="project" />
@@ -21,12 +25,8 @@
     <orderEntry type="library" name="Gradle: org.apache.ant:ant:1.10.14" level="project" />
     <orderEntry type="library" name="Gradle: org.eclipse.lsp4j:org.eclipse.lsp4j:0.22.0" level="project" />
     <orderEntry type="library" name="Gradle: org.jsoup:jsoup:1.17.2" level="project" />
-    <orderEntry type="library" name="Gradle: org.antlr:antlr4-runtime:4.13.1" level="project" />
-    <orderEntry type="library" name="Gradle: org.antlr:ST4:4.3.4" level="project" />
-    <orderEntry type="library" name="Gradle: org.antlr:antlr-runtime:3.5.3" level="project" />
-    <orderEntry type="library" name="Gradle: org.abego.treelayout:org.abego.treelayout.core:1.0.3" level="project" />
-    <orderEntry type="library" name="Gradle: com.ibm.icu:icu4j:72.1" level="project" />
-    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.9.23" level="project" />
+    <orderEntry type="library" name="Gradle: org.antlr:antlr4:4.7.2" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib:2.0.20" level="project" />
     <orderEntry type="library" name="Gradle: org.eclipse.platform:org.eclipse.core.resources:3.20.100" level="project" />
     <orderEntry type="library" name="Gradle: org.eclipse.platform:org.eclipse.core.filesystem:1.10.300" level="project" />
     <orderEntry type="library" name="Gradle: org.eclipse.platform:org.eclipse.text:3.14.0" level="project" />
@@ -35,7 +35,13 @@
     <orderEntry type="library" name="Gradle: org.netbeans.api:org-openide-util-ui:RELEASE210" level="project" />
     <orderEntry type="library" name="Gradle: org.apache.ant:ant-launcher:1.10.14" level="project" />
     <orderEntry type="library" name="Gradle: org.eclipse.lsp4j:org.eclipse.lsp4j.jsonrpc:0.22.0" level="project" />
-    <orderEntry type="library" name="Gradle: org.jetbrains:annotations:13.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.antlr:antlr4-runtime:4.7.2" level="project" />
+    <orderEntry type="library" name="Gradle: org.antlr:ST4:4.1" level="project" />
+    <orderEntry type="library" name="Gradle: org.antlr:antlr-runtime:3.5.2" level="project" />
+    <orderEntry type="library" name="Gradle: org.abego.treelayout:org.abego.treelayout.core:1.0.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.glassfish:javax.json:1.0.4" level="project" />
+    <orderEntry type="library" name="Gradle: com.ibm.icu:icu4j:61.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: org.jetbrains:annotations:13.0" level="project" />
     <orderEntry type="library" name="Gradle: org.eclipse.platform:org.eclipse.core.expressions:3.9.300" level="project" />
     <orderEntry type="library" name="Gradle: org.eclipse.platform:org.eclipse.osgi:3.19.0" level="project" />
     <orderEntry type="library" name="Gradle: org.eclipse.platform:org.eclipse.equinox.registry:3.12.0" level="project" />
@@ -50,11 +56,52 @@
     <orderEntry type="library" name="Gradle: com.google.code.gson:gson:2.10.1" level="project" />
     <orderEntry type="library" name="Gradle: org.osgi:org.osgi.service.prefs:1.1.2" level="project" />
     <orderEntry type="library" name="Gradle: org.osgi:osgi.annotation:8.0.1" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib:2.0.21" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: com.formdev:flatlaf:3.4.1" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: net.java.dev.jna:jna-platform:5.12.1" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: net.java.dev.jna:jna:5.12.1" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: org.jogamp.gluegen:gluegen-rt:2.5.0" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: org.jogamp.jogl:jogl-all:2.5.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.jetbrains.skiko:skiko-awt-runtime-macos-arm64:0.8.18" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.jetbrains.compose.material:material-desktop:1.7.1" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.jetbrains.compose.components:components-resources-desktop:1.7.1" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: io.github.alexzhirkevich:compottie-desktop:2.0.0-rc02" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.jetbrains.compose.foundation:foundation-desktop:1.7.1" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.jetbrains.compose.ui:ui-desktop:1.7.1" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.jetbrains.compose.runtime:runtime-desktop:1.7.1" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.jetbrains.compose.components:components-ui-tooling-preview-desktop:1.7.1" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: com.charleskorn.kaml:kaml-jvm:0.65.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.jetbrains:annotations:23.0.0" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: antlr:antlr:2.7.7" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.jetbrains.compose.desktop:desktop-jvm:1.7.1" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.jetbrains.skiko:skiko-awt:0.8.18" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.24" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.8.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.jetbrains.compose.material:material-ripple-desktop:1.7.1" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.jetbrains.compose.animation:animation-desktop:1.7.1" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.jetbrains.compose.foundation:foundation-layout-desktop:1.7.1" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.jetbrains.compose.animation:animation-core-desktop:1.7.1" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.jetbrains.compose.material:material-icons-core-desktop:1.7.1" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.jetbrains.compose.ui:ui-text-desktop:1.7.1" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.jetbrains.kotlinx:atomicfu-jvm:0.23.2" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.jetbrains.compose.ui:ui-util-desktop:1.7.1" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.jetbrains.kotlinx:kotlinx-serialization-json-jvm:1.7.3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.jetbrains.androidx.lifecycle:lifecycle-runtime-compose-desktop:2.8.4" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.jetbrains.compose.runtime:runtime-saveable-desktop:1.7.1" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.jetbrains.compose.ui:ui-graphics-desktop:1.7.1" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.jetbrains.compose.ui:ui-unit-desktop:1.7.1" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.jetbrains.compose.ui:ui-geometry-desktop:1.7.1" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: androidx.arch.core:core-common:2.2.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.24" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.jetbrains.kotlinx:kotlinx-serialization-core-jvm:1.7.3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: it.krzeminski:snakeyaml-engine-kmp-jvm:3.0.3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: com.squareup.okio:okio-jvm:3.9.1" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.jetbrains.compose.ui:ui-tooling-preview-desktop:1.7.1" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: androidx.annotation:annotation-jvm:1.8.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: androidx.collection:collection-jvm:1.4.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: androidx.lifecycle:lifecycle-runtime-desktop:2.8.5" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: androidx.lifecycle:lifecycle-common-jvm:2.8.5" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: androidx.lifecycle:lifecycle-viewmodel-desktop:2.8.5" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: net.thauvin.erik.urlencoder:urlencoder-lib-jvm:1.6.0" level="project" />
   </component>
 </module>

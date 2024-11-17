@@ -4,6 +4,10 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/processing.iml" filepath="$PROJECT_DIR$/.idea/modules/processing.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/processing.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/processing.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/processing.app.commonMain.iml" filepath="$PROJECT_DIR$/.idea/modules/app/processing.app.commonMain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/processing.app.commonTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/processing.app.commonTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/processing.app.desktopMain.iml" filepath="$PROJECT_DIR$/.idea/modules/app/processing.app.desktopMain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/processing.app.desktopTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/processing.app.desktopTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/processing.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/processing.app.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/processing.app.test.iml" filepath="$PROJECT_DIR$/.idea/modules/app/processing.app.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/processing.core.iml" filepath="$PROJECT_DIR$/.idea/modules/core/processing.core.iml" />

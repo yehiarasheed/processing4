@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <bytecodeTargetLevel>
-      <module name="processing.app" target="17" />
-      <module name="processing.app.main" target="17" />
-      <module name="processing.app.test" target="17" />
-      <module name="processing.core" target="17" />
-      <module name="processing.core.main" target="17" />
-      <module name="processing.core.test" target="17" />
-      <module name="processing.java" target="17" />
-      <module name="processing.java.main" target="17" />
-      <module name="processing.java.test" target="17" />
-    </bytecodeTargetLevel>
+    <bytecodeTargetLevel target="17" />
   </component>
 </project>
