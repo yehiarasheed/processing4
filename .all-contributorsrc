@@ -1401,6 +1401,15 @@
         "doc",
         "code"
       ]
+    },
+    {
+      "login": "plopez01",
+      "name": "Pau",
+      "avatar_url": "https://avatars.githubusercontent.com/u/37042253?v=4",
+      "profile": "http://plopez.me",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "repoType": "github",
