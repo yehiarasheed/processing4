@@ -36,7 +36,7 @@ For a quick start:
 For more information and detailed instructions, follow our [How to Build Processing](build/README.md) guide.
 
 ## Be Kind 
-We invite you to think of this repository as a community garden. We’re here to cultivate something beautiful together, and that takes respect, kindness, and patience. While we assume good intentions, and will give everyone a chance to learn, we have zero tolerance for repeated harassment, harmful behavior, or toxicity of any kind. We invite you to read our [Code of Conduct](https://github.com/processing/processing4?tab=coc-ov-file) and join us in creating a safe and supportive environment through your words and actions.
+We invite you to think of this repository as a community garden. We’re here to cultivate something beautiful together, and that takes respect, kindness, and patience. While we assume good intentions, and will give everyone a chance to learn, we have zero tolerance for repeated harassment, harmful behavior, or toxicity of any kind. Please read our [Code of Conduct](https://github.com/processing/processing4?tab=coc-ov-file) and join us in creating a safe and supportive environment through your words and actions.
 
 ## Contact Information
 For technical support or troubleshooting with your project, please post on the [Processing Forum](https://discourse.processing.org/).
