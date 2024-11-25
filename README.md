@@ -23,6 +23,8 @@ Processing is a labor of love, built over decades by people who believed in this
 
 We understand that contributing to open source can be intimidating, but mistakes are part of learning—and we are all learners here. We do not assume knowledge or imply that somebody should already know any particular thing. Whether you’re a newcomer or an expert, your knowledge and contributions are valuable. Never hesitate to ask questions, open an issue, a pull request, or write a comment. We also encourage you to step in if you can: reply to issues, review PRs, or help out in whatever way feels right for you.
 
+We invite you to think of this repository as a community garden. We’re here to cultivate something beautiful together, and that takes respect, kindness, and patience. While we assume good intentions, and will give everyone a chance to learn, we have zero tolerance for repeated harassment, harmful behavior, or toxicity of any kind. Please read our [Code of Conduct](https://github.com/processing/processing4?tab=coc-ov-file) and join us in creating a safe and supportive environment through your words and actions.
+
 ## Building Processing
 
 Building Processing locally on your machine will let you troubleshoot and make sure your contributions work as intended before submitting them to this repository. It also gives you the flexibility to experiment and learn more about how Processing is structured.
@@ -34,9 +36,6 @@ For a quick start:
 1. Hit Run.
 
 For more information and detailed instructions, follow our [How to Build Processing](build/README.md) guide.
-
-## Be Kind 
-We invite you to think of this repository as a community garden. We’re here to cultivate something beautiful together, and that takes respect, kindness, and patience. While we assume good intentions, and will give everyone a chance to learn, we have zero tolerance for repeated harassment, harmful behavior, or toxicity of any kind. Please read our [Code of Conduct](https://github.com/processing/processing4?tab=coc-ov-file) and join us in creating a safe and supportive environment through your words and actions.
 
 ## Contact Information
 For technical support or troubleshooting with your project, please post on the [Processing Forum](https://discourse.processing.org/).
