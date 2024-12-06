@@ -9,13 +9,6 @@
     </classpath>
   </taskdef>
 
-  <property name="platform.override" value="" description="Override OS (windows/linux/mac)" />
-
-  <!-- First check if we have an override -->
-  <condition property="platform" value="${platform.override}">
-    <isset property="platform.override"/>
-  </condition>
-
   <!-- Only do OS detection if platform isn't already set by override -->
   <condition property="platform" value="macos">
     <and>
