@@ -59,7 +59,7 @@ jobs:
           p12-password: ${{ secrets.CERTIFICATES_P12_PASSWORD }}
       - name: Build Release
         run: ant -noinput -buildfile build/build.xml ${{ matrix.os_prefix }}-dist -Dversion="${{ github.sha }}"
-        with:
+        env:
           PROCESSING_APP_SIGNING: true
       - name: Add artifact
         uses: actions/upload-artifact@v3
