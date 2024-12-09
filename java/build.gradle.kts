@@ -11,7 +11,8 @@ repositories{
 sourceSets{
     main{
         java{
-            srcDirs("src", "generated")
+            srcDirs("src")
+            exclude("processing/mode/java/preproc/**")
         }
     }
 }
@@ -20,9 +21,7 @@ dependencies{
     implementation(project(":app"))
     implementation(project(":core"))
     implementation(project(":java:preprocessor"))
-
-
-
+    
     implementation("org.eclipse.jdt:org.eclipse.jdt.core:3.37.0")
     implementation("com.google.classpath-explorer:classpath-explorer:1.0")
     implementation("org.netbeans.api:org-netbeans-swing-outline:RELEASE210")
