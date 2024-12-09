@@ -104,3 +104,5 @@ build/publish/
 app/build
 java/build/
 /build/reports
+/java/bin
+/java/libraries/svg/bin
