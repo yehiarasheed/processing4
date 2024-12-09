@@ -57,7 +57,7 @@ jobs:
         with:
           name: processing-${{github.sha}}${{ matrix.os_prefix }}-${{ matrix.arch }}
           path:  |
-            ./app/build/compose/binaries/**/*.dmb
+            ./app/build/compose/binaries/**/*.dmg
             ./app/build/compose/binaries/**/*.msi
             ./app/build/compose/binaries/**/*.deb
           retention-days: 1
