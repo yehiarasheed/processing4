@@ -4,7 +4,8 @@ include(
     "core:different",
     "app",
     "java",
-    "java:preprocessor"
+    "java:preprocessor",
+    "java:lsp"
 )
 
 buildscript {

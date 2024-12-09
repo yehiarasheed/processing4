@@ -1,35 +1,36 @@
 import com.vanniktech.maven.publish.SonatypeHost
 
-plugins {
+plugins{
     id("java")
     id("com.vanniktech.maven.publish") version "0.30.0"
 }
 
 group = "org.processing"
+version = "4.3.1"
 
-repositories {
+repositories{
     mavenCentral()
+    google()
     maven { url = uri("https://jogamp.org/deployment/maven") }
 }
 
 sourceSets{
     main{
         java{
-            srcDirs("src")
-        }
-        resources{
-            srcDirs("src")
-            exclude("**/*.java")
+            srcDirs("../src/")
+            include("processing/mode/java/lsp/**/*")
         }
     }
 }
 
-dependencies {
-    // TODO: Research on which jogl dependencies to include
-    implementation("org.jogamp.gluegen:gluegen-rt:2.5.0")
-    implementation("org.jogamp.jogl:jogl-all:2.5.0")
+dependencies{
+    implementation(project(":core"))
 
-    testImplementation("junit:junit:4.13.2")
+    implementation("org.eclipse.lsp4j:org.eclipse.lsp4j:0.22.0")
+    implementation("org.jsoup:jsoup:1.17.2")
+    implementation("org.eclipse.jdt:org.eclipse.jdt.core:3.40.0")
+
+    implementation("org.processing:core:${version}")
 }
 
 mavenPublishing{
@@ -37,8 +38,8 @@ mavenPublishing{
     signAllPublications()
 
     pom{
-        name.set("Processing Core")
-        description.set("Processing Core")
+        name.set("Processing Language Server")
+        description.set("Processing Language Server")
         url.set("https://processing.org")
         licenses {
             license {
@@ -57,17 +58,9 @@ mavenPublishing{
             }
         }
         scm{
-            url.set("https://github.com/processing/processing4-carbon-aug-19")
-            connection.set("scm:git:git://github.com/processing/processing4-carbon-aug-19.git")
-            developerConnection.set("scm:git:ssh://git@github.com/processing/processing4-carbon-aug-19.git")
+            url.set("https://github.com/processing/processing4")
+            connection.set("scm:git:git://github.com/processing/processing4.git")
+            developerConnection.set("scm:git:ssh://git@github.com/processing/processing4.git")
         }
     }
-}
-
-
-tasks.test {
-    useJUnit()
-}
-tasks.withType<Jar> {
-    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }

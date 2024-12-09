@@ -1,5 +1,5 @@
 group = "org.processing"
-version = "4.4.0"
+version = "4.3.2"
 
 plugins {
     kotlin("jvm") version libs.versions.kotlin apply false
@@ -7,5 +7,4 @@ plugins {
 
     alias(libs.plugins.compose.compiler) apply false
     alias(libs.plugins.jetbrainsCompose) apply false
-
 }
