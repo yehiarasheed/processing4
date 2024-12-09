@@ -31,7 +31,6 @@ import java.util.Optional;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
-import processing.mode.java.preproc.SketchException;
 
 
 /**
@@ -159,7 +158,7 @@ public class PdePreprocessor {
     }
 
 //    if (Preferences.getBoolean("preproc.substitute_unicode")) {
-//      inProgram = substituteUnicode(inProgram);
+   inProgram = substituteUnicode(inProgram);
 //    }
 
     // Ensure ends with single newline

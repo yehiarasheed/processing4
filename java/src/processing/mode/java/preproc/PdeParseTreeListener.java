@@ -1232,6 +1232,7 @@ public class PdeParseTreeListener extends ProcessingBaseListener {
     { // assemble line with applet args
       StringJoiner argsJoiner = new StringJoiner(", ");
 
+      // TODO: Add support for fullscreen. Not through settings.
 //      boolean shouldFullScreen = Preferences.getBoolean("export.application.present");
 //      shouldFullScreen = shouldFullScreen || Preferences.getBoolean("export.application.fullscreen");
 //      if (shouldFullScreen) {

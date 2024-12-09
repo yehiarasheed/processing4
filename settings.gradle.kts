@@ -5,7 +5,6 @@ include(
     "app",
     "java",
     "java:preprocessor",
-    "java:lsp"
 )
 
 buildscript {
