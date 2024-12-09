@@ -3,7 +3,8 @@ include(
     "core",
     "core:different",
     "app",
-    "java"
+    "java",
+    "java:preprocessor"
 )
 
 buildscript {

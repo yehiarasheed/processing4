@@ -106,3 +106,4 @@ java/build/
 /build/reports
 /java/bin
 /java/libraries/svg/bin
+/java/preprocessor/build
