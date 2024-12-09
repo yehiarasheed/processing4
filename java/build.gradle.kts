@@ -15,6 +15,11 @@ sourceSets{
             exclude("processing/mode/java/preproc/**")
         }
     }
+    test{
+        java{
+            srcDirs("test")
+        }
+    }
 }
 
 dependencies{
@@ -29,6 +34,9 @@ dependencies{
     implementation("org.eclipse.lsp4j:org.eclipse.lsp4j:0.22.0")
     implementation("org.jsoup:jsoup:1.17.2")
     implementation("org.antlr:antlr4:4.7.2")
+
+    testImplementation("junit:junit:4.13.2")
+    testImplementation("org.mockito:mockito-core:4.11.0")
 }
 
 tasks.compileJava{
@@ -43,3 +51,8 @@ tasks.register<Copy>("extraResources"){
 }
 tasks.jar { dependsOn("extraResources") }
 tasks.processResources{ finalizedBy("extraResources") }
+tasks.compileTestJava{ finalizedBy("extraResources") }
+
+tasks.test {
+    useJUnit()
+}

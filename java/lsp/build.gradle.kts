@@ -25,6 +25,7 @@ sourceSets{
 
 dependencies{
     implementation(project(":core"))
+    implementation(project(":java:preprocessor"))
 
     implementation("org.eclipse.lsp4j:org.eclipse.lsp4j:0.22.0")
     implementation("org.jsoup:jsoup:1.17.2")

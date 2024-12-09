@@ -15,9 +15,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import processing.app.Preferences;
-import processing.app.SketchException;
 import processing.mode.java.preproc.PreprocessorResult;
 import processing.mode.java.preproc.PdePreprocessIssueException;
+import processing.mode.java.preproc.SketchException;
 
 
 public class ParserTests {
