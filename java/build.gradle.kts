@@ -21,7 +21,7 @@ dependencies{
     implementation(project(":app"))
     implementation(project(":core"))
     implementation(project(":java:preprocessor"))
-    
+
     implementation("org.eclipse.jdt:org.eclipse.jdt.core:3.37.0")
     implementation("com.google.classpath-explorer:classpath-explorer:1.0")
     implementation("org.netbeans.api:org-netbeans-swing-outline:RELEASE210")
@@ -29,6 +29,10 @@ dependencies{
     implementation("org.eclipse.lsp4j:org.eclipse.lsp4j:0.22.0")
     implementation("org.jsoup:jsoup:1.17.2")
     implementation("org.antlr:antlr4:4.7.2")
+}
+
+tasks.compileJava{
+    options.encoding = "UTF-8"
 }
 
 // TODO: This is a temporary workaround until the resources are properly handled
