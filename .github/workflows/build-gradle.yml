@@ -1,4 +1,4 @@
-name: Pre-releases
+name: Pre-releases with Gradle
 on:
   push:
     paths-ignore:
