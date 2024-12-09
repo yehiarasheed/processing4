@@ -70,6 +70,7 @@ dependencies {
 
     implementation(project(":core"))
     runtimeOnly(project(":java"))
+    implementation(project(":java:preprocessor"))
 
     implementation(compose.runtime)
     implementation(compose.foundation)

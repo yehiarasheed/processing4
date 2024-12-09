@@ -31,9 +31,7 @@ import java.util.Optional;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
-
-import processing.app.Preferences;
-import processing.app.SketchException;
+import processing.mode.java.preproc.SketchException;
 
 
 /**
@@ -160,9 +158,9 @@ public class PdePreprocessor {
       }
     }
 
-    if (Preferences.getBoolean("preproc.substitute_unicode")) {
-      inProgram = substituteUnicode(inProgram);
-    }
+//    if (Preferences.getBoolean("preproc.substitute_unicode")) {
+//      inProgram = substituteUnicode(inProgram);
+//    }
 
     // Ensure ends with single newline
     while (inProgram.endsWith("\n")) {
@@ -414,7 +412,7 @@ public class PdePreprocessor {
      */
     public PdePreprocessor build() {
       final int effectiveTabSize =
-        tabSize.orElseGet(() -> Preferences.getInteger("editor.tabs.size"));
+        tabSize.orElseGet(() -> 4);
 
       final boolean effectiveIsTesting = isTesting.orElse(false);
 

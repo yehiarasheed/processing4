@@ -25,6 +25,8 @@ sourceSets{
 
 dependencies{
     implementation("org.antlr:antlr4:4.7.2")
+    implementation("org.eclipse.jdt:org.eclipse.jdt.core:3.40.0")
+
     implementation("org.processing:core:${version}")
 }
 
