@@ -127,6 +127,7 @@ public class ThinkDifferent {
   // Used by Python (Jython) Mode to bring windows to the front
   static native public void activateIgnoringOtherApps();
 
+  static native public void activate();
 
   static {
     final String NATIVE_FILENAME = "libDifferent.jnilib";
