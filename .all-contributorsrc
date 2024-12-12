@@ -1410,6 +1410,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "Junology",
+      "name": "Junology",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1933073?v=4",
+      "profile": "http://d.hatena.ne.jp/junology/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "repoType": "github",
