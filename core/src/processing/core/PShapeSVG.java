@@ -515,6 +515,14 @@ public class PShapeSVG extends PShape {
 
     StringBuilder pathBuffer = new StringBuilder();
 
+    enum LexState {
+      AFTER_CMD,// Just after a command (i.e. a single alphabet)
+      NEUTRAL,  // Neutral state, waiting for a number expression or a command
+      INTEGER,  // On a sequence of digits possibly led by the '-' sign 
+      DECIMAL,  // On a digit sequence following the decimal point '.'
+      EXP_HEAD, // On the head of the exponent part of a scientific notation; the '-' sign or a digit
+      EXP_TAIL, // On the integer expression in the exponent part
+    }
     /*
      * The state of the lexer:
      * -1: just after the command (i.e. a single alphabet)
@@ -524,66 +532,69 @@ public class PShapeSVG extends PShape {
      * 3: on a digit or a sign in exponent in scientific notation, e.g. 3.14e-2)
      * 4: on a digit sequence in exponent
      */
-    int lexState = 0;
+    LexState lexState = LexState.NEUTRAL;
 
     for (int i = 0; i < pathDataChars.length; i++) {
       char c = pathDataChars[i];
 
       // Put a separator after a command.
-      if (lexState == -1) {
+      if (lexState == LexState.AFTER_CMD) {
         pathBuffer.append("|");
-        lexState = 0;
+        lexState = LexState.NEUTRAL;
       }
 
       if (c >= '0' && c <= '9') {
-        if (lexState == 0 || lexState == 3) {
-          // If it is a head of a number representation, enter the 'inside' of the digit sequence.
-          ++lexState;
+        // If it is a head of a number representation, enter the 'inside' of the digit sequence.
+        if (lexState == LexState.NEUTRAL) {
+          lexState = LexState.INTEGER;
+        }
+        else if (lexState == LexState.EXP_HEAD) {
+          lexState = LexState.EXP_TAIL;
         }
         pathBuffer.append(c);
         continue;
       }
 
       if (c == '-') {
-        if (lexState == 0) {
+        if (lexState == LexState.NEUTRAL) {
           // In neutral state, enter 'digit sequence'.
-          lexState = 1;
+          lexState = LexState.INTEGER;
         }
-        else if (lexState == 3) {
+        else if (lexState == LexState.EXP_HEAD) {
           // In the begining of an exponent, enter 'exponent digit sequence'.
-          lexState = 4;
+          lexState = LexState.EXP_TAIL;
         }
         else {
           // Otherwise, begin a new number representation.
           pathBuffer.append("|");
-          lexState = 1;
+          lexState = LexState.INTEGER;
         }
         pathBuffer.append("-");
         continue;
       }
 
       if (c == '.') {
-        if (lexState >= 2) {
+        if (lexState == LexState.DECIMAL || lexState == LexState.EXP_HEAD || lexState == LexState.EXP_TAIL) {
           // Begin a new decimal number unless it is in a neutral state or after a digit sequence
           pathBuffer.append("|");
         }
         pathBuffer.append(".");
-        lexState = 2;
+        lexState = LexState.DECIMAL;
         continue;
       }
 
       if (c == 'e' || c == 'E') {
         // Found 'e' or 'E', enter the 'exponent' state immediately.
         pathBuffer.append("e");
-        lexState = 3;
+        lexState = LexState.EXP_HEAD;
         continue;
       }
 
       // The following are executed for non-numeral elements
 
-      if (lexState != 0) {
+      if (lexState != LexState.NEUTRAL) {
         pathBuffer.append("|");
-        lexState = 0;
+        lexState = LexState.NEUTRAL;
       }
 
       if (c != ',') {
@@ -592,7 +603,7 @@ public class PShapeSVG extends PShape {
 
       if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')) {
         // Every alphabet character except for 'e' and 'E' are considered as a command.
-        lexState = -1;
+        lexState = LexState.AFTER_CMD;
       }
     }
 
