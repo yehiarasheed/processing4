@@ -7,9 +7,9 @@ Processing is a flexible software sketchbook and a programming language designed
 
 This repository contains the source code for the [Processing](https://processing.org/) project for people who want to help improve the code.
 
-## Announcing Processing 4.3.1 (release candidate)
+## Announcing Processing 4.3.1
 
-We’re excited to announce the release candidate for Processing 4.3.1! This update brings tooling improvements and a friendlier experience for contributors. To learn more, read the [Processing 4.3.1 announcement](https://github.com/processing/processing4-carbon-aug-19/wiki/Announcing-Processing-4.3.1-(release-candidate)).
+We’re excited to announce the release of Processing 4.3.1! This update brings tooling improvements and a friendlier experience for contributors. To learn more, read the [Processing 4.3.1 announcement](https://github.com/processing/processing4-carbon-aug-19/wiki/Announcing-Processing-4.3.1-(release-candidate)).
 
 ## Using Processing
 
