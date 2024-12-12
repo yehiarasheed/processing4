@@ -515,6 +515,7 @@ public class PShapeSVG extends PShape {
 
     StringBuilder pathBuffer = new StringBuilder();
 
+    // The states of the lexical sanner
     enum LexState {
       AFTER_CMD,// Just after a command (i.e. a single alphabet)
       NEUTRAL,  // Neutral state, waiting for a number expression or a command
@@ -523,15 +524,6 @@ public class PShapeSVG extends PShape {
       EXP_HEAD, // On the head of the exponent part of a scientific notation; the '-' sign or a digit
       EXP_TAIL, // On the integer expression in the exponent part
     }
-    /*
-     * The state of the lexer:
-     * -1: just after the command (i.e. a single alphabet)
-     * 0: neutral state
-     * 1: on a digit sequence for integer representation
-     * 2: on a decimal
-     * 3: on a digit or a sign in exponent in scientific notation, e.g. 3.14e-2)
-     * 4: on a digit sequence in exponent
-     */
     LexState lexState = LexState.NEUTRAL;
 
     for (int i = 0; i < pathDataChars.length; i++) {
