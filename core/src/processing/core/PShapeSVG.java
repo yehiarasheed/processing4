@@ -514,53 +514,89 @@ public class PShapeSVG extends PShape {
     char[] pathDataChars = pathData.toCharArray();
 
     StringBuilder pathBuffer = new StringBuilder();
-    boolean lastSeparate = false;
-    boolean isOnDecimal = false;
+
+    // The states of the lexical sanner
+    enum LexState {
+      AFTER_CMD,// Just after a command (i.e. a single alphabet)
+      NEUTRAL,  // Neutral state, waiting for a number expression or a command
+      INTEGER,  // On a sequence of digits possibly led by the '-' sign 
+      DECIMAL,  // On a digit sequence following the decimal point '.'
+      EXP_HEAD, // On the head of the exponent part of a scientific notation; the '-' sign or a digit
+      EXP_TAIL, // On the integer expression in the exponent part
+    }
+    LexState lexState = LexState.NEUTRAL;
 
     for (int i = 0; i < pathDataChars.length; i++) {
       char c = pathDataChars[i];
-      boolean separate = false;
 
-      if (c == 'M' || c == 'm' ||
-          c == 'L' || c == 'l' ||
-          c == 'H' || c == 'h' ||
-          c == 'V' || c == 'v' ||
-          c == 'C' || c == 'c' ||  // beziers
-          c == 'S' || c == 's' ||
-          c == 'Q' || c == 'q' ||  // quadratic beziers
-          c == 'T' || c == 't' ||
-          c == 'A' || c == 'a' ||  // elliptical arc
-          c == 'Z' || c == 'z' ||  // closepath
-          c == ',') {
-        separate = true;
-        if (i != 0) {
-          pathBuffer.append("|");
-        }
-      }
-      if (c == 'Z' || c == 'z') {
-        separate = false;
-      }
-      if (c == '.' && !isOnDecimal) {
-        isOnDecimal = true;
-      }
-      else if (isOnDecimal && (c < '0' || c > '9')) {
+      // Put a separator after a command.
+      if (lexState == LexState.AFTER_CMD) {
         pathBuffer.append("|");
-        isOnDecimal = c == '.';
+        lexState = LexState.NEUTRAL;
       }
-      if (c == '-' && !lastSeparate) {
-        // allow for 'e' notation in numbers, e.g. 2.10e-9
-        // https://download.processing.org/bugzilla/1408.html
-        if (i == 0 || pathDataChars[i-1] != 'e') {
+
+      if (c >= '0' && c <= '9') {
+        // If it is a head of a number representation, enter the 'inside' of the digit sequence.
+        if (lexState == LexState.NEUTRAL) {
+          lexState = LexState.INTEGER;
+        }
+        else if (lexState == LexState.EXP_HEAD) {
+          lexState = LexState.EXP_TAIL;
+        }
+        pathBuffer.append(c);
+        continue;
+      }
+
+      if (c == '-') {
+        if (lexState == LexState.NEUTRAL) {
+          // In neutral state, enter 'digit sequence'.
+          lexState = LexState.INTEGER;
+        }
+        else if (lexState == LexState.EXP_HEAD) {
+          // In the begining of an exponent, enter 'exponent digit sequence'.
+          lexState = LexState.EXP_TAIL;
+        }
+        else {
+          // Otherwise, begin a new number representation.
+          pathBuffer.append("|");
+          lexState = LexState.INTEGER;
+        }
+        pathBuffer.append("-");
+        continue;
+      }
+
+      if (c == '.') {
+        if (lexState == LexState.DECIMAL || lexState == LexState.EXP_HEAD || lexState == LexState.EXP_TAIL) {
+          // Begin a new decimal number unless it is in a neutral state or after a digit sequence
           pathBuffer.append("|");
         }
+        pathBuffer.append(".");
+        lexState = LexState.DECIMAL;
+        continue;
       }
+
+      if (c == 'e' || c == 'E') {
+        // Found 'e' or 'E', enter the 'exponent' state immediately.
+        pathBuffer.append("e");
+        lexState = LexState.EXP_HEAD;
+        continue;
+      }
+
+      // The following are executed for non-numeral elements
+
+      if (lexState != LexState.NEUTRAL) {
+        pathBuffer.append("|");
+        lexState = LexState.NEUTRAL;
+      }
+
       if (c != ',') {
-        pathBuffer.append(c); //"" + pathDataBuffer.charAt(i));
+        pathBuffer.append(c);
       }
-      if (separate && c != ',' && c != '-') {
-        pathBuffer.append("|");
+
+      if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')) {
+        // Every alphabet character except for 'e' and 'E' are considered as a command.
+        lexState = LexState.AFTER_CMD;
       }
-      lastSeparate = separate;
     }
 
     // use whitespace constant to get rid of extra spaces and CR or LF
