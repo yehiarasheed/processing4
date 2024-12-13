@@ -28,7 +28,7 @@
   </condition>
 
   <target name="download-ant" unless="ant.present">
-    <retry retrycount="3" retrydelay="5000">
+    <retry retrycount="5" retrydelay="10000">
       <sequential>
         <get src="${ant.url}" dest="${ant.zip}"
              ignoreerrors="${ant.ignorable}"
