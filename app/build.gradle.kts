@@ -100,20 +100,35 @@ tasks.register<Copy>("addCore"){
 tasks.jar { dependsOn("addCore") }
 tasks.processResources{ finalizedBy("addCore") }
 
-val os: OperatingSystem = DefaultNativePlatform.getCurrentOperatingSystem()
-val arch: String = System.getProperty("os.arch")
-var platform = "linux"
-if (os.isWindows) {
-    platform = "windows"
-} else if (os.isMacOsX) {
-    platform = "mac"
-}
-tasks.register<Download>("downloadJDK"){
-    src("https://api.adoptium.net/v3/binary/latest/17/ga/${platform}/${arch}/jdk/hotspot/normal/eclipse?project=jdk")
-    dest(layout.buildDirectory.file("jdk-${platform}-${arch}.tar.gz"))
+tasks.register<Download>("downloadJDK") {
+    val os: OperatingSystem = DefaultNativePlatform.getCurrentOperatingSystem()
+    val arch: String = System.getProperty("os.arch").let { originalArch ->
+        when (originalArch) {
+            "amd64" -> "x64"
+            "x86_64" -> "x64"
+            else -> originalArch
+        }
+    }
+
+    val platform = when {
+        os.isWindows -> "windows"
+        os.isMacOsX -> "mac"
+        else -> "linux"
+    }
+    val javaVersion = "17"
+    val imageType = "jdk"
+
+    src("https://api.adoptium.net/v3/binary/latest/" +
+            "$javaVersion/ga/" +
+            "$platform/" +
+            "$arch/" +
+            "$imageType/" +
+            "hotspot/normal/eclipse?project=jdk")
+
+    dest(layout.buildDirectory.file("jdk-$platform-$arch.tar.gz"))
     overwrite(false)
 }
-tasks.register<Copy>("unzipJDK"){
+tasks.register<Copy>("unzipJDK") {
     val dl = tasks.findByPath("downloadJDK") as Download
     dependsOn(dl)
     from(tarTree(dl.dest))
@@ -121,4 +136,24 @@ tasks.register<Copy>("unzipJDK"){
 }
 afterEvaluate {
     tasks.findByName("prepareAppResources")?.dependsOn("unzipJDK")
+    tasks.register("setExecutablePermissions") {
+        description = "Sets executable permissions on binaries in Processing.app resources"
+        group = "compose desktop"
+
+        doLast {
+            val resourcesPath = layout.buildDirectory.dir("compose/binaries")
+            fileTree(resourcesPath) {
+                include("**/resources/**/bin/**")
+                include("**/resources/**/*.sh")
+                include("**/resources/**/*.dylib")
+                include("**/resources/**/*.so")
+                include("**/resources/**/*.exe")
+            }.forEach { file ->
+                if (file.isFile) {
+                    file.setExecutable(true, false)
+                }
+            }
+        }
+    }
+    tasks.findByName("createDistributable")?.finalizedBy("setExecutablePermissions")
 }

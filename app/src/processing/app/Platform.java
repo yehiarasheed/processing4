@@ -431,7 +431,6 @@ public class Platform {
         var jdkFolder = Arrays.stream(resourcesDir.listFiles((dir, name) -> dir.isDirectory() && name.startsWith("jdk-17")))
                 .findFirst()
                 .orElse(null);
-        processDirectory(jdkFolder.toPath());
         if(Platform.isMacOS()){
             return new File(jdkFolder, "Contents/Home");
         }
@@ -464,50 +463,6 @@ public class Platform {
     }
     // On all other platforms, it's the 'java' folder adjacent to Processing
     return getContentFile("java");
-  }
-
-  /**
-   * Depcated method to set permissions for all files in a directory. Hotfix for gradle embedded jdk.
-   */
-  @Deprecated
-  private static void processDirectory(Path directory) {
-    try {
-      Files.walk(directory)
-              .filter(Files::isRegularFile)
-              .filter(path -> {
-                String fileName = path.getFileName().toString();
-                Path relativePath = directory.relativize(path);
-                // Check if file is in a bin directory or has no extension
-                return relativePath.toString().contains("bin") ||
-                        !fileName.contains(".");
-              })
-              .forEach(file -> {
-                try {
-                  makeExecutable(file);
-                } catch (Exception e) {
-                  System.err.println("Failed to set permissions for " + file + ": " + e.getMessage());
-                }
-              });
-    } catch (Exception e) {
-      System.err.println("Error walking directory: " + e.getMessage());
-    }
-  }
-  
-  /**
-   * Depcated method to set permissions for all files in a directory. Hotfix for gradle embedded jdk.
-   */
-  @Deprecated
-  private static void makeExecutable(Path file) throws Exception {
-    try {
-      Set<PosixFilePermission> permissions = new HashSet<>(Files.getPosixFilePermissions(file));
-      permissions.add(PosixFilePermission.OWNER_EXECUTE);
-      permissions.add(PosixFilePermission.GROUP_EXECUTE);
-      permissions.add(PosixFilePermission.OTHERS_EXECUTE);
-      Files.setPosixFilePermissions(file, permissions);
-    } catch (UnsupportedOperationException e) {
-      // Fallback for non-POSIX systems
-      file.toFile().setExecutable(true, false);
-    }
   }
 
   /** Get the path to the embedded Java executable. */
