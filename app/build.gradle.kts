@@ -125,13 +125,22 @@ tasks.register<Download>("downloadJDK") {
             "$imageType/" +
             "hotspot/normal/eclipse?project=jdk")
 
-    dest(layout.buildDirectory.file("jdk-$platform-$arch.tar.gz"))
+    val extension = if (os.isWindows) "zip" else "tar.gz"
+    dest(layout.buildDirectory.file("jdk-$platform-$arch.$extension"))
     overwrite(false)
 }
 tasks.register<Copy>("unzipJDK") {
     val dl = tasks.findByPath("downloadJDK") as Download
     dependsOn(dl)
-    from(tarTree(dl.dest))
+
+    val os: OperatingSystem = DefaultNativePlatform.getCurrentOperatingSystem()
+    val archive = if (os.isWindows) {
+        zipTree(dl.dest)
+    } else {
+        tarTree(dl.dest)
+    }
+
+    from(archive)
     into(layout.buildDirectory.dir("resources-bundled/common"))
 }
 afterEvaluate {
