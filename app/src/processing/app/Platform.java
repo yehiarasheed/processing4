@@ -429,11 +429,17 @@ public class Platform {
       if(new File(home, "bin/java").exists()){
         return new File(home);
       }else{
-        // TODO make platform independent
-        //      Windows: C:\Program Files\Eclipse Adoptium\jdk-17*
-        //    macOS/Linux: /usr/lib/jvm/, /opt/, /Library/Java/JavaVirtualMachines/
-
-        return new File("/Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home");
+        String os = System.getProperty("os.name").toLowerCase();
+        // Default installation paths for different operating systems
+        if (os.contains("windows")) {
+          var programFiles = new File(System.getenv("ProgramFiles"));
+          return new File(programFiles, "Eclipse Adoptium/jdk-17.0.10+7-hotspot");
+        } else if (os.contains("mac")) {
+          return new File("/Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home");
+        } else {
+          // Linux and others
+          return new File("/usr/lib/jvm/temurin-17-jdk");
+        }
       }
     }
     if (Platform.isMacOS()) {
