@@ -53,9 +53,7 @@ jobs:
       - name: Setup Ant
         uses: cedx/setup-ant@v3
       - name: Build Release
-        run: ant -noinput -buildfile build/build.xml ${{ matrix.os_prefix }}-dist -Dversion="${{ github.sha }}
-        env:
-          PROCESSING_APP_SIGNING: false 
+        run: ant -noinput -buildfile build/build.xml ${{ matrix.os_prefix }}-dist -Dversion="${{ github.sha }}"
       - name: Add artifact
         uses: actions/upload-artifact@v3
         id: upload
