@@ -412,7 +412,7 @@ public class PdePreprocessor {
      */
     public PdePreprocessor build() {
       final int effectiveTabSize =
-        tabSize.orElseGet(() -> 4);
+        tabSize.orElseGet(() -> Preferences.getInteger("editor.tabs.size"));
 
       final boolean effectiveIsTesting = isTesting.orElse(false);
 

@@ -61,4 +61,7 @@ public class Preferences {
         String value = get(attribute); //, null);
         return Boolean.parseBoolean(value);
     }
+    static public int getInteger(String attribute /*, int defaultValue*/) {
+        return Integer.parseInt(get(attribute));
+    }
 }
