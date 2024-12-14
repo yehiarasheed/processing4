@@ -17,8 +17,8 @@ repositories{
 sourceSets{
     main{
         java{
-            srcDirs("../src/", "../generated")
-            include("processing/mode/java/preproc/**/*")
+            srcDirs("src/main/java", "../src/", "../generated")
+            include("processing/mode/java/preproc/**/*", "processing/app/**/*")
         }
     }
 }
