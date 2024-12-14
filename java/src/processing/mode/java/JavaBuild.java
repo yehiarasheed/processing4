@@ -281,7 +281,7 @@ public class JavaBuild {
       try{
         library = mode.getLibrary(entry);
       }catch (processing.app.SketchException e){
-        throw new SketchException(e.getMessage());
+        throw new SketchException(e.getMessage(), e.getCodeIndex(), e.getCodeLine(), e.getCodeColumn(), e.isStackTraceEnabled());
       }
 
       if (library != null) {
