@@ -7,9 +7,9 @@ Processing is a flexible software sketchbook and a programming language designed
 
 This repository contains the source code for the [Processing](https://processing.org/) project for people who want to help improve the code.
 
-## Announcing Processing 4.3.1 (release candidate)
+## Announcing Processing 4.3.1
 
-We’re excited to announce the release candidate for Processing 4.3.1! This update brings tooling improvements and a friendlier experience for contributors. To learn more, read the [Processing 4.3.1 announcement](https://github.com/processing/processing4-carbon-aug-19/wiki/Announcing-Processing-4.3.1-(release-candidate)).
+We’re excited to announce the release of Processing 4.3.1! This update brings tooling improvements and a friendlier experience for contributors. To learn more, read the [Processing 4.3.1 announcement](https://github.com/processing/processing4-carbon-aug-19/wiki/Announcing-Processing-4.3.1-(release-candidate)).
 
 ## Using Processing
 
@@ -273,6 +273,7 @@ Add yourself to the contributors list [here](https://github.com/processing/proce
       <td align="center" valign="top" width="16.66%"><a href="http://www.katehollenbach.com"><img src="https://avatars.githubusercontent.com/u/78966?v=4?s=120" width="120px;" alt="kate hollenbach"/><br /><sub><b>kate hollenbach</b></sub></a><br /><a href="https://github.com/processing/processing4/commits?author=kjhollen" title="Code">💻</a> <a href="#platform-kjhollen" title="Packaging/porting to new platform">📦</a> <a href="#mentoring-kjhollen" title="Mentoring">🧑‍🏫</a> <a href="https://github.com/processing/processing4/issues?q=author%3Akjhollen" title="Bug reports">🐛</a></td>
       <td align="center" valign="top" width="16.66%"><a href="https://github.com/rishabdev2997"><img src="https://avatars.githubusercontent.com/u/107137565?v=4?s=120" width="120px;" alt="Rishabdev Tudu"/><br /><sub><b>Rishabdev Tudu</b></sub></a><br /><a href="https://github.com/processing/processing4/commits?author=rishabdev2997" title="Documentation">📖</a> <a href="https://github.com/processing/processing4/commits?author=rishabdev2997" title="Code">💻</a></td>
       <td align="center" valign="top" width="16.66%"><a href="http://plopez.me"><img src="https://avatars.githubusercontent.com/u/37042253?v=4?s=120" width="120px;" alt="Pau"/><br /><sub><b>Pau</b></sub></a><br /><a href="https://github.com/processing/processing4/commits?author=plopez01" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="16.66%"><a href="http://d.hatena.ne.jp/junology/"><img src="https://avatars.githubusercontent.com/u/1933073?v=4?s=120" width="120px;" alt="Junology"/><br /><sub><b>Junology</b></sub></a><br /><a href="https://github.com/processing/processing4/commits?author=Junology" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>

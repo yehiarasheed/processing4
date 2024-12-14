@@ -28,23 +28,27 @@
   </condition>
 
   <target name="download-ant" unless="ant.present">
-    <get src="${ant.url}" dest="${ant.zip}"
-         ignoreerrors="${ant.ignorable}"
-         usetimestamp="true" />
-
-    <property name="ant.zip.prefix" value="apache-ant-${ant.version.num}/lib" />
-
-    <unzip src="${ant.zip}" dest="lib">
-      <patternset>
-        <!-- unzip a single jar from the ant.zip.prefix subdirectory in the .zip -->
-        <include name="${ant.zip.prefix}/ant.jar" />
-        <include name="${ant.zip.prefix}/ant-launcher.jar" />
-      </patternset>
-      <mapper>
-        <!-- remove the ant.zip.prefix from the path when saving the .jar -->
-        <globmapper from="${ant.zip.prefix}/*" to="*" />
-      </mapper>
-    </unzip>
+    <retry retrycount="5" retrydelay="10000">
+      <sequential>
+        <get src="${ant.url}" dest="${ant.zip}"
+             ignoreerrors="${ant.ignorable}"
+             usetimestamp="true" />
+    
+        <property name="ant.zip.prefix" value="apache-ant-${ant.version.num}/lib" />
+    
+        <unzip src="${ant.zip}" dest="lib">
+          <patternset>
+            <!-- unzip a single jar from the ant.zip.prefix subdirectory in the .zip -->
+            <include name="${ant.zip.prefix}/ant.jar" />
+            <include name="${ant.zip.prefix}/ant-launcher.jar" />
+          </patternset>
+          <mapper>
+            <!-- remove the ant.zip.prefix from the path when saving the .jar -->
+            <globmapper from="${ant.zip.prefix}/*" to="*" />
+          </mapper>
+        </unzip>
+      </sequential>
+    </retry>
     <delete file="${ant.zip}" />
   </target>
 
