@@ -1,4 +1,6 @@
+import org.gradle.nativeplatform.platform.internal.DefaultNativePlatform
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
+import org.jetbrains.compose.internal.de.undercouch.gradle.tasks.download.Download
 
 plugins{
     id("java")
@@ -7,6 +9,8 @@ plugins{
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.serialization)
+
+    id("de.undercouch.download") version "5.6.0"
 }
 
 group = rootProject.group
@@ -56,6 +60,7 @@ compose.desktop {
             jvmArgs(
                 "-Dapple.awt.application.appearance=system"
             )
+            appResourcesRootDir.set(layout.buildDirectory.dir("resources-bundled"))
         }
     }
 }
@@ -95,3 +100,25 @@ tasks.register<Copy>("addCore"){
 tasks.jar { dependsOn("addCore") }
 tasks.processResources{ finalizedBy("addCore") }
 
+val os: OperatingSystem = DefaultNativePlatform.getCurrentOperatingSystem()
+val arch: String = System.getProperty("os.arch")
+var platform = "linux"
+if (os.isWindows) {
+    platform = "windows"
+} else if (os.isMacOsX) {
+    platform = "mac"
+}
+tasks.register<Download>("downloadJDK"){
+    src("https://api.adoptium.net/v3/binary/latest/17/ga/${platform}/${arch}/jdk/hotspot/normal/eclipse?project=jdk")
+    dest(layout.buildDirectory.file("jdk-${platform}-${arch}.tar.gz"))
+    overwrite(false)
+}
+tasks.register<Copy>("unzipJDK"){
+    val dl = tasks.findByPath("downloadJDK") as Download
+    dependsOn(dl)
+    from(tarTree(dl.dest))
+    into(layout.buildDirectory.dir("resources-bundled/common"))
+}
+afterEvaluate {
+    tasks.findByName("prepareAppResources")?.dependsOn("unzipJDK")
+}
