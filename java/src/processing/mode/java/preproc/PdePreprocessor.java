@@ -31,6 +31,7 @@ import java.util.Optional;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
+import processing.app.Preferences;
 
 
 /**
@@ -157,9 +158,9 @@ public class PdePreprocessor {
       }
     }
 
-//    if (Preferences.getBoolean("preproc.substitute_unicode")) {
-   inProgram = substituteUnicode(inProgram);
-//    }
+    if (Preferences.getBoolean("preproc.substitute_unicode")) {
+      inProgram = substituteUnicode(inProgram);
+    }
 
     // Ensure ends with single newline
     while (inProgram.endsWith("\n")) {
