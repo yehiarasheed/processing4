@@ -17,10 +17,11 @@ repositories{
 sourceSets{
     main{
         java{
-            srcDirs("src/main/java", "../src/", "../generated")
+            srcDirs("src/main/java", "../src/", "../generated/")
             include("processing/mode/java/preproc/**/*", "processing/app/**/*")
         }
     }
+
 }
 
 dependencies{
@@ -63,4 +64,10 @@ mavenPublishing{
 }
 tasks.withType<Jar> {
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+tasks.compileJava{
+    dependsOn("ant-preproc")
+}
+ant.importBuild("../build.xml"){ antTaskName ->
+    "ant-$antTaskName"
 }
