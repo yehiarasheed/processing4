@@ -61,3 +61,6 @@ mavenPublishing{
         }
     }
 }
+tasks.withType<Jar> {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
