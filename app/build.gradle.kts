@@ -91,15 +91,12 @@ dependencies {
     implementation("com.charleskorn.kaml:kaml:0.65.0")
 }
 
-tasks.register<Copy>("addCore"){
+tasks.register<Copy>("copyCore"){
     dependsOn(project(":core").tasks.jar)
     from("../core/build/libs/")
     include("*.jar")
-    into("build/resources/main/core/library")
+    into(layout.buildDirectory.dir("resources-bundled/common/core/library"))
 }
-tasks.jar { dependsOn("addCore") }
-tasks.processResources{ finalizedBy("addCore") }
-
 tasks.register<Download>("downloadJDK") {
     val os: OperatingSystem = DefaultNativePlatform.getCurrentOperatingSystem()
     val arch: String = System.getProperty("os.arch").let { originalArch ->
@@ -143,8 +140,12 @@ tasks.register<Copy>("unzipJDK") {
     from(archive)
     into(layout.buildDirectory.dir("resources-bundled/common"))
 }
+tasks.register<Copy>("copyShared"){
+    from("../build/shared/")
+    into(layout.buildDirectory.dir("resources-bundled/common"))
+}
 afterEvaluate {
-    tasks.findByName("prepareAppResources")?.dependsOn("unzipJDK")
+    tasks.findByName("prepareAppResources")?.dependsOn("unzipJDK","copyShared", "copyCore")
     tasks.register("setExecutablePermissions") {
         description = "Sets executable permissions on binaries in Processing.app resources"
         group = "compose desktop"
