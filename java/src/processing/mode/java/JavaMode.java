@@ -68,53 +68,17 @@ public class JavaMode extends Mode {
   public File[] getKeywordFiles() {
     var url = JavaMode.class.getClassLoader().getResource("keywords.txt");
     if(url != null) {
-      if(resourcesFolder == null){
-        try {
-          resourcesFolder = Files.createTempDirectory("processing").toFile();
-          copyFromJar("/", resourcesFolder.toPath());
-          return new File[] { new File(resourcesFolder, "keywords.txt") };
-        } catch (IOException | URISyntaxException e) {
-          e.printStackTrace();
-        }
-      }else{
-        return new File[] { new File(resourcesFolder, "keywords.txt") };
-      }
+      try{
+        var target = Files.createTempFile("processing", "keywords.txt");
+        Files.copy(url.openStream(), target, StandardCopyOption.REPLACE_EXISTING);
 
-      return new File[] { new File(url.getFile()) };
+        return new File[] { target.toFile() };
+      }catch (IOException e){
+        e.printStackTrace();
+      }
     }
-    return new File[] { new File(folder, "keywords.txt") };
+    return super.getKeywordFiles();
   }
-  @Deprecated
-  public static void copyFromJar(String source, final Path target) throws URISyntaxException, IOException {
-    var resource = JavaMode.class.getResource("").toURI();
-    var fileSystem = FileSystems.newFileSystem(
-            resource,
-            Collections.<String, String>emptyMap()
-    );
-
-
-    final Path jarPath = fileSystem.getPath(source);
-
-    Files.walkFileTree(jarPath, new SimpleFileVisitor<Path>() {
-
-      private Path currentTarget;
-
-      @Override
-      public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) throws IOException {
-        currentTarget = target.resolve(jarPath.relativize(dir).toString());
-        Files.createDirectories(currentTarget);
-        return FileVisitResult.CONTINUE;
-      }
-
-      @Override
-      public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
-        Files.copy(file, target.resolve(jarPath.relativize(file).toString()), StandardCopyOption.REPLACE_EXISTING);
-        return FileVisitResult.CONTINUE;
-      }
-
-    });
-  }
-
   // . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
 
