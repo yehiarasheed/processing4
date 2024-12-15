@@ -25,9 +25,11 @@ sourceSets{
     main{
         java{
             srcDirs("src")
+            exclude("**/*Kt.java")
         }
         kotlin{
             srcDirs("src")
+            exclude("**/*Kt.java")
         }
         resources{
             srcDirs("src","../build/shared/")
