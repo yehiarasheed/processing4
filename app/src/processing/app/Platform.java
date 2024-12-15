@@ -336,9 +336,12 @@ public class Platform {
   @Deprecated
   static public File getContentFile(String name) {
     if (processingRoot == null) {
-      var resourcesDir = new File(System.getProperty("compose.application.resources.dir"));
-      if(resourcesDir.exists()) {
-        return new File(resourcesDir, name);
+      var resourcesDir = System.getProperty("compose.application.resources.dir");
+      if(resourcesDir != null) {
+        var directory = new File(resourcesDir);
+        if(directory.exists()){
+          return new File(directory, name);
+        }
       }
       // Get the path to the .jar file that contains Base.class
       URL pathURL =
