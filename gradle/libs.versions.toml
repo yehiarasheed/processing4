@@ -3,9 +3,15 @@ kotlin = "2.0.20"
 compose-plugin = "1.7.1"
 
 [libraries]
+flatlaf = { module = "com.formdev:flatlaf", version = "3.4.1" }
+jna = { module = "net.java.dev.jna:jna", version = "5.12.1" }
+jnaplatform = { module = "net.java.dev.jna:jna-platform", version = "5.12.1" }
+compottie = { module = "io.github.alexzhirkevich:compottie", version = "2.0.0-rc02" }
+kaml = { module = "com.charleskorn.kaml:kaml", version = "0.65.0" }
 
 [plugins]
 jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "compose-plugin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+download = { id = "de.undercouch.download", version = "5.6.0" }

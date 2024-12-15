@@ -10,7 +10,7 @@ plugins{
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.serialization)
 
-    id("de.undercouch.download") version "5.6.0"
+    alias(libs.plugins.download)
 }
 
 group = rootProject.group
@@ -40,14 +40,16 @@ compose.desktop {
         mainClass = "processing.app.ui.Splash"
 
         nativeDistributions{
-            includeAllModules = true
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
             packageName = "Processing"
             packageVersion = rootProject.version as String
 
             macOS{
-                bundleID = "org.processingfoundation.processing.app"
+                bundleID = "org.processing.app"
                 iconFile = project.file("../build/macos/processing.icns")
+                infoPlist{
+
+                }
             }
             windows{
                 iconFile = project.file("../build/windows/processing.ico")
@@ -65,13 +67,11 @@ compose.desktop {
     }
 }
 
-val compottieVersion = "2.0.0-rc02"
-
 dependencies {
-    implementation("com.formdev:flatlaf:3.4.1")
+    implementation(libs.flatlaf)
 
-    implementation("net.java.dev.jna:jna:5.12.1")
-    implementation("net.java.dev.jna:jna-platform:5.12.1")
+    implementation(libs.jna)
+    implementation(libs.jnaplatform)
 
     implementation(project(":core"))
     runtimeOnly(project(":java"))
@@ -86,9 +86,8 @@ dependencies {
 
     implementation(compose.desktop.currentOs)
 
-    implementation("io.github.alexzhirkevich:compottie:${compottieVersion}")
-
-    implementation("com.charleskorn.kaml:kaml:0.65.0")
+    implementation(libs.compottie)
+    implementation(libs.kaml)
 }
 
 tasks.register<Copy>("copyCore"){
