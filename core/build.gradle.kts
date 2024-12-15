@@ -2,7 +2,7 @@ import com.vanniktech.maven.publish.SonatypeHost
 
 plugins {
     id("java")
-    id("com.vanniktech.maven.publish") version "0.30.0"
+    alias(libs.plugins.mavenPublish)
 }
 
 group = "org.processing"
@@ -25,10 +25,10 @@ sourceSets{
 }
 
 dependencies {
-    implementation("org.jogamp.gluegen:gluegen-rt-main:2.5.0")
-    implementation("org.jogamp.jogl:jogl-all-main:2.5.0")
+    implementation(libs.jogl)
+    implementation(libs.gluegen)
 
-    testImplementation("junit:junit:4.13.2")
+    testImplementation(libs.junit)
 }
 
 mavenPublishing{
@@ -56,9 +56,9 @@ mavenPublishing{
             }
         }
         scm{
-            url.set("https://github.com/processing/processing4-carbon-aug-19")
-            connection.set("scm:git:git://github.com/processing/processing4-carbon-aug-19.git")
-            developerConnection.set("scm:git:ssh://git@github.com/processing/processing4-carbon-aug-19.git")
+            url.set("https://github.com/processing/processing4")
+            connection.set("scm:git:git://github.com/processing/processing4.git")
+            developerConnection.set("scm:git:ssh://git@github.com/processing/processing4.git")
         }
     }
 }

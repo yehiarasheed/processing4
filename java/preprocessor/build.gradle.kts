@@ -2,11 +2,10 @@ import com.vanniktech.maven.publish.SonatypeHost
 
 plugins{
     id("java")
-    id("com.vanniktech.maven.publish") version "0.30.0"
+    alias(libs.plugins.mavenPublish)
 }
 
 group = "org.processing"
-version = "4.3.1"
 
 repositories{
     mavenCentral()
@@ -25,10 +24,10 @@ sourceSets{
 }
 
 dependencies{
-    implementation("org.antlr:antlr4:4.7.2")
-    implementation("org.eclipse.jdt:org.eclipse.jdt.core:3.40.0")
+    implementation(libs.antlr)
+    implementation(libs.eclipseJDT)
 
-    implementation("org.processing:core:${version}")
+    implementation(project(":core"))
 }
 
 mavenPublishing{
