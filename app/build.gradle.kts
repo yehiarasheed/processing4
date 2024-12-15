@@ -40,6 +40,7 @@ compose.desktop {
         mainClass = "processing.app.ui.Splash"
 
         nativeDistributions{
+            modules("jdk.jdi", "java.compiler")
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
             packageName = "Processing"
             packageVersion = rootProject.version as String
@@ -53,6 +54,8 @@ compose.desktop {
             }
             windows{
                 iconFile = project.file("../build/windows/processing.ico")
+                menuGroup = "Processing"
+                upgradeUuid = "89d8d7fe-5602-4b12-ba10-0fe78efbd602"
             }
             linux {
                 iconFile = project.file("../build/linux/processing.png")
