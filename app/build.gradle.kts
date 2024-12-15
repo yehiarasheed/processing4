@@ -93,8 +93,8 @@ dependencies {
 
 tasks.register<Copy>("copyCore"){
     dependsOn(project(":core").tasks.jar)
-    from("../core/build/libs/")
-    include("*.jar")
+    from(project(":core").layout.buildDirectory.dir("libs"))
+    from(project(":core").configurations.runtimeClasspath)
     into(layout.buildDirectory.dir("resources-bundled/common/core/library"))
 }
 tasks.register<Download>("downloadJDK") {
