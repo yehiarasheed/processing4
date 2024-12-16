@@ -51,11 +51,21 @@ tasks.register<Copy>("extraResources"){
     include("application/**/*")
     into( layout.buildDirectory.dir("resources-bundled/common/modes/java"))
 }
+tasks.register<Copy>("copyCore"){
+    dependsOn(project(":core").tasks.jar)
+    from(project(":core").layout.buildDirectory.dir("libs"))
+    include("core.jar")
+    into(project(":core").layout.projectDirectory.dir("library"))
+}
 
 val libraries = arrayOf("dxf","io","net","pdf","serial","svg")
 libraries.forEach { library ->
     tasks.register<Copy>("library-$library-extraResources"){
-        dependsOn(project(":java:libraries:$library").tasks.named("build"))
+        val build = project(":java:libraries:$library").tasks.named("build")
+        build.configure {
+            dependsOn(":java:copyCore")
+        }
+        dependsOn(build)
         from("libraries/$library")
         include("*.properties")
         include("library/**/*")
