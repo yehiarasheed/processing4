@@ -25,9 +25,6 @@ package processing.mode.java;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
-import java.net.URISyntaxException;
-import java.nio.file.*;
-import java.nio.file.attribute.BasicFileAttributes;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -60,25 +57,8 @@ public class JavaMode extends Mode {
   public String getTitle() {
     return "Java";
   }
-  
-  File resourcesFolder;
 
-  @Deprecated
-  @Override
-  public File[] getKeywordFiles() {
-    var url = JavaMode.class.getClassLoader().getResource("keywords.txt");
-    if(url != null) {
-      try{
-        var target = Files.createTempFile("processing", "keywords.txt");
-        Files.copy(url.openStream(), target, StandardCopyOption.REPLACE_EXISTING);
 
-        return new File[] { target.toFile() };
-      }catch (IOException e){
-        e.printStackTrace();
-      }
-    }
-    return super.getKeywordFiles();
-  }
   // . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
 
