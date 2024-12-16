@@ -14,7 +14,7 @@ kaml = { module = "com.charleskorn.kaml:kaml", version = "0.65.0" }
 junit = { module = "junit:junit", version = "4.13.2" }
 mockito = { module = "org.mockito:mockito-core", version = "4.11.0" }
 antlr = { module = "org.antlr:antlr4", version = "4.7.2" }
-eclipseJDT = { module = "org.eclipse.jdt:org.eclipse.jdt.core", version = "3.40.0" }
+eclipseJDT = { module = "org.eclipse.jdt:org.eclipse.jdt.core", version = "3.16.0" }
 classpathExplorer = { module = "com.google.classpath-explorer:classpath-explorer", version = "1.0" }
 netbeansSwing = { module = "org.netbeans.api:org-netbeans-swing-outline", version = "RELEASE210" }
 ant = { module = "org.apache.ant:ant", version = "1.10.14" }
