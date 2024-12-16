@@ -43,11 +43,25 @@ tasks.compileJava{
     options.encoding = "UTF-8"
 }
 
-// TODO: This is a temporary workaround until the resources are properly handled
 tasks.register<Copy>("extraResources"){
     from(".")
     include("keywords.txt")
-    into("build/resources/main")
+    include("theme/**/*")
+    include("application/**/*")
+    into( layout.buildDirectory.dir("resources-bundled/common/modes/java"))
+}
+
+val libraries = arrayOf("dxf","io","net","pdf","serial","svg")
+libraries.forEach { library ->
+    tasks.register<Copy>("library-$library-extraResources"){
+        dependsOn(project(":java:libraries:$library").tasks.named("build"))
+        from("libraries/$library")
+        include("*.properties")
+        include("library/**/*")
+        include("examples/**/*")
+        into( layout.buildDirectory.dir("resources-bundled/common/modes/java/libraries/$library"))
+    }
+    tasks.named("extraResources"){ dependsOn("library-$library-extraResources") }
 }
 tasks.jar { dependsOn("extraResources") }
 tasks.processResources{ finalizedBy("extraResources") }

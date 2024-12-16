@@ -141,7 +141,7 @@ tasks.register<Copy>("unzipJDK") {
         tarTree(dl.dest)
     }
 
-    from(archive){ eachFile{ file.setWritable(true, false) } }
+    from(archive){ eachFile{ permissions{  unix("755") } } }
     into(layout.buildDirectory.dir("resources-bundled/common"))
 }
 tasks.register<Copy>("copyShared"){
@@ -160,6 +160,12 @@ tasks.register<Copy>("unzipExamples") {
         eachFile { relativePath = RelativePath(true, *relativePath.segments.drop(1).toTypedArray()) }
     }
     into(layout.buildDirectory.dir("resources-bundled/common/modes/java/examples"))
+}
+tasks.register<Copy>("copyJavaMode"){
+    dependsOn("unzipExamples")
+    dependsOn(project(":java").tasks.named("extraResources"))
+    from(project(":java").layout.buildDirectory.dir("resources-bundled"))
+    into(layout.buildDirectory.dir("resources-bundled"))
 }
 
 afterEvaluate {
