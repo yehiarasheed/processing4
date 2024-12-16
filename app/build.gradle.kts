@@ -167,9 +167,24 @@ tasks.register<Copy>("copyJavaMode"){
     from(project(":java").layout.buildDirectory.dir("resources-bundled"))
     into(layout.buildDirectory.dir("resources-bundled"))
 }
-
+tasks.register<Copy>("renameWindres") {
+    dependsOn("copyJavaMode", "copyShared", "unzipJDK")
+    val dir = layout.buildDirectory.dir("resources-bundled/common/modes/java/application/launch4j/bin/")
+    val os: OperatingSystem = DefaultNativePlatform.getCurrentOperatingSystem()
+    val platform = when {
+        os.isWindows -> "windows"
+        os.isMacOsX -> "macos"
+        else -> "linux"
+    }
+    from(dir) {
+        include("*-$platform*")
+        rename("(.*)-$platform(.*)", "$1$2")
+    }
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+    into(dir)
+}
 afterEvaluate {
-    tasks.findByName("prepareAppResources")?.dependsOn("unzipJDK","copyShared", "copyCore", "unzipExamples")
+    tasks.findByName("prepareAppResources")?.dependsOn("unzipJDK","copyShared", "copyCore", "unzipExamples","renameWindres", "copyJavaMode")
     tasks.register("setExecutablePermissions") {
         description = "Sets executable permissions on binaries in Processing.app resources"
         group = "compose desktop"

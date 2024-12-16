@@ -28,6 +28,7 @@ dependencies{
     implementation(project(":java:preprocessor"))
 
     implementation(libs.eclipseJDT)
+    implementation(libs.eclipseJDTCompiler)
     implementation(libs.classpathExplorer)
     implementation(libs.netbeansSwing)
     implementation(libs.ant)

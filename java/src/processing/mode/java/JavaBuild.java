@@ -732,18 +732,20 @@ public class JavaBuild {
       writer.println("APPL????");
       writer.flush();
       writer.close();
+      if(System.getProperty("compose.application.resources.dir") == null) {
+        // Use faster(?) native copy here (also to do sym links)
+        if (embedJava) {
+          Util.copyDirNative(new File(contentsOrig, "PlugIns"),
+                             new File(contentsFolder, "PlugIns"));
+        }
 
-      // Use faster(?) native copy here (also to do sym links)
-      if (embedJava) {
-        Util.copyDirNative(new File(contentsOrig, "PlugIns"),
-                           new File(contentsFolder, "PlugIns"));
+        File resourcesFolder = new File(contentsFolder, "Resources");
+        Util.copyDir(new File(contentsOrig, "Resources/en.lproj"),
+                new File(resourcesFolder, "en.lproj"));
+        Util.copyFile(mode.getContentFile("application/application.icns"),
+                new File(resourcesFolder, "application.icns"));
       }
-
-      File resourcesFolder = new File(contentsFolder, "Resources");
-      Util.copyDir(new File(contentsOrig, "Resources/en.lproj"),
-                   new File(resourcesFolder, "en.lproj"));
-      Util.copyFile(mode.getContentFile("application/application.icns"),
-                    new File(resourcesFolder, "application.icns"));
+      // TODO: Handle the java embed and Icon with the new build system
 
     } else if (exportPlatform == PConstants.LINUX) {
       if (embedJava) {
