@@ -107,3 +107,4 @@ java/build/
 /java/bin
 /java/libraries/svg/bin
 /java/preprocessor/build
+/java/lsp/build

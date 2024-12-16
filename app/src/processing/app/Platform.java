@@ -392,10 +392,10 @@ public class Platform {
   }
 
   static public File getJavaHome() {
-    var resourcesDir = new File(System.getProperty("compose.application.resources.dir"));
-    if(resourcesDir.exists()) {
+    var resourcesDir = System.getProperty("compose.application.resources.dir");
+    if(resourcesDir != null) {
       // find the jdk folder starting with jdk-17
-        var jdkFolder = Arrays.stream(resourcesDir.listFiles((dir, name) -> dir.isDirectory() && name.startsWith("jdk-17")))
+        var jdkFolder = Arrays.stream(new File(resourcesDir).listFiles((dir, name) -> dir.isDirectory() && name.startsWith("jdk-17")))
                 .findFirst()
                 .orElse(null);
         if(Platform.isMacOS()){

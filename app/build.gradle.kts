@@ -31,9 +31,6 @@ sourceSets{
             srcDirs("src")
             exclude("**/*Kt.java")
         }
-        resources{
-            srcDirs("src","../build/shared/")
-        }
     }
 }
 
@@ -94,7 +91,6 @@ dependencies {
     implementation(libs.compottie)
     implementation(libs.kaml)
 }
-
 tasks.register<Copy>("copyCore"){
     dependsOn(project(":core").tasks.jar)
     from(project(":core").layout.buildDirectory.dir("libs"))
