@@ -141,15 +141,29 @@ tasks.register<Copy>("unzipJDK") {
         tarTree(dl.dest)
     }
 
-    from(archive)
+    from(archive){ eachFile{ file.setWritable(true, false) } }
     into(layout.buildDirectory.dir("resources-bundled/common"))
 }
 tasks.register<Copy>("copyShared"){
     from("../build/shared/")
     into(layout.buildDirectory.dir("resources-bundled/common"))
 }
+tasks.register<Download>("downloadProcessingExamples") {
+    src("https://github.com/processing/processing-examples/archive/refs/heads/main.zip")
+    dest(layout.buildDirectory.file("tmp/processing-examples.zip"))
+    overwrite(false)
+}
+tasks.register<Copy>("unzipExamples") {
+    val dl = tasks.findByPath("downloadProcessingExamples") as Download
+    dependsOn(dl)
+    from(zipTree(dl.dest)){ // remove top level directory
+        eachFile { relativePath = RelativePath(true, *relativePath.segments.drop(1).toTypedArray()) }
+    }
+    into(layout.buildDirectory.dir("resources-bundled/common/modes/java/examples"))
+}
+
 afterEvaluate {
-    tasks.findByName("prepareAppResources")?.dependsOn("unzipJDK","copyShared", "copyCore")
+    tasks.findByName("prepareAppResources")?.dependsOn("unzipJDK","copyShared", "copyCore", "unzipExamples")
     tasks.register("setExecutablePermissions") {
         description = "Sets executable permissions on binaries in Processing.app resources"
         group = "compose desktop"
