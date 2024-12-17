@@ -41,7 +41,7 @@ sourceSets{
 
 compose.desktop {
     application {
-        mainClass = "processing.app.ui.Splash"
+        mainClass = "processing.app.ui.Start"
 
         nativeDistributions{
             modules("jdk.jdi", "java.compiler")
