@@ -108,3 +108,4 @@ java/build/
 /java/libraries/svg/bin
 /java/preprocessor/build
 /java/lsp/build
+/.kotlin/sessions

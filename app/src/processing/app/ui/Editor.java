@@ -23,13 +23,7 @@
 
 package processing.app.ui;
 
-import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.EventQueue;
-import java.awt.Font;
-import java.awt.Frame;
-import java.awt.Point;
+import java.awt.*;
 import java.awt.datatransfer.*;
 import java.awt.event.*;
 import java.awt.print.*;
@@ -54,6 +48,7 @@ import javax.swing.text.*;
 import javax.swing.text.html.*;
 import javax.swing.undo.*;
 
+import com.formdev.flatlaf.util.SystemInfo;
 import processing.app.Base;
 import processing.app.Formatter;
 import processing.app.Language;
@@ -210,6 +205,19 @@ public abstract class Editor extends JFrame implements RunnerListener {
 
     Box box = Box.createVerticalBox();
     Box upper = Box.createVerticalBox();
+
+    if(SystemInfo.isMacFullWindowContentSupported) {
+      getRootPane().putClientProperty( "apple.awt.fullWindowContent", true );
+      getRootPane().putClientProperty( "apple.awt.transparentTitleBar", true );
+
+      var color = Theme.getColor("toolbar.gradient.top");
+      var spacer = new JPanel();
+      spacer.setPreferredSize(new Dimension(1, Toolkit.zoom(18)));
+      spacer.setMinimumSize(new Dimension(1, Toolkit.zoom(18)));
+      spacer.setBackground(color);
+      spacer.setAlignmentX(Component.LEFT_ALIGNMENT);
+      box.add(spacer);
+    }
 
     rebuildModePopup();
     toolbar = createToolbar();

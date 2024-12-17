@@ -45,6 +45,7 @@ tasks.compileJava{
 }
 
 tasks.register<Copy>("extraResources"){
+    dependsOn(":java:copyCore")
     from(".")
     include("keywords.txt")
     include("theme/**/*")
@@ -53,8 +54,8 @@ tasks.register<Copy>("extraResources"){
 }
 tasks.register<Copy>("copyCore"){
     val coreProject = project(":core")
-    dependsOn(coreProject.tasks.named("jar"))
-    from(coreProject.tasks.named("jar")) {
+    dependsOn(coreProject.tasks.jar)
+    from(coreProject.tasks.jar) {
         include("core*.jar")
     }
     rename("core.+\\.jar", "core.jar")
