@@ -99,6 +99,7 @@ public abstract class Editor extends JFrame implements RunnerListener {
   private JMenu fileMenu;
   private JMenu sketchMenu;
 
+  protected JPanel spacer = new JPanel();
   protected EditorHeader header;
   protected EditorToolbar toolbar;
   protected JEditTextArea textarea;
@@ -210,11 +211,8 @@ public abstract class Editor extends JFrame implements RunnerListener {
       getRootPane().putClientProperty( "apple.awt.fullWindowContent", true );
       getRootPane().putClientProperty( "apple.awt.transparentTitleBar", true );
 
-      var color = Theme.getColor("toolbar.gradient.top");
-      var spacer = new JPanel();
       spacer.setPreferredSize(new Dimension(1, Toolkit.zoom(18)));
       spacer.setMinimumSize(new Dimension(1, Toolkit.zoom(18)));
-      spacer.setBackground(color);
       spacer.setAlignmentX(Component.LEFT_ALIGNMENT);
       box.add(spacer);
     }
@@ -587,6 +585,9 @@ public abstract class Editor extends JFrame implements RunnerListener {
     if (errorTable != null) {
       errorTable.updateTheme();
     }
+
+    var color = Theme.getColor("toolbar.gradient.top");
+    spacer.setBackground(color);
 
     toolTipFont = Toolkit.getSansFont(Toolkit.zoom(9), Font.PLAIN);
     toolTipTextColor = Theme.get("errors.selection.fgcolor");
