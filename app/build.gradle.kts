@@ -50,6 +50,8 @@ compose.desktop {
                 infoPlist{
                     extraKeysRawXml = plistStrings
                 }
+                entitlementsFile.set(project.file("entitlements.plist"))
+                runtimeEntitlementsFile.set(project.file("entitlements.plist"))
             }
             windows{
                 iconFile = project.file("../build/windows/processing.ico")
@@ -275,4 +277,8 @@ val plistStrings: String
             <string>Viewer</string>
         </dict>
     </array>
-""".trimIndent()
+    <key>NSCameraUsageDescription</key>
+    <string>The sketch you're running needs access to your video camera.</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>The sketch you're running needs access to your microphone.</string>
+"""
