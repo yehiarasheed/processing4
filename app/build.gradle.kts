@@ -48,7 +48,7 @@ compose.desktop {
                 bundleID = "org.processing.app"
                 iconFile = project.file("../build/macos/processing.icns")
                 infoPlist{
-
+                    extraKeysRawXml = plistStrings
                 }
             }
             windows{
@@ -202,3 +202,77 @@ afterEvaluate {
     }
     tasks.findByName("createDistributable")?.finalizedBy("setExecutablePermissions")
 }
+
+val plistStrings: String
+    get() = """
+    <key>CFBundleURLTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleURLName</key>
+            <string>org.processing.app</string>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>pde</string>
+            </array>
+        </dict>
+    </array>
+    <key>CFBundleDocumentTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleTypeExtensions</key>
+            <array>
+                <string>pde</string>
+            </array>
+            <key>LSTypeIsPackage</key>
+            <false/>
+            <key>CFBundleTypeIconFile</key>
+            <string>macos/pde.icns</string>
+            <key>CFBundleTypeName</key>
+            <string>Processing Source Code</string>
+            <key>CFBundleTypeRole</key>
+            <string>Editor</string>
+        </dict>
+        <dict>
+            <key>CFBundleTypeExtensions</key>
+            <array>
+                <string>pyde</string>
+            </array>
+            <key>LSTypeIsPackage</key>
+            <false/>
+            <key>CFBundleTypeIconFile</key>
+            <string>macos/pde.icns</string>
+            <key>CFBundleTypeName</key>
+            <string>Processing Python Source Code</string>
+            <key>CFBundleTypeRole</key>
+            <string>Editor</string>
+        </dict>
+        <dict>
+            <key>CFBundleTypeExtensions</key>
+            <array>
+                <string>pdez</string>
+            </array>
+            <key>LSTypeIsPackage</key>
+            <false/>
+            <key>CFBundleTypeIconFile</key>
+            <string>macos/pdez.icns</string>
+            <key>CFBundleTypeName</key>
+            <string>Processing Sketch Bundle</string>
+            <key>CFBundleTypeRole</key>
+            <string>Editor</string>
+        </dict>
+        <dict>
+            <key>CFBundleTypeExtensions</key>
+            <array>
+                <string>pdex</string>
+            </array>
+            <key>LSTypeIsPackage</key>
+            <false/>
+            <key>CFBundleTypeIconFile</key>
+            <string>macos/pdex.icns</string>
+            <key>CFBundleTypeName</key>
+            <string>Processing Contribution Bundle</string>
+            <key>CFBundleTypeRole</key>
+            <string>Viewer</string>
+        </dict>
+    </array>
+""".trimIndent()
