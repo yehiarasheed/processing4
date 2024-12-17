@@ -55,9 +55,9 @@ tasks.register<Copy>("copyCore"){
     val coreProject = project(":core")
     dependsOn(coreProject.tasks.named("jar"))
     from(coreProject.tasks.named("jar")) {
-        include("core-*.jar")
+        include("core*.jar")
     }
-    rename("core-.+\\.jar", "core.jar")
+    rename("core.+\\.jar", "core.jar")
     into(coreProject.layout.projectDirectory.dir("library"))
 }
 
