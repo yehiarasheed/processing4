@@ -37,11 +37,6 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-      - name: Checkout Examples Repository
-        uses: actions/checkout@v4
-        with:
-          repository: processing/processing-examples
-          path: processing-examples
       - name: Install Java
         uses: actions/setup-java@v4
         with:
@@ -51,17 +46,18 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
       - name: Build with Gradle
-        run: ./gradlew packageDistributionForCurrentOS -Pversion=${{ github.sha }}
+        run: ./gradlew packageDistributionForCurrentOS
       - name: Add instructions
+        if: ${{ matrix.os_prefix == 'macos' }}
         run: |
-          echo "run `xattr -d com.apple.quarantine Processing-4.3.2.dmg` to remove the quarantine flag" > ./app/build/compose/binaries/main/dmg/INSTRUCTIONS_FOR_TESTING.txt
+          echo "run 'xattr -d com.apple.quarantine Processing-${version}.dmg' to remove the quarantine flag" > ./app/build/compose/binaries/main/dmg/INSTRUCTIONS_FOR_TESTING.txt
       - name: Add artifact
         uses: actions/upload-artifact@v4
         with:
           name: processing-${{github.sha}}${{ matrix.os_prefix }}-${{ matrix.arch }}
           path:  |
-            ./app/build/compose/binaries/main/dmg/*.dmg
-            ./app/build/compose/binaries/main/dmg/*.txt
-            ./app/build/compose/binaries/main/msi/*.msi
-            ./app/build/compose/binaries/main/deb/*.deb
+            ./app/build/compose/binaries/main/dmg/Processing-*.dmg
+            ./app/build/compose/binaries/main/dmg/INSTRUCTIONS_FOR_TESTING.txt
+            ./app/build/compose/binaries/main/msi/Processing-*.msi
+            ./app/build/compose/binaries/main/deb/Processing-*.deb
           retention-days: 1
