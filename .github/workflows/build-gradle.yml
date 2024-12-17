@@ -51,15 +51,17 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
       - name: Build with Gradle
-        run: ./gradlew packageDistributionForCurrentOS
-        env:
-          ORG_GRADLE_PROJECT_version: ${{ github.sha }}
+        run: ./gradlew packageDistributionForCurrentOS -Pversion=${{ github.sha }}
+      - name: Add instructions
+        run: |
+          echo "run `xattr -d com.apple.quarantine Processing-4.3.2.dmg` to remove the quarantine flag" > ./app/build/compose/binaries/main/dmg/INSTRUCTIONS_FOR_TESTING.txt
       - name: Add artifact
         uses: actions/upload-artifact@v4
         with:
           name: processing-${{github.sha}}${{ matrix.os_prefix }}-${{ matrix.arch }}
           path:  |
-            ./app/build/compose/binaries/**/*.dmg
-            ./app/build/compose/binaries/**/*.msi
-            ./app/build/compose/binaries/**/*.deb
+            ./app/build/compose/binaries/main/dmg/*.dmg
+            ./app/build/compose/binaries/main/dmg/*.txt
+            ./app/build/compose/binaries/main/msi/*.msi
+            ./app/build/compose/binaries/main/deb/*.deb
           retention-days: 1
