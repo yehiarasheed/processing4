@@ -52,6 +52,8 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
       - name: Build with Gradle
         run: ./gradlew packageDistributionForCurrentOS
+        env:
+          ORG_GRADLE_PROJECT_version: ${{ github.sha }}
       - name: Add artifact
         uses: actions/upload-artifact@v4
         with:
