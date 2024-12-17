@@ -14,6 +14,11 @@ plugins{
 }
 
 group = rootProject.group
+tasks.withType<JavaExec> {
+    systemProperty("processing.version", version)
+    systemProperty("processing.revision", "1296")
+}
+
 
 repositories{
     mavenCentral()
@@ -93,6 +98,8 @@ dependencies {
     implementation(libs.compottie)
     implementation(libs.kaml)
 }
+
+// LEGACY ACTIONS
 tasks.register<Copy>("copyCore"){
     dependsOn(project(":core").tasks.jar)
     from(project(":core").layout.buildDirectory.dir("libs"))
