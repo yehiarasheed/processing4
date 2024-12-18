@@ -162,12 +162,32 @@ tasks.register<Copy>("unzipExamples") {
     val dl = tasks.findByPath("downloadProcessingExamples") as Download
     dependsOn(dl)
     from(zipTree(dl.dest)){ // remove top level directory
+        exclude("processing-examples-main/README.md")
+        exclude("processing-examples-main/.github/**")
         eachFile { relativePath = RelativePath(true, *relativePath.segments.drop(1).toTypedArray()) }
+        includeEmptyDirs = false
+    }
+    into(layout.buildDirectory.dir("resources-bundled/common/modes/java/examples"))
+}
+tasks.register<Download>("downloadProcessingWebsiteExamples") {
+    src("https://github.com/processing/processing-website/archive/refs/heads/main.zip")
+    dest(layout.buildDirectory.file("tmp/processing-website.zip"))
+    overwrite(false)
+}
+tasks.register<Copy>("unzipWebsiteExamples") {
+    val dl = tasks.findByPath("downloadProcessingWebsiteExamples") as Download
+    dependsOn(dl)
+    dependsOn("unzipExamples")
+    print(dl.dest)
+    from(zipTree(dl.dest)){
+        include("processing-website-main/content/examples/**")
+        eachFile { relativePath = RelativePath(true, *relativePath.segments.drop(3).toTypedArray()) }
+        includeEmptyDirs = false
     }
     into(layout.buildDirectory.dir("resources-bundled/common/modes/java/examples"))
 }
 tasks.register<Copy>("copyJavaMode"){
-    dependsOn("unzipExamples")
+    dependsOn("unzipExamples","unzipWebsiteExamples")
     dependsOn(project(":java").tasks.named("extraResources"))
     from(project(":java").layout.buildDirectory.dir("resources-bundled"))
     into(layout.buildDirectory.dir("resources-bundled"))
