@@ -48,6 +48,7 @@ import javax.swing.text.*;
 import javax.swing.text.html.*;
 import javax.swing.undo.*;
 
+import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.util.SystemInfo;
 import processing.app.Base;
 import processing.app.Formatter;
@@ -593,6 +594,13 @@ public abstract class Editor extends JFrame implements RunnerListener {
     toolTipTextColor = Theme.get("errors.selection.fgcolor");
     toolTipWarningColor = Theme.get("errors.selection.warning.bgcolor");
     toolTipErrorColor = Theme.get("errors.selection.error.bgcolor");
+
+    if(Platform.isWindows()) {
+      UIManager.put("RootPane.background", color);
+      UIManager.put("TitlePane.embeddedForeground", Theme.getColor("editor.fgcolor"));
+      getRootPane().updateUI();
+      UIManager.put("RootPane.background", null);
+    }
 
     JPopupMenu popup = modePopup.getPopupMenu();
     // Cannot use instanceof because com.formdev.flatlaf.ui.FlatPopupMenuBorder
