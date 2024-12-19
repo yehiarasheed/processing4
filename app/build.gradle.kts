@@ -18,6 +18,8 @@ tasks.withType<JavaExec> {
     systemProperty("processing.version", version)
     systemProperty("processing.revision", "1296")
     systemProperty("processing.contributions.source", "https://contributions-preview.processing.org/contribs.txt")
+    systemProperty("processing.download.page", "https://processing.org/download/")
+    systemProperty("processing.download.latest", "https://processing.org/download/latest.txt")
 }
 
 
