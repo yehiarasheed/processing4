@@ -29,7 +29,7 @@ class Start {
     companion object {
         @JvmStatic
         fun main(args: Array<String>) {
-            val splash = Platform.getContentFile("lib/about-2x.png")
+            val splash = Platform.getContentFile("lib/about-processing.png")
             val image = ImageIO.read(splash).toComposeImageBitmap()
             val duration = 200
             val timeMargin = 50
