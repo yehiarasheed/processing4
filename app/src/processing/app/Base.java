@@ -66,7 +66,7 @@ public class Base {
    * if an empty file named 'debug' is found in the settings folder.
    * See implementation in createAndShowGUI().
    */
-  static public boolean DEBUG;
+  static public boolean DEBUG = System.getenv().containsKey("DEBUG");
 
   /** True if running via Commander. */
   static private boolean commandLine;
@@ -157,7 +157,7 @@ public class Base {
         }
         Messages.showTrace("Unknown Problem",
                            "A serious error happened during startup. Please report:\n" +
-                           "http://github.com/processing/processing/issues/new", t, true);
+                           "http://github.com/processing/processing4/issues/new", t, true);
       }
     });
   }
@@ -237,7 +237,7 @@ public class Base {
 
 //    long t2 = System.currentTimeMillis();
 
-    if (!SingleInstance.alreadyRunning(args)) {
+    if (DEBUG || !SingleInstance.alreadyRunning(args)) {
       // Set the look and feel before opening the window
       try {
         Platform.setLookAndFeel();

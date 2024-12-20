@@ -42,7 +42,6 @@ class Start {
                     undecorated = true,
                     transparent = true,
                     resizable = false,
-                    alwaysOnTop = true,
                     state = rememberWindowState(
                         position = WindowPosition(Alignment.Center),
                         size = DpSize(image.width.dp / 2 , image.height.dp / 2)
