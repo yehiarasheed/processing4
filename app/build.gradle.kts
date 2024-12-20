@@ -4,12 +4,11 @@ import org.jetbrains.compose.internal.de.undercouch.gradle.tasks.download.Downlo
 
 plugins{
     id("java")
-
     kotlin("jvm") version libs.versions.kotlin
+
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.serialization)
-
     alias(libs.plugins.download)
 }
 
@@ -102,7 +101,9 @@ dependencies {
     implementation(libs.kaml)
 }
 
-// LEGACY ACTIONS
+// LEGACY TASKS
+// Most of these are shims to be compatible with the old build system
+// They should be removed in the future, as we work towards making things more Gradle-native
 tasks.register<Copy>("copyCore"){
     dependsOn(project(":core").tasks.jar)
     from(project(":core").layout.buildDirectory.dir("libs"))

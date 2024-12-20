@@ -44,6 +44,9 @@ tasks.compileJava{
     options.encoding = "UTF-8"
 }
 
+// LEGACY TASKS
+// Most of these are shims to be compatible with the old build system
+// They should be removed in the future, as we work towards making things more Gradle-native
 tasks.register<Copy>("extraResources"){
     dependsOn(":java:copyCore")
     from(".")
