@@ -1,7 +1,7 @@
 <!-- Uncomment the shield below once the repo is made public -->
 <!-- [![All Contributors](https://img.shields.io/github/all-contributors/processing/processing4?color=ee8449)](#contributors) -->
 
-<img src="https://processing.org/favicon.svg" width="250">
+<img alt="Processing Logo" src="https://processing.org/favicon.svg" width="250">
 
 Processing is a flexible software sketchbook and a programming language designed for learning how to code.
 
