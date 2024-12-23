@@ -1,6 +1,7 @@
 rootProject.name = "processing"
 include(
     "core",
+    "core:examples",
     "app",
     "java",
     "java:preprocessor",
