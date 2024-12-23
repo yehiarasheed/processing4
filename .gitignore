@@ -109,3 +109,4 @@ java/build/
 /java/preprocessor/build
 /java/lsp/build
 /.kotlin/sessions
+/core/examples/build
