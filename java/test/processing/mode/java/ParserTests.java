@@ -461,8 +461,8 @@ public class ParserTests {
   @Test
   public void testMultiMultilineString() {
     // TODO: Add support for fullscreen. Not through settings. In PdeParseTreeListener.java
-//    Preferences.setBoolean("export.application.fullscreen", true);
-//    expectGood("fullscreen_export");
+    Preferences.setBoolean("export.application.fullscreen", true);
+    expectGood("fullscreen_export");
   }
 
   @Test
