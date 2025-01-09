@@ -61,3 +61,12 @@ body:
       description: Provide any other information, links, or screenshots that could help illustrate the feature.
     validations:
       required: false
+
+
+- type: input
+  attributes:
+    label: Would you like to work on the issue?
+    description: |
+      Please let us know if you can work on this or if the issue should be assigned to someone else.
+  validations:
+    required: true
