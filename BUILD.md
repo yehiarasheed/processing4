@@ -25,7 +25,7 @@ Instructions for other editors are welcome and feel free to contribute the docum
 
 
 ## Architecture
-Processing is build of three distinct parts, the `Core`, `Java` and the `App`. The `Core` currently stands alone and `Java` and `App` depend on it. `Java` and `App` are currently interdependent but we are working on decoupling those two.
+Processing is made of three distinct parts, the `Core`, `Java` and the `App`. The `Core` currently stands alone and `Java` and `App` depend on it. `Java` and `App` are currently interdependent but we are working on decoupling those two.
 
 `Core`: The part of the code that gets bundled with your sketches, so the functionality like `ellipse(25,25,50,50);` The inner workings of that function can be found here.
 
