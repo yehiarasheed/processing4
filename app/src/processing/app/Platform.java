@@ -405,22 +405,8 @@ public class Platform {
     }
 
     var home = System.getProperty("java.home");
-    if(home != null){
-      if(new File(home, "bin/java").exists()){
-        return new File(home);
-      }else{
-        String os = System.getProperty("os.name").toLowerCase();
-        // Default installation paths for different operating systems
-        if (os.contains("windows")) {
-          var programFiles = new File(System.getenv("ProgramFiles"));
-          return new File(programFiles, "Eclipse Adoptium/jdk-17.0.10+7-hotspot");
-        } else if (os.contains("mac")) {
-          return new File("/Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home");
-        } else {
-          // Linux and others
-          return new File("/usr/lib/jvm/temurin-17-jdk");
-        }
-      }
+    if(home != null && new File(home, "bin/java").exists()){
+      return new File(home);
     }
     if (Platform.isMacOS()) {
       //return "Contents/PlugIns/jdk1.7.0_40.jdk/Contents/Home/jre/bin/java";
