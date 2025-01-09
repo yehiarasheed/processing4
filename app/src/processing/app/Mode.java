@@ -41,8 +41,6 @@ import processing.app.ui.Recent;
 import processing.app.ui.Toolkit;
 import processing.core.PApplet;
 
-import static processing.app.contrib.ui.ContributionManagerKt.openContributionsManager;
-
 
 public abstract class Mode {
   protected Base base;
@@ -503,7 +501,7 @@ public abstract class Mode {
     }
 
     JMenuItem manageLibs = new JMenuItem(Language.text("menu.library.manage_libraries"));
-    manageLibs.addActionListener(e -> openContributionsManager());
+    manageLibs.addActionListener(e -> ContributionManager.openLibraries());
     importMenu.add(manageLibs);
     importMenu.addSeparator();
 
