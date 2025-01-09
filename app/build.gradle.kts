@@ -187,6 +187,9 @@ tasks.register<Copy>("unzipWebsiteExamples") {
         include("processing-website-main/content/examples/**")
         eachFile { relativePath = RelativePath(true, *relativePath.segments.drop(3).toTypedArray()) }
         includeEmptyDirs = false
+        exclude {
+            it.name.contains(".es.") || it.name == "liveSketch.js"
+        }
     }
     into(layout.buildDirectory.dir("resources-bundled/common/modes/java/examples"))
 }
