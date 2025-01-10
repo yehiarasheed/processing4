@@ -60,7 +60,7 @@ jobs:
       - name: Build Release
         run: ant -noinput -buildfile build/build.xml ${{ matrix.os_prefix }}-dist -Dversion="${{ github.sha }}"
         env:
-          PROCESSING_APP_SIGNING: secrets.CERTIFICATES_P12 != ''
+          PROCESSING_APP_SIGNING: ${{ secrets.CERTIFICATES_P12 != '' }}
       - name: Add artifact
         uses: actions/upload-artifact@v3
         id: upload
