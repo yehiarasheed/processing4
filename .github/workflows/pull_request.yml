@@ -52,8 +52,6 @@ jobs:
       - name: Setup Ant
         uses: cedx/setup-ant@v3
       - name: Install Certificates for Code Signing
-        env:
-          cert_secret: ${{ secrets.CERTIFICATES_P12 }}
         if: ${{ matrix.os_prefix == 'macos' && secrets.CERTIFICATES_P12 != '' }}
         uses: apple-actions/import-codesign-certs@v3
         with:
