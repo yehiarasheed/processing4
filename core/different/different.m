@@ -18,13 +18,11 @@ JNIEXPORT void JNICALL Java_processing_core_ThinkDifferent_showMenuBar
     [NSApp setPresentationOptions:0];
 }
 
-
 JNIEXPORT void JNICALL Java_processing_core_ThinkDifferent_activateIgnoringOtherApps
 (JNIEnv *env, jclass klass)
 {
     [NSApp activateIgnoringOtherApps:true];
 }
-
 
 JNIEXPORT void JNICALL Java_processing_core_ThinkDifferent_activate
 (JNIEnv *env, jclass klass)
