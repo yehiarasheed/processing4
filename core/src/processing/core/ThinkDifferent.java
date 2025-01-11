@@ -129,6 +129,22 @@ public class ThinkDifferent {
 
   static native public void activate();
 
+  // Used by py5 to bring windows to the front
+  static public void activateSketchWindow() {
+    try {
+      String osVersion = System.getProperty("os.version");
+      int versionNumber = Integer.parseInt(osVersion.split("\\.")[0]);
+
+      if (versionNumber >= 14) {
+        activate();
+      } else if (versionNumber >= 10) {
+        activateIgnoringOtherApps();
+      }
+    } catch (Exception e) {
+      // ignore
+    }
+  }
+
   static {
     final String NATIVE_FILENAME = "libDifferent.jnilib";
     try {
