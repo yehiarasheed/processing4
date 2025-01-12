@@ -124,12 +124,15 @@ public class ThinkDifferent {
 
   static native public void showMenuBar();
 
-  // Used by Python (Jython) Mode to bring windows to the front
+  // deprecated
+  // https://developer.apple.com/documentation/appkit/nsapplication/activate(ignoringotherapps:)
   static native public void activateIgnoringOtherApps();
 
+  // added in macOS 14 (Sonoma)
+  // https://developer.apple.com/documentation/appkit/nsapplication/activate()
   static native public void activate();
 
-  // Used by py5 to bring windows to the front
+  // Used by py5 to bring Sketch to the front
   static public void activateSketchWindow() {
     try {
       String osVersion = System.getProperty("os.version");
@@ -141,7 +144,7 @@ public class ThinkDifferent {
         activateIgnoringOtherApps();
       }
     } catch (Exception e) {
-      // ignore
+      // do nothing
     }
   }
 
