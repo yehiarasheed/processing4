@@ -148,6 +148,8 @@ public class ThinkDifferent {
     } catch (Exception e) {
       return false;
     }
+
+    return false;
   }
 
   static {
