@@ -133,18 +133,20 @@ public class ThinkDifferent {
   static native public void activate();
 
   // Used by py5 to bring Sketch to the front
-  static public void activateSketchWindow() {
+  static public boolean activateSketchWindow() {
     try {
       String osVersion = System.getProperty("os.version");
       int versionNumber = Integer.parseInt(osVersion.split("\\.")[0]);
 
       if (versionNumber >= 14) {
         activate();
+        return true;
       } else if (versionNumber >= 10) {
         activateIgnoringOtherApps();
+        return true;
       }
     } catch (Exception e) {
-      // do nothing
+      return false;
     }
   }
 
