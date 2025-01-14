@@ -12,9 +12,3 @@ include(
     "java:libraries:serial",
     "java:libraries:svg",
 )
-
-buildscript {
-    repositories {
-        mavenCentral()
-    }
-}
