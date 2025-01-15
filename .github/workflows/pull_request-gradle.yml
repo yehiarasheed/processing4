@@ -17,6 +17,9 @@ jobs:
       fail-fast: false
       matrix:
         include:
+          - os: self-hosted
+            os_prefix: linux
+            arch: aarch64
           - os: ubuntu-latest
             os_prefix: linux
             arch: x64

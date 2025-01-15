@@ -15,10 +15,9 @@ jobs:
       fail-fast: false
       matrix:
         include:
-#          # compiling for arm32 needs a self-hosted runner on Raspi OS (32-bit)
-#          - os: self-hosted
-#            os_prefix: linux
-#            arch: arm
+          - os: self-hosted
+            os_prefix: linux
+            arch: aarch64
           - os: ubuntu-latest
             os_prefix: linux
             arch: x64
@@ -31,9 +30,6 @@ jobs:
           - os: macos-latest
             os_prefix: macos
             arch: aarch64
-#          - os: macos-latest
-#            os_prefix: linux
-#            arch: aarch64
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
