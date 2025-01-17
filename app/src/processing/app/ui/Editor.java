@@ -2306,9 +2306,7 @@ public abstract class Editor extends JFrame implements RunnerListener {
 
     // Do this to advance/clear the terminal window / dos prompt / etc.
     // This may be useful especially when 'console.auto_clear' is false.
-    // TODO: use `console.message()` instead of `System.out.println()`?
-    // i.e. for (int i = 0; i < headPadding; i++) console.message("\n", false);
-    for (int i = 0; i < headPadding; i++) System.out.println();
+    for (int i = 0; i < headPadding; i++) console.message("\n", false);
 
     // clear the console on each run, unless the user doesn't want to
     if (Preferences.getBoolean("console.auto_clear")) {
