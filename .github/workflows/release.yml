@@ -59,7 +59,7 @@ jobs:
       matrix:
         include:
           # compiling for arm32 needs a self-hosted runner on Raspi OS (32-bit)
-          - os: self-hosted
+          - os: [self-hosted, linux, ARM]
             os_prefix: linux
             arch: arm
           - os: ubuntu-latest
