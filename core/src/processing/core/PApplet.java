@@ -3679,8 +3679,7 @@ public class PApplet implements PConstants {
 
   /**
    *
-   * Hides the cursor from view. Will not work when running the program in a
-   * web browser or when running in full screen (Present) mode.
+   * Hides the mouse cursor from view.
    *
    * <h3>Advanced</h3>
    * Hide the cursor by creating a transparent image
