@@ -2293,8 +2293,22 @@ public abstract class Editor extends JFrame implements RunnerListener {
     internalCloseRunner();
     statusEmpty();
 
-    // do this to advance/clear the terminal window / dos prompt / etc
-    for (int i = 0; i < 10; i++) System.out.println();
+    int headPadding;
+
+    try {
+      headPadding = Preferences.getInteger("console.head_padding");
+    } catch (NullPointerException e) {
+      // We need to handle this exception to take care of old versions of
+      // preference files, i.e., "defaults.txt" and "preferences.txt" which
+      // may not have the attribute 'console.head_padding'.
+      headPadding = 10;
+    }
+
+    // Do this to advance/clear the terminal window / dos prompt / etc.
+    // This may be useful especially when 'console.auto_clear' is false.
+    // TODO: use `console.message()` instead of `System.out.println()`?
+    // i.e. for (int i = 0; i < headPadding; i++) console.message("\n", false);
+    for (int i = 0; i < headPadding; i++) System.out.println();
 
     // clear the console on each run, unless the user doesn't want to
     if (Preferences.getBoolean("console.auto_clear")) {
