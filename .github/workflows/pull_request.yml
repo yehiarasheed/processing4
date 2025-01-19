@@ -58,6 +58,6 @@ jobs:
         uses: actions/upload-artifact@v3
         id: upload
         with:
-          name: processing-pr${{ github.event.pull_request.number }}-${{github.sha}}-${{ matrix.os_prefix }}-${{ matrix.arch }}-gradle
+          name: processing-pr${{ github.event.pull_request.number }}-${{github.sha}}-${{ matrix.os_prefix }}-${{ matrix.arch }}-ant
           path:  ./build/${{ matrix.os_prefix }}/processing-${{github.sha}}-${{ matrix.os_prefix}}-*
           retention-days: 5
