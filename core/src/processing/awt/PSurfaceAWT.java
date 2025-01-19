@@ -421,9 +421,7 @@ public class PSurfaceAWT extends PSurfaceNone {
       //frame.setVisible(true);  // re-add native resources
     }
     */
-    // Solves #862 - Grey/White bar on right side of sketches
-    frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
-    frame.pack();
+    frame.setLayout(null);
 
     // Need to pass back our new sketchWidth/Height here, because it may have
     // been overridden by numbers we calculated above if fullScreen and/or
@@ -1022,6 +1020,9 @@ public class PSurfaceAWT extends PSurfaceNone {
             //sketch.postWindowMoved(x - currentInsets.left, y - currentInsets.top);
             sketch.postWindowMoved(x, y);  // presumably user wants drawing area
           }
+        }else{
+          // Solves #862 - Grey/White bar on right side of sketches
+          setFrameSize();
         }
       }
 
