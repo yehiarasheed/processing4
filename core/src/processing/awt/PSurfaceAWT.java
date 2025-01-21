@@ -33,8 +33,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
+import javax.swing.*;
 
 import processing.core.PApplet;
 import processing.core.PConstants;
@@ -1021,6 +1020,9 @@ public class PSurfaceAWT extends PSurfaceNone {
             //sketch.postWindowMoved(x - currentInsets.left, y - currentInsets.top);
             sketch.postWindowMoved(x, y);  // presumably user wants drawing area
           }
+        }else{
+          // Solves #862 - Grey/White bar on right side of sketches
+          setFrameSize();
         }
       }
 
