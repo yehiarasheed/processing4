@@ -28,9 +28,13 @@ import java.awt.event.*;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 import javax.swing.*;
 import javax.swing.event.*;
@@ -230,7 +234,17 @@ public class JavaEditor extends Editor {
       }
     });
 
-    return buildFileMenu(new JMenuItem[] { exportApplication });
+    var exportPDEZ = new JMenuItem(Language.text("menu.file.export_pdez"));
+    exportPDEZ.addActionListener(e -> {
+      if (sketch.isUntitled() || sketch.isReadOnly()) {
+        Messages.showMessage("Save First", "Please first save the sketch.");
+      } else {
+        handleExportPDEZ();
+      }
+    });
+
+
+    return buildFileMenu(new JMenuItem[] { exportApplication, exportPDEZ });
   }
 
 
@@ -491,6 +505,52 @@ public class JavaEditor extends Editor {
     }
   }
 
+  /**
+   * Handler for File → Export PDEZ
+   */
+  public void handleExportPDEZ() {
+    if (handleExportCheckModified()) {
+      var sketch = getSketch();
+      var folder = sketch.getFolder().toPath();
+      var target = new File(folder + ".pdez").toPath();
+      if (Files.exists(target)) {
+        try {
+          Platform.deleteFile(target.toFile());
+        } catch (IOException e) {
+          Messages.showError("Export Error", "Could not delete existing file: " + target, e);
+        }
+      }
+
+      try (var zs = new ZipOutputStream(Files.newOutputStream(target))) {
+        Files.walk(folder)
+                .filter(path -> !Files.isDirectory(path))
+                .forEach(path -> {
+                  var zipEntry = new ZipEntry(folder.getParent().relativize(path).toString());
+                  try {
+                    zs.putNextEntry(zipEntry);
+                    Files.copy(path, zs);
+                    zs.closeEntry();
+                  } catch (IOException e) {
+                    throw new RuntimeException(e);
+                  }
+                });
+      } catch (IOException e) {
+        throw new RuntimeException(e);
+      }
+      if (Desktop.isDesktopSupported()) {
+        var desktop = Desktop.getDesktop();
+        if (desktop.isSupported(Desktop.Action.BROWSE_FILE_DIR)) {
+          desktop.browseFileDirectory(target.toFile());
+        } else {
+          try {
+              desktop.open(target.getParent().toFile());
+          } catch (IOException e) {
+              throw new RuntimeException(e);
+          }
+        }
+      }
+    }
+  }
 
   /**
    * Checks to see if the sketch has been modified, and if so,
