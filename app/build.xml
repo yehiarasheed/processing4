@@ -4,14 +4,14 @@
   <!-- Current version of Ant that works with Processing -->
   <!-- (Cannot use ant.version as the name of the property
        because that conflicts with the built-in variable) -->
-  <property name="ant.version.num" value="1.10.12" />
+  <property name="ant.version.num" value="1.10.15" />
   <!-- the .zip file to be downloaded -->
   <property name="ant.zip" value="apache-ant-${ant.version.num}-bin.zip" />
 
   <!-- TODO implement a fallback URL that points to a location
        on download.processing.org so it's available forever. -->
   <property name="ant.url"
-            value="https://archive.apache.org/dist/ant/binaries/${ant.zip}" />
+            value="https://dlcdn.apache.org//ant/binaries/${ant.zip}" />
 
   <fileset id="ant.files" dir="lib">
     <include name="ant.jar" />
