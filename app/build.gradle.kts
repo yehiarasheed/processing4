@@ -59,6 +59,8 @@ compose.desktop {
                 }
                 entitlementsFile.set(project.file("entitlements.plist"))
                 runtimeEntitlementsFile.set(project.file("entitlements.plist"))
+                // Allow swing to use the system look and feel
+                jvmArgs("-Dapple.awt.application.appearance=system")
             }
             windows{
                 iconFile = project.file("../build/windows/processing.ico")
@@ -67,12 +69,9 @@ compose.desktop {
             }
             linux {
                 iconFile = project.file("../build/linux/processing.png")
+                jvmArgs("-Dawt.useSystemAAFontSettings=on")
             }
 
-            // Allow swing to use the system look and feel
-            jvmArgs(
-                "-Dapple.awt.application.appearance=system"
-            )
             appResourcesRootDir.set(layout.buildDirectory.dir("resources-bundled"))
         }
     }
