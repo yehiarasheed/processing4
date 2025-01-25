@@ -2,6 +2,7 @@ import com.vanniktech.maven.publish.SonatypeHost
 
 plugins {
     id("java")
+    kotlin("jvm") version libs.versions.kotlin
     alias(libs.plugins.mavenPublish)
 }
 

@@ -15,7 +15,7 @@ plugins{
 group = rootProject.group
 tasks.withType<JavaExec> {
     systemProperty("processing.version", version)
-    systemProperty("processing.revision", "1296")
+    systemProperty("processing.revision", "1300")
     systemProperty("processing.contributions.source", "https://contributions-preview.processing.org/contribs.txt")
     systemProperty("processing.download.page", "https://processing.org/download/")
     systemProperty("processing.download.latest", "https://processing.org/download/latest.txt")
@@ -49,7 +49,7 @@ compose.desktop {
             modules("jdk.jdi", "java.compiler")
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
             packageName = "Processing"
-            packageVersion = rootProject.version as String
+            packageVersion = rootProject.version.toString()
 
             macOS{
                 bundleID = "org.processing.app"
@@ -78,14 +78,12 @@ compose.desktop {
 }
 
 dependencies {
+    implementation(project(":core"))
+
     implementation(libs.flatlaf)
 
     implementation(libs.jna)
     implementation(libs.jnaplatform)
-
-    implementation(project(":core"))
-    runtimeOnly(project(":java"))
-    implementation(project(":java:preprocessor"))
 
     implementation(compose.runtime)
     implementation(compose.foundation)
@@ -104,10 +102,19 @@ dependencies {
 // Most of these are shims to be compatible with the old build system
 // They should be removed in the future, as we work towards making things more Gradle-native
 tasks.register<Copy>("copyCore"){
-    dependsOn(project(":core").tasks.jar)
-    from(project(":core").layout.buildDirectory.dir("libs"))
-    from(project(":core").configurations.runtimeClasspath)
+    val project = project(":core")
+    dependsOn(project.tasks.jar)
+    from(project.layout.buildDirectory.dir("libs"))
+    from(project.configurations.runtimeClasspath)
     into(layout.buildDirectory.dir("resources-bundled/common/core/library"))
+}
+tasks.register<Copy>("copyJava"){
+    val project = project(":java")
+    dependsOn(project.tasks.jar)
+    from(project.layout.buildDirectory.dir("libs"))
+    from(project.configurations.runtimeClasspath)
+    into(layout.buildDirectory.dir("resources-bundled/common/modes/java/mode"))
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
 tasks.register<Download>("downloadJDK") {
     val os: OperatingSystem = DefaultNativePlatform.getCurrentOperatingSystem()
@@ -124,7 +131,8 @@ tasks.register<Download>("downloadJDK") {
         os.isMacOsX -> "mac"
         else -> "linux"
     }
-    val javaVersion = "17"
+
+    val javaVersion = System.getProperty("java.version").split(".")[0]
     val imageType = "jdk"
 
     src("https://api.adoptium.net/v3/binary/latest/" +
@@ -142,7 +150,7 @@ tasks.register<Copy>("unzipJDK") {
     val dl = tasks.findByPath("downloadJDK") as Download
     dependsOn(dl)
 
-    val os: OperatingSystem = DefaultNativePlatform.getCurrentOperatingSystem()
+    val os = DefaultNativePlatform.getCurrentOperatingSystem()
     val archive = if (os.isWindows) {
         zipTree(dl.dest)
     } else {
@@ -215,7 +223,7 @@ tasks.register<Copy>("renameWindres") {
     into(dir)
 }
 afterEvaluate {
-    tasks.findByName("prepareAppResources")?.dependsOn("unzipJDK","copyShared", "copyCore", "unzipExamples","renameWindres", "copyJavaMode")
+    tasks.findByName("prepareAppResources")?.dependsOn("unzipJDK","copyShared", "copyCore", "copyJava", "unzipExamples","renameWindres", "copyJavaMode")
     tasks.register("setExecutablePermissions") {
         description = "Sets executable permissions on binaries in Processing.app resources"
         group = "compose desktop"

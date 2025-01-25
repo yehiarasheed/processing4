@@ -1,5 +1,5 @@
 group = "org.processing"
-version = "4.3.3"
+version = "4.4.0"
 
 plugins {
     kotlin("jvm") version libs.versions.kotlin apply false
