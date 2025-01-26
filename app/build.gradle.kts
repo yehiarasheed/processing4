@@ -68,7 +68,10 @@ compose.desktop {
                 upgradeUuid = "89d8d7fe-5602-4b12-ba10-0fe78efbd602"
             }
             linux {
+                appCategory = "Programming"
+                menuGroup = "Processing"
                 iconFile = project.file("../build/linux/processing.png")
+                // Fix fonts on some Linux distributions
                 jvmArgs("-Dawt.useSystemAAFontSettings=on")
             }
 

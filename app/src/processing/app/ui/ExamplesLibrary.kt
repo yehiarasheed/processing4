@@ -5,21 +5,24 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 
-fun ExamplesLibrary(){
+class ExamplesLibrary{
+    companion object{
+        @JvmStatic
+        fun main(args: Array<String>) = application {
+            val active = remember { mutableStateOf(true) }
+            if(!active.value){
+                Window(onCloseRequest = ::exitApplication) {
 
-}
-
-fun main() = application {
-    val active = remember { mutableStateOf(true) }
-    if(!active.value){
-        Window(onCloseRequest = ::exitApplication) {
-
+                }
+                return@application
+            }
+            Window(
+                onCloseRequest = { active.value = false },
+            ) {
+                ExamplesLibrary()
+            }
         }
-        return@application
     }
-    Window(
-        onCloseRequest = { active.value = false },
-    ) {
-        ExamplesLibrary()
-    }
+
 }
+
