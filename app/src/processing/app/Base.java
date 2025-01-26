@@ -44,7 +44,6 @@ import processing.app.ui.Toolkit;
 import processing.core.*;
 import processing.data.StringList;
 
-
 /**
  * The base class for the main processing application.
  * Primary role of this class is for platform identification and
@@ -1367,6 +1366,11 @@ public class Base {
    * @param schemeUri the full URI, including pde://
    */
   public Editor handleScheme(String schemeUri) {
+    var result = Schema.handleSchema(schemeUri, this);
+    if (result != null) {
+      return result;
+    }
+
     String location = schemeUri.substring(6);
     if (location.length() > 0) {
       // if it leads with a slash, then it's a file url
