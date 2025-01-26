@@ -281,6 +281,9 @@ Add yourself to the contributors list [here](https://github.com/processing/proce
       <td align="center" valign="top" width="16.66%"><a href="http://d.hatena.ne.jp/junology/"><img src="https://avatars.githubusercontent.com/u/1933073?v=4?s=120" width="120px;" alt="Junology"/><br /><sub><b>Junology</b></sub></a><br /><a href="https://github.com/processing/processing4/commits?author=Junology" title="Code">💻</a></td>
       <td align="center" valign="top" width="16.66%"><a href="https://github.com/twisst"><img src="https://avatars.githubusercontent.com/u/2244463?v=4?s=120" width="120px;" alt="Jaap Meijers"/><br /><sub><b>Jaap Meijers</b></sub></a><br /><a href="https://github.com/processing/processing4/commits?author=twisst" title="Documentation">📖</a></td>
     </tr>
+    <tr>
+      <td align="center" valign="top" width="16.66%"><a href="https://github.com/xinemata"><img src="https://avatars.githubusercontent.com/u/9159424?v=4?s=120" width="120px;" alt="Xin Xin"/><br /><sub><b>Xin Xin</b></sub></a><br /><a href="#eventOrganizing-xinemata" title="Event Organizing">📋</a> <a href="#ideas-xinemata" title="Ideas, Planning, & Feedback">🤔</a></td>
+    </tr>
   </tbody>
 </table>
 
