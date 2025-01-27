@@ -1438,6 +1438,15 @@
         "eventOrganizing",
         "ideas"
       ]
+    },
+    {
+      "login": "tracerstar",
+      "name": "Benjamin Fox",
+      "avatar_url": "https://avatars.githubusercontent.com/u/234190?v=4",
+      "profile": "http://benjaminfoxstudios.com",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "repoType": "github",
