@@ -2346,7 +2346,7 @@ public class PShape implements PConstants {
    * @see PShape#setVertex(int, float, float)
    */
   public int getVertexCount() {
-    if (family == GROUP || family == PRIMITIVE) {
+    if (family == PRIMITIVE) {
       PGraphics.showWarning(NO_VERTICES_ERROR);
     }
     return vertexCount;

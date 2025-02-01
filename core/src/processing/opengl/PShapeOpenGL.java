@@ -1635,17 +1635,23 @@ public class PShapeOpenGL extends PShape {
 
   @Override
   public int getVertexCount() {
-    if (family == GROUP) return 0; // Group shapes don't have vertices
-    else {
+     int count = 0;
+    // If the shape is a group, recursively count the vertices of its children
+    if (family == GROUP) {
+      // Iterate through all the child shapes and count their vertices
+      for (int i = 0; i < getChildCount(); i++) {
+        count += getChild(i).getVertexCount();  // Recursive call to get the vertex count of child shapes
+      }
+    } else {
       if (root.tessUpdate) {
         if (root.tessKind == TRIANGLES) {
-          return lastPolyVertex - firstPolyVertex + 1;
+          count += lastPolyVertex - firstPolyVertex + 1;
         } else if (root.tessKind == LINES) {
-          return lastLineVertex - firstLineVertex + 1;
+          count += lastLineVertex - firstLineVertex + 1;
         } else if (root.tessKind == POINTS) {
-          return lastPointVertex - firstPointVertex + 1;
+          count += lastPointVertex - firstPointVertex + 1;
         } else {
-          return 0;
+          count += 0; // Handle other cases
         }
       } else {
         if (family == PRIMITIVE || family == PATH) {
@@ -1653,10 +1659,12 @@ public class PShapeOpenGL extends PShape {
           // tessellation
           updateTessellation();
         }
-        return inGeo.vertexCount;
+        count += inGeo.vertexCount;
       }
     }
+    return count;
   }
+
 
 
   @Override
