@@ -62,7 +62,7 @@ jobs:
         # env:
         #   PROCESSING_APP_SIGNING: ${{ secrets.CERTIFICATES_P12 != '' }}
       - name: Add artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         id: upload
         with:
           name: processing-${{github.sha}}${{ matrix.os_prefix }}-${{ matrix.arch }}
