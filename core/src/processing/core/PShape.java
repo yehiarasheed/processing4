@@ -2345,8 +2345,18 @@ public class PShape implements PConstants {
    * @see PShape#getVertex(int)
    * @see PShape#setVertex(int, float, float)
    */
+  public int getVertexCount(boolean includeChildren) {
+    if(!includeChildren && family == GROUP){
+      PGraphics.showWarning(NO_VERTICES_ERROR);
+    }
+    else if (family == PRIMITIVE) {
+      PGraphics.showWarning(NO_VERTICES_ERROR);
+    }
+    return vertexCount;
+  }
+
   public int getVertexCount() {
-    if (family == PRIMITIVE) {
+    if(family == GROUP || family == PRIMITIVE){
       PGraphics.showWarning(NO_VERTICES_ERROR);
     }
     return vertexCount;

@@ -1632,15 +1632,23 @@ public class PShapeOpenGL extends PShape {
 
   // Setters/getters of individual vertices
 
-
+  //for taking the default value as false , so user don't have to explicitly enter false
+  // if user don't want to include children vertex count
   @Override
   public int getVertexCount() {
+    return getVertexCount(false);  // Calls the main method with default false
+  }
+  @Override
+  public int getVertexCount(boolean includeChildren) {
      int count = 0;
     // If the shape is a group, recursively count the vertices of its children
     if (family == GROUP) {
+      if(!includeChildren){
+        return 0;
+      }
       // Iterate through all the child shapes and count their vertices
       for (int i = 0; i < getChildCount(); i++) {
-        count += getChild(i).getVertexCount();  // Recursive call to get the vertex count of child shapes
+        count += getChild(i).getVertexCount(true);  // Recursive call to get the vertex count of child shapes
       }
     } else {
       if (root.tessUpdate) {
@@ -1664,7 +1672,6 @@ public class PShapeOpenGL extends PShape {
     }
     return count;
   }
-
 
 
   @Override
