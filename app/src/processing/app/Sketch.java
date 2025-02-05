@@ -659,11 +659,17 @@ public class Sketch {
       return;
     }
 
+    if(currentIndex == 0){
+      JOptionPane.showMessageDialog(editor,
+                                    Language.interpolate("warn.delete.sketch_last", getName()),
+                                    Language.text("warn.delete"),
+                                    JOptionPane.ERROR_MESSAGE);
+      return;
+    }
+
     // confirm deletion with user, yes/no
     Object[] options = { Language.text("prompt.ok"), Language.text("prompt.cancel") };
-    String prompt = (currentIndex == 0) ?
-      Language.interpolate("warn.delete.sketch_folder", getName()) :
-      Language.interpolate("warn.delete.sketch_file", current.getPrettyName());
+    String prompt = Language.interpolate("warn.delete.sketch_file", current.getPrettyName());
     int result = JOptionPane.showOptionDialog(editor,
                                               prompt,
                                               Language.text("warn.delete"),
@@ -672,6 +678,7 @@ public class Sketch {
                                               null,
                                               options,
                                               options[0]);
+    // TODO: Remove the code to remove the entire sketch folder
     if (result == JOptionPane.YES_OPTION) {
       if (currentIndex == 0) {  // delete the entire sketch
         // need to unset all the modified flags, otherwise tries
