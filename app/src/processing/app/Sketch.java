@@ -660,10 +660,18 @@ public class Sketch {
     }
 
     if(currentIndex == 0){
-      JOptionPane.showMessageDialog(editor,
-                                    Language.interpolate("warn.delete.sketch_last", getName()),
-                                    Language.text("warn.delete"),
-                                    JOptionPane.ERROR_MESSAGE);
+      Object[] options = { Language.text("menu.sketch.show_sketch_folder"), Language.text("prompt.cancel") };
+      int result = JOptionPane.showOptionDialog(editor,
+              Language.interpolate("warn.delete.sketch_last", getName()),
+              Language.text("warn.delete"),
+              JOptionPane.YES_NO_OPTION,
+              JOptionPane.ERROR_MESSAGE,
+              null,
+              options,
+              options[1]);
+      if (result == JOptionPane.YES_OPTION) {
+        Platform.openFolder(folder);
+      }
       return;
     }
 
