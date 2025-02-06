@@ -7,6 +7,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.ui.graphics.Color
+import processing.app.LocalPreferences
+import processing.app.PreferencesProvider
 import java.io.InputStream
 import java.util.Properties
 
@@ -28,31 +30,33 @@ fun ProcessingTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable() () -> Unit
 ) {
+    PreferencesProvider {
+        val preferences = LocalPreferences.current
+        val theme = Theme(preferences.getProperty("theme"))
+        val colors = Colors(
+            primary = theme.getColor("editor.gradient.top"),
+            primaryVariant = theme.getColor("toolbar.button.pressed.field"),
+            secondary = theme.getColor("editor.gradient.bottom"),
+            secondaryVariant = theme.getColor("editor.scrollbar.thumb.pressed.color"),
+            background = theme.getColor("editor.bgcolor"),
+            surface = theme.getColor("editor.bgcolor"),
+            error = theme.getColor("status.error.bgcolor"),
+            onPrimary = theme.getColor("toolbar.button.enabled.field"),
+            onSecondary = theme.getColor("toolbar.button.enabled.field"),
+            onBackground = theme.getColor("editor.fgcolor"),
+            onSurface = theme.getColor("editor.fgcolor"),
+            onError = theme.getColor("status.error.fgcolor"),
+            isLight = theme.getProperty("laf.mode").equals("light")
+        )
 
-    val theme = Theme()
-    val colors = Colors(
-        primary = theme.getColor("editor.gradient.top"),
-        primaryVariant = theme.getColor("toolbar.button.pressed.field"),
-        secondary =  theme.getColor("editor.gradient.bottom"),
-        secondaryVariant =  theme.getColor("editor.scrollbar.thumb.pressed.color"),
-        background =  theme.getColor("editor.bgcolor"),
-        surface =  theme.getColor("editor.bgcolor"),
-        error =  theme.getColor("status.error.bgcolor"),
-        onPrimary =  theme.getColor("toolbar.button.pressed.field"),
-        onSecondary =  theme.getColor("toolbar.button.pressed.field"),
-        onBackground =  theme.getColor("editor.fgcolor"),
-        onSurface =  theme.getColor("editor.fgcolor"),
-        onError =  theme.getColor("status.error.fgcolor"),
-        isLight = theme.getProperty("laf.mode").equals("light")
-    )
-
-    CompositionLocalProvider(LocalTheme provides theme) {
-        LocaleProvider {
-            MaterialTheme(
-                colors = colors,
-                typography = Typography,
-                content = content
-            )
+        CompositionLocalProvider(LocalTheme provides theme) {
+            LocaleProvider {
+                MaterialTheme(
+                    colors = colors,
+                    typography = Typography,
+                    content = content
+                )
+            }
         }
     }
 }

@@ -122,7 +122,7 @@ class WelcomeToBeta {
                         }) {
                             Text(
                                 text = locale["beta.button"],
-                                color = Color.White
+                                color = colors.onPrimary
                             )
                         }
                     }
