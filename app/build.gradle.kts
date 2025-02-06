@@ -38,6 +38,9 @@ sourceSets{
         kotlin{
             srcDirs("src")
         }
+        resources{
+            srcDirs("resources", listOf("languages", "fonts", "theme").map { "../build/shared/lib/$it" })
+        }
     }
 }
 

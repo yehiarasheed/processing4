@@ -5,6 +5,8 @@ import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.MaterialTheme.colors
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
@@ -27,10 +29,16 @@ import androidx.compose.ui.window.WindowPosition
 import androidx.compose.ui.window.application
 import androidx.compose.ui.window.rememberWindowState
 import com.formdev.flatlaf.util.SystemInfo
+import processing.app.ui.theme.LocalLocale
+import processing.app.ui.theme.LocalTheme
+import processing.app.ui.theme.Locale
+import processing.app.ui.theme.ProcessingTheme
 import java.awt.Cursor
 import java.awt.Dimension
 import java.awt.event.KeyAdapter
 import java.awt.event.KeyEvent
+import java.io.InputStream
+import java.util.Properties
 import javax.swing.JFrame
 import javax.swing.SwingUtilities
 
@@ -38,12 +46,7 @@ import javax.swing.SwingUtilities
 class WelcomeToBeta {
     companion object{
         val windowSize = Dimension(400, 200)
-        val windowTitle = "Welcome to Beta"
-        val title = "Welcome to the Processing Beta"
-        val message = """Thank you for trying out the new version of Processing. We’re very grateful!
-
-Please report any bugs on the forums."""
-        val buttonText = "Thank you"
+        val windowTitle = Locale()["beta.window.title"]
 
         @JvmStatic
         fun showWelcomeToBeta() {
@@ -57,8 +60,10 @@ Please report any bugs on the forums."""
                     contentPane.add(ComposePanel().apply {
                         size = windowSize
                         setContent {
-                            Box(modifier = Modifier.padding(top = if(mac) 22.dp else 0.dp)) {
-                                welcomeToBeta(close)
+                            ProcessingTheme {
+                                Box(modifier = Modifier.padding(top = if (mac) 22.dp else 0.dp)) {
+                                    welcomeToBeta(close)
+                                }
                             }
                         }
                     })
@@ -79,14 +84,12 @@ Please report any bugs on the forums."""
 
         @Composable
         fun welcomeToBeta(close: () -> Unit = {}) {
-            // TODO: Add fonts and colors
-
             Row(
                 modifier = Modifier
                     .padding(20.dp, 10.dp)
-                    .size(windowSize.width.dp, windowSize.height.dp)
-                ,
-                horizontalArrangement = Arrangement.spacedBy(20.dp)
+                    .size(windowSize.width.dp, windowSize.height.dp),
+                horizontalArrangement = Arrangement
+                    .spacedBy(20.dp)
             ){
                 Image(
                     painter = painterResource("logo.svg"),
@@ -97,24 +100,30 @@ Please report any bugs on the forums."""
                 )
                 Column(
                     modifier = Modifier
-                            .fillMaxHeight(),
-                    verticalArrangement = Arrangement.spacedBy(20.dp, alignment = Alignment.CenterVertically)
+                        .fillMaxHeight(),
+                    verticalArrangement = Arrangement
+                        .spacedBy(
+                            MaterialTheme.typography.subtitle1.lineHeight.value.dp,
+                            alignment = Alignment.CenterVertically
+                        )
                 ) {
+                    val locale = LocalLocale.current
                     Text(
-                        title,
-                        fontSize = 17.sp,
-                        fontWeight = FontWeight.SemiBold
+                        text = locale["beta.title"],
+                        style = MaterialTheme.typography.subtitle1,
                     )
                     Text(
-                        message,
-                        fontSize = 13.sp
+                        text = locale["beta.message"]
                     )
                     Row {
                         Spacer(modifier = Modifier.weight(1f))
                         PDEButton(onClick = {
                             close()
                         }) {
-                            Text(buttonText, color = Color.White)
+                            Text(
+                                text = locale["beta.button"],
+                                color = Color.White
+                            )
                         }
                     }
                 }
@@ -123,16 +132,18 @@ Please report any bugs on the forums."""
         @OptIn(ExperimentalComposeUiApi::class)
         @Composable
         fun PDEButton(onClick: () -> Unit, content: @Composable BoxScope.() -> Unit) {
+            val theme = LocalTheme.current
+
             var hover by remember { mutableStateOf(false) }
             var clicked by remember { mutableStateOf(false) }
             val offset by animateFloatAsState(if (hover) -5f else 5f)
-            val color by animateColorAsState(if(clicked) Color.Black else Color.Blue)
+            val color by animateColorAsState(if(clicked) colors.primaryVariant else colors.primary)
 
             Box(modifier = Modifier.padding(end = 5.dp, top = 5.dp)) {
                 Box(
                     modifier = Modifier
                         .offset((-offset).dp, (offset).dp)
-                        .background(Color.Gray)
+                        .background(theme.getColor("toolbar.button.pressed.field"))
                         .matchParentSize()
                 )
                 Box(
@@ -170,12 +181,13 @@ Please report any bugs on the forums."""
                 )
 
                 Window(onCloseRequest = ::exitApplication, state = windowState, title = windowTitle) {
-                    Surface(color = Color.White) {
-                        welcomeToBeta{
-                            exitApplication()
+                    ProcessingTheme {
+                        Surface(color = colors.background) {
+                            welcomeToBeta {
+                                exitApplication()
+                            }
                         }
                     }
-
                 }
             }
         }
