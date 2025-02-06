@@ -91,9 +91,10 @@ class WelcomeToBeta {
                 horizontalArrangement = Arrangement
                     .spacedBy(20.dp)
             ){
+                val locale = LocalLocale.current
                 Image(
                     painter = painterResource("logo.svg"),
-                    contentDescription = "Processing Logo",
+                    contentDescription = locale["beta.logo"],
                     modifier = Modifier
                         .align(Alignment.CenterVertically)
                         .size(100.dp, 100.dp)
@@ -107,7 +108,6 @@ class WelcomeToBeta {
                             alignment = Alignment.CenterVertically
                         )
                 ) {
-                    val locale = LocalLocale.current
                     Text(
                         text = locale["beta.title"],
                         style = MaterialTheme.typography.subtitle1,

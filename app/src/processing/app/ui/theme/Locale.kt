@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.compositionLocalOf
 import processing.app.LocalPreferences
+import processing.app.Messages
 import processing.app.Platform
 import processing.app.PlatformStart
 import processing.app.watchFile
@@ -21,10 +22,12 @@ class Locale(language: String = "") : Properties() {
     }
 
     @Deprecated("Use get instead", ReplaceWith("get(key)"))
-    override fun getProperty(key: String?): String {
-        return super.getProperty(key)
+    override fun getProperty(key: String?, default: String): String {
+        val value = super.getProperty(key, default)
+        if(value == default) Messages.log("Missing translation for $key")
+        return value
     }
-    operator fun get(key: String): String = getProperty(key)
+    operator fun get(key: String): String = getProperty(key, key)
 }
 val LocalLocale = compositionLocalOf { Locale() }
 @Composable
