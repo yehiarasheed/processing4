@@ -48,6 +48,10 @@ compose.desktop {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
             packageName = "Processing"
             packageVersion = rootProject.version.toString()
+            fileAssociation("pde", "Processing Source Code", "application/x-processing")
+            fileAssociation("pyde", "Processing Python Source Code", "application/x-processing")
+            fileAssociation("pdez", "Processing Sketch Bundle", "application/x-processing")
+            fileAssociation("pdex", "Processing Contribution Bundle", "application/x-processing")
 
             macOS{
                 bundleID = "org.processing.app"
