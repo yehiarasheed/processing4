@@ -13,14 +13,6 @@ plugins{
 }
 
 group = rootProject.group
-tasks.withType<JavaExec> {
-    systemProperty("processing.version", version)
-    systemProperty("processing.revision", "1300")
-    systemProperty("processing.contributions.source", "https://contributions-preview.processing.org/contribs.txt")
-    systemProperty("processing.download.page", "https://processing.org/download/")
-    systemProperty("processing.download.latest", "https://processing.org/download/latest.txt")
-}
-
 
 repositories{
     mavenCentral()
@@ -41,6 +33,15 @@ sourceSets{
 
 compose.desktop {
     application {
+        jvmArgs(*listOf(
+            Pair("processing.version", version),
+            Pair("processing.revision", "1300"),
+            Pair("processing.contributions.source", "https://contributions-preview.processing.org/contribs.txt"),
+            Pair("processing.download.page", "https://processing.org/download/"),
+            Pair("processing.download.latest", "https://processing.org/download/latest.txt"),
+            Pair("processing.tutorials", "https://processing.org/tutorials/"),
+        ).map { "-D${it.first}=${it.second}" }.toTypedArray())
+
         mainClass = "processing.app.ui.Start"
 
         nativeDistributions{
