@@ -64,7 +64,7 @@ For licensing information about the Processing website see the [processing-websi
 
 Copyright (c) 2015-now The Processing Foundation
 
-## All Contributors List
+## Contributors
 
 Add yourself to the contributors list [here](https://github.com/processing/processing4-carbon-aug-19/issues/839)!
 
