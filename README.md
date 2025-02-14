@@ -38,6 +38,7 @@ For a quick start:
 1. Fork and clone the repository
 1. Open it in IntelliJ IDEA
 1. Wait for Gradle to sync
+1. Next to the run Button, select the `Processing` Configuration 
 1. Hit Run
 
 For more information and detailed instructions, follow our [How to Build Processing](BUILD.md) guide.
