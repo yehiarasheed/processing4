@@ -285,6 +285,7 @@ Add yourself to the contributors list [here](https://github.com/processing/proce
       <td align="center" valign="top" width="16.66%"><a href="https://github.com/xinemata"><img src="https://avatars.githubusercontent.com/u/9159424?v=4?s=120" width="120px;" alt="Xin Xin"/><br /><sub><b>Xin Xin</b></sub></a><br /><a href="#eventOrganizing-xinemata" title="Event Organizing">📋</a> <a href="#ideas-xinemata" title="Ideas, Planning, & Feedback">🤔</a></td>
       <td align="center" valign="top" width="16.66%"><a href="http://benjaminfoxstudios.com"><img src="https://avatars.githubusercontent.com/u/234190?v=4?s=120" width="120px;" alt="Benjamin Fox"/><br /><sub><b>Benjamin Fox</b></sub></a><br /><a href="https://github.com/processing/processing4/commits?author=tracerstar" title="Code">💻</a></td>
       <td align="center" valign="top" width="16.66%"><a href="https://github.com/e1dem"><img src="https://avatars.githubusercontent.com/u/32488297?v=4?s=120" width="120px;" alt="e1dem"/><br /><sub><b>e1dem</b></sub></a><br /><a href="https://github.com/processing/processing4/commits?author=e1dem" title="Code">💻</a></td>
+      <td align="center" valign="top" width="16.66%"><a href="https://github.com/inteqam"><img src="https://avatars.githubusercontent.com/u/104833943?v=4?s=120" width="120px;" alt="Aditya Chaudhary"/><br /><sub><b>Aditya Chaudhary</b></sub></a><br /><a href="https://github.com/processing/processing4/commits?author=inteqam" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
