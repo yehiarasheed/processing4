@@ -46,7 +46,7 @@ compose.desktop {
         ).map { "-D${it.first}=${it.second}" }.toTypedArray())
 
         nativeDistributions{
-            modules("jdk.jdi", "java.compiler")
+            modules("jdk.jdi", "java.compiler", "jdk.accessibility")
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
             packageName = "Processing"
 
