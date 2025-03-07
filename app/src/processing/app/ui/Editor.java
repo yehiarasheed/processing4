@@ -1936,6 +1936,8 @@ public abstract class Editor extends JFrame implements RunnerListener {
    * <p>If {@code moveUp} is true, the selected lines are moved up. If false, they move down.</p>
    * <p>This method ensures proper selection updates and handles edge cases like moving
    * the first or last line.</p>
+   * <p>This operation is undo/redoable, allowing the user to revert the action using
+   * {@code Ctrl/Cmd + Z} (Undo) and redo with {@code Ctrl/Cmd + Y} (Redo).</p>
    *
    * @param moveUp {@code true} to move the selection up, {@code false} to move it down.
    */
@@ -2005,7 +2007,7 @@ public abstract class Editor extends JFrame implements RunnerListener {
               : textarea.getLineStopOffset(stopLine); // Prevent out-of-bounds
     }
 
-    textarea.select(newSelectionStart, newSelectionEnd);
+    SwingUtilities.invokeLater(() -> textarea.select(newSelectionStart, newSelectionEnd));
     stopCompoundEdit();
   }
 
