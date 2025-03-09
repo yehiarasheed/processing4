@@ -143,14 +143,27 @@ tasks.register<Exec>("packageCustomDmg"){
     )
 }
 
+tasks.register<Exec>("packageCustomMsi"){
+    workingDir = file("windows")
+    commandLine(
+        "dotnet",
+        "build",
+        "/p:Platform=x64"
+    )
+}
+
 afterEvaluate{
     tasks.named("packageDmg").configure{
         dependsOn("packageCustomDmg")
         group = "compose desktop"
         actions = emptyList()
     }
+    tasks.named("packageMsi").configure{
+        dependsOn("packageCustomMsi")
+        group = "compose desktop"
+        actions = emptyList()
+    }
 }
-
 
 
 // LEGACY TASKS
