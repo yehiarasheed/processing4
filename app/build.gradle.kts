@@ -144,6 +144,8 @@ tasks.register<Exec>("packageCustomDmg"){
 }
 
 tasks.register<Exec>("packageCustomMsi"){
+    onlyIf { org.gradle.internal.os.OperatingSystem.current().isWindows }
+    dependsOn("createDistributable")
     workingDir = file("windows")
     group = "compose desktop"
 
