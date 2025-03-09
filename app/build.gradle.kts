@@ -109,9 +109,11 @@ tasks.compileJava{
 }
 
 tasks.register<Exec>("installCreateDmg") {
-    commandLine("brew", "install", "--quiet", "create-dmg")
+    onlyIf { org.gradle.internal.os.OperatingSystem.current().isMacOsX }
+    commandLine("arch", "-arm64", "brew", "install", "--quiet", "create-dmg")
 }
 tasks.register<Exec>("packageCustomDmg"){
+    onlyIf { org.gradle.internal.os.OperatingSystem.current().isMacOsX }
     group = "compose desktop"
 
     val distributable = tasks.named<AbstractJPackageTask>("createDistributable").get()
