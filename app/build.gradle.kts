@@ -145,10 +145,13 @@ tasks.register<Exec>("packageCustomDmg"){
 
 tasks.register<Exec>("packageCustomMsi"){
     workingDir = file("windows")
+    group = "compose desktop"
+
     commandLine(
         "dotnet",
         "build",
-        "/p:Platform=x64"
+        "/p:Platform=x64",
+        "/p:DefineConstants=\"Version=$version;\""
     )
 }
 

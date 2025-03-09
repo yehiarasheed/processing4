@@ -1,5 +1,5 @@
 <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
-  <Package Name="Processing" Manufacturer="Processing Foundation" Version="0.0.1" UpgradeCode="34577f3b-7cbe-4c5e-827d-5fe5ce9d371c">
+  <Package Name="Processing" Manufacturer="Processing Foundation" Version="$(Version)" UpgradeCode="34577f3b-7cbe-4c5e-827d-5fe5ce9d371c">
     <Icon Id="icon.ico" SourceFile="..\..\build\windows\processing.ico" />
     <Property Id="ARPPRODUCTICON" Value="icon.ico" />
 
@@ -10,7 +10,7 @@
     <WixVariable Id="WixUILicenseRtf" Value="license.rtf" />
     <WixVariable Id="WixUIDialogBmp" Value="background.png" />
     <WixVariable Id="WixUIBannerBmp" Value="banner.png" />
-    <Feature Id="MainApplication" Title="Main Application" Level="1">
+    <Feature Id="MainApplication" Title="Processing" Level="1">
         <Files Include="..\build\compose\binaries\main\app\Processing\**" />
         <ComponentRef Id="ApplicationShortcut" />
     </Feature>
