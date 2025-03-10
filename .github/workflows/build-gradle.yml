@@ -41,6 +41,12 @@ jobs:
           architecture: ${{ matrix.arch }}
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
+      - name: Install Snapcraft
+        if: runner.os == 'Linux'
+        uses: samuelmeuli/action-snapcraft@v3
+      - name: Install LXD
+        if: runner.os == 'Linux'
+        uses: canonical/setup-lxd@main
       - name: Build with Gradle
         run: ./gradlew packageDistributionForCurrentOS
       - name: Add instructions
@@ -56,4 +62,5 @@ jobs:
             ./app/build/compose/binaries/main/dmg/INSTRUCTIONS_FOR_TESTING.txt
             ./app/build/compose/binaries/main/msi/Processing-*.msi
             ./app/build/compose/binaries/main/deb/processing*.deb
+            ./app/build/compose/binaries/main/processing*.snap
           retention-days: 1
