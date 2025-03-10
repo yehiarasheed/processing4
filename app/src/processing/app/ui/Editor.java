@@ -1944,6 +1944,15 @@ public abstract class Editor extends JFrame implements RunnerListener {
    */
   public void handleMoveLines(boolean moveUp) {
     startCompoundEdit();
+    boolean isSelected = false;
+
+    if(textarea.isSelectionActive())
+      isSelected = true;
+
+    int caretPos = textarea.getCaretPosition();
+    int currentLine = textarea.getCaretLine();
+    int lineStart = textarea.getLineStartOffset(currentLine);
+    int column = caretPos - lineStart;
 
     int startLine = textarea.getSelectionStartLine();
     int stopLine = textarea.getSelectionStopLine();
@@ -2007,11 +2016,22 @@ public abstract class Editor extends JFrame implements RunnerListener {
               ? Math.min(textarea.getLineStopOffset(stopLine + 1), source.length())
               : textarea.getLineStopOffset(stopLine); // Prevent out-of-bounds
     }
-
-    SwingUtilities.invokeLater(() -> textarea.select(newSelectionStart, newSelectionEnd));
     stopCompoundEdit();
-  }
 
+    if(isSelected)
+      SwingUtilities.invokeLater(() -> {
+        textarea.select(newSelectionStart, newSelectionEnd-1);
+      });
+    else if (replacedLine >= 0 && replacedLine < textarea.getLineCount()) {
+      int replacedLineStart = textarea.getLineStartOffset(replacedLine);
+      int replacedLineEnd = textarea.getLineStopOffset(replacedLine);
+
+      // Ensure caret stays within bounds of the new line
+      int newCaretPos = Math.min(replacedLineStart + column, replacedLineEnd - 1);
+
+      SwingUtilities.invokeLater(() -> textarea.setCaretPosition(newCaretPos));
+    }
+}
 
   static public boolean checkParen(char[] array, int index, int stop) {
     while (index < stop) {
