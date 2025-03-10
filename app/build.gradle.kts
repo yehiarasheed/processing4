@@ -16,6 +16,7 @@ plugins{
 
 group = rootProject.group
 version = rootProject.version
+val revision = rootProject.findProperty("revision") ?: "1300"
 
 repositories{
     mavenCentral()
@@ -40,7 +41,7 @@ compose.desktop {
 
         jvmArgs(*listOf(
             Pair("processing.version", version),
-            Pair("processing.revision", "1300"),
+            Pair("processing.revision", revision),
             Pair("processing.contributions.source", "https://contributions-preview.processing.org/contribs.txt"),
             Pair("processing.download.page", "https://processing.org/download/"),
             Pair("processing.download.latest", "https://processing.org/download/latest.txt"),
@@ -128,8 +129,9 @@ tasks.register<Exec>("packageCustomDmg"){
     dmg.parentFile.mkdirs()
 
     val extra = mutableListOf<String>()
+    val isSigned = compose.desktop.application.nativeDistributions.macOS.signing.sign.get()
 
-    if(!compose.desktop.application.nativeDistributions.macOS.signing.sign.get()) {
+    if(!isSigned) {
         val content = """
         run 'xattr -d com.apple.quarantine Processing-${version}.dmg' to remove the quarantine flag
         """.trimIndent()

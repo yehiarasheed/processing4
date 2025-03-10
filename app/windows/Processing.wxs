@@ -1,5 +1,5 @@
 <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
-  <Package Name="Processing" Manufacturer="Processing Foundation" Version="$(Version)" UpgradeCode="34577f3b-7cbe-4c5e-827d-5fe5ce9d371c">
+  <Package Name="Processing" Manufacturer="Processing Foundation" Version="$(Version)" UpgradeCode="89d8d7fe-5602-4b12-ba10-0fe78efbd602">
     <Icon Id="icon.ico" SourceFile="..\..\build\windows\processing.ico" />
     <Property Id="ARPPRODUCTICON" Value="icon.ico" />
 
