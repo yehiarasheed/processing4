@@ -237,7 +237,7 @@ tasks.register<Zip>("zipDistributable"){
     val dir = distributable.destinationDir.get()
     val packageName = distributable.packageName.get()
 
-    from(dir)
+    from(dir){ eachFile{ permissions{ unix("755") } } }
     archiveBaseName.set(packageName)
     destinationDirectory.set(dir.file("../").asFile)
 }
