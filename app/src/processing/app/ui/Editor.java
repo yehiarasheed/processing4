@@ -824,12 +824,10 @@ public abstract class Editor extends JFrame implements RunnerListener {
     item = new JMenuItem("Move Selected Lines Up");
     item.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_UP, InputEvent.ALT_DOWN_MASK));
     item.addActionListener(e -> handleMoveLines(true));
-    menu.add(item);
 
     item = new JMenuItem("Move Selected Lines Down");
     item.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, InputEvent.ALT_DOWN_MASK));
     item.addActionListener(e -> handleMoveLines(false));
-    menu.add(item);
 
 
     // Update copy/cut state on selection/de-selection
