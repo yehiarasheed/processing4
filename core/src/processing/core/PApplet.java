@@ -801,7 +801,7 @@ public class PApplet implements PConstants {
   int display = -1;  // use default
   // Unlike the others above, needs to be public to support
   // the pixelWidth and pixelHeight fields.
-  public int pixelDensity = 1;
+  public int pixelDensity = displayDensity();
 
   boolean present;
 
