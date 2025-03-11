@@ -349,6 +349,29 @@ public abstract class Editor extends JFrame implements RunnerListener {
 
     // Enable window resizing (which allows for full screen button)
     setResizable(true);
+
+    {
+      // Move Lines Keyboard Shortcut (Alt + Arrow Up/Down)
+      KeyStroke moveUpKeyStroke = KeyStroke.getKeyStroke(KeyEvent.VK_UP, InputEvent.ALT_DOWN_MASK);
+      final String MOVE_UP_ACTION_KEY = "moveLinesUp";
+      textarea.getInputMap(JComponent.WHEN_FOCUSED).put(moveUpKeyStroke, MOVE_UP_ACTION_KEY);
+      textarea.getActionMap().put(MOVE_UP_ACTION_KEY, new AbstractAction() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+          handleMoveLines(true);
+        }
+      });
+
+      KeyStroke moveDownKeyStroke = KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, InputEvent.ALT_DOWN_MASK);
+      final String MOVE_DOWN_ACTION_KEY = "moveLinesDown";
+      textarea.getInputMap(JComponent.WHEN_FOCUSED).put(moveDownKeyStroke, MOVE_DOWN_ACTION_KEY);
+      textarea.getActionMap().put(MOVE_DOWN_ACTION_KEY, new AbstractAction() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+          handleMoveLines(false);
+        }
+      });
+    }
   }
 
 
@@ -820,14 +843,6 @@ public abstract class Editor extends JFrame implements RunnerListener {
     item = Toolkit.newJMenuItem(action = new SelectionForFindAction(), 'E');
     editMenuUpdatable.add(action);
     menu.add(item);
-
-    item = new JMenuItem("Move Selected Lines Up");
-    item.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_UP, InputEvent.ALT_DOWN_MASK));
-    item.addActionListener(e -> handleMoveLines(true));
-
-    item = new JMenuItem("Move Selected Lines Down");
-    item.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, InputEvent.ALT_DOWN_MASK));
-    item.addActionListener(e -> handleMoveLines(false));
 
 
     // Update copy/cut state on selection/de-selection
