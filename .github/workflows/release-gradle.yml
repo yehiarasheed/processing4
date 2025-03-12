@@ -89,12 +89,12 @@ jobs:
           - os: ubuntu-24.04-arm
             os_prefix: linux
             arch: aarch64
-            binary: processing_${{ needs.version.outputs.version }}_arm64
+            binary: ${{ vars.SNAP_NAME }}_{{ needs.version.outputs.version }}_arm64
             extension: snap
           - os: ubuntu-latest
             os_prefix: linux
             arch: x64
-            binary: processing_${{ needs.version.outputs.version }}_amd64
+            binary: ${{ vars.SNAP_NAME }}_{{ needs.version.outputs.version }}_amd64
             extension: snap
           - os: windows-latest
             os_prefix: windows

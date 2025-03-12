@@ -232,9 +232,7 @@ tasks.register<Exec>("packageSnap"){
 
     val distributable = tasks.named<AbstractJPackageTask>("createDistributable").get()
     workingDir = distributable.destinationDir.dir("../").get().asFile
-
     commandLine("snapcraft")
-    commandLine("cp ${snapname}_${version}_${snaparch}.snap ${name}_${version}_${snaparch}.snap")
 }
 tasks.register<Exec>("uploadSnap"){
     onlyIf { org.gradle.internal.os.OperatingSystem.current().isLinux }
@@ -274,7 +272,9 @@ afterEvaluate{
         actions = emptyList()
     }
     tasks.named("packageDistributionForCurrentOS").configure {
-        if(compose.desktop.application.nativeDistributions.macOS.notarization.appleID.isPresent){
+        if(org.gradle.internal.os.OperatingSystem.current().isMacOsX
+            && compose.desktop.application.nativeDistributions.macOS.notarization.appleID.isPresent
+        ){
             dependsOn("notarizeDmg")
         }
         dependsOn("packageSnap", "uploadSnap")
