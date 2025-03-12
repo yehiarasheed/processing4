@@ -7,7 +7,7 @@ jobs:
   version:
     runs-on: ubuntu-latest
     outputs:
-      build_number: ${{ steps.tag_info.outputs.build_number }}
+      revision: ${{ steps.tag_info.outputs.revision }}
       version: ${{ steps.tag_info.outputs.version }}
     steps:
       - name: Extract version and revision
@@ -149,6 +149,8 @@ jobs:
           ORG_GRADLE_PROJECT_compose.desktop.mac.notarization.appleID: ${{ secrets.PROCESSING_APPLE_ID }}
           ORG_GRADLE_PROJECT_compose.desktop.mac.notarization.password: ${{ secrets.PROCESSING_APP_PASSWORD }}
           ORG_GRADLE_PROJECT_compose.desktop.mac.notarization.teamID: ${{ secrets.PROCESSING_TEAM_ID }}
+          SNAPCRAFT_STORE_CREDENTIALS: ${{ secrets.PROCESSING_SNAPCRAFT_TOKEN }}
+          ORG_GRADLE_PROJECT_snapname: ${{ vars.SNAP_NAME }}
 
       - name: Upload portables to release
         uses: svenstaro/upload-release-action@v2

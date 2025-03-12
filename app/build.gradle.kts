@@ -174,22 +174,25 @@ tasks.register<Exec>("packageCustomMsi"){
     )
 }
 
+val snapname = findProperty("snapname") ?: rootProject.name
+val snaparch = when (System.getProperty("os.arch")) {
+    "amd64", "x86_64" -> "amd64"
+    "aarch64" -> "arm64"
+    else -> System.getProperty("os.arch")
+}
 tasks.register("generateSnapConfiguration"){
     onlyIf { org.gradle.internal.os.OperatingSystem.current().isLinux }
     val distributable = tasks.named<AbstractJPackageTask>("createDistributable").get()
     dependsOn(distributable)
 
-    val arch = when (System.getProperty("os.arch")) {
-        "amd64", "x86_64" -> "amd64"
-        "aarch64" -> "arm64"
-        else -> System.getProperty("os.arch")
-    }
+
 
     val version = if(version == "unspecified") "1.0.0" else version
 
+
     val dir = distributable.destinationDir.get()
     val content = """
-    name: ${rootProject.name}
+    name: $snapname
     version: $version
     base: core22
     summary: A creative coding editor
@@ -210,13 +213,14 @@ tasks.register("generateSnapConfiguration"){
     parts:
       processing:
         plugin: dump
-        source: deb/processing_$version-1_$arch.deb
+        source: deb/processing_$version-1_$snaparch.deb
         source-type: deb
         stage-packages:
           - openjdk-17-jdk
         override-prime: |
           snapcraftctl prime
           chmod -R +x opt/processing/lib/app/resources/jdk-*
+          rm -vf usr/lib/jvm/java-17-openjdk-*/lib/security/cacerts
     """.trimIndent()
     dir.file("../snapcraft.yaml").asFile.writeText(content)
 }
@@ -230,6 +234,17 @@ tasks.register<Exec>("packageSnap"){
     workingDir = distributable.destinationDir.dir("../").get().asFile
 
     commandLine("snapcraft")
+    commandLine("cp ${snapname}_${version}_${snaparch}.snap ${name}_${version}_${snaparch}.snap")
+}
+tasks.register<Exec>("uploadSnap"){
+    onlyIf { org.gradle.internal.os.OperatingSystem.current().isLinux }
+    dependsOn("packageSnap")
+    group = "compose desktop"
+
+    val distributable = tasks.named<AbstractJPackageTask>("createDistributable").get()
+    workingDir = distributable.destinationDir.dir("../").get().asFile
+
+    commandLine("snapcraft upload ${snapname}_${version}_${snaparch}.snap")
 }
 tasks.register<Zip>("zipDistributable"){
     dependsOn("createDistributable")
@@ -262,7 +277,7 @@ afterEvaluate{
         if(compose.desktop.application.nativeDistributions.macOS.notarization.appleID.isPresent){
             dependsOn("notarizeDmg")
         }
-        dependsOn("packageSnap")
+        dependsOn("packageSnap", "uploadSnap")
     }
 }
 
