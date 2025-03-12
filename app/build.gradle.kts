@@ -162,23 +162,6 @@ tasks.register<Exec>("packageCustomDmg"){
         app
     )
 }
-//tasks.register<Exec>("packagePkg"){
-//    onlyIf { org.gradle.internal.os.OperatingSystem.current().isMacOsX }
-//    dependsOn("createDistributable")
-//    group = "compose desktop"
-//    val distributable = tasks.named<AbstractJPackageTask>("createDistributable").get()
-//    val app = distributable.destinationDir.get().file("${distributable.packageName.get()}.app").asFile
-//    val target = app.parentFile.parentFile.resolve("pkg/${distributable.packageName.get()}-$version.pkg")
-//    target.parentFile.mkdirs()
-//
-//    commandLine("pkgbuild",
-//        "--install-location", "/Applications",
-//        "--identifier", "${rootProject.group}.app",
-//        "--version", version,
-//        "--component", app,
-//        target
-//    )
-//}
 
 tasks.register<Exec>("packageCustomMsi"){
     onlyIf { org.gradle.internal.os.OperatingSystem.current().isWindows }
@@ -407,7 +390,11 @@ tasks.register<Copy>("renameWindres") {
     into(dir)
 }
 tasks.register("signResources"){
-    onlyIf { org.gradle.internal.os.OperatingSystem.current().isMacOsX }
+    onlyIf {
+        org.gradle.internal.os.OperatingSystem.current().isMacOsX
+            &&
+        compose.desktop.application.nativeDistributions.macOS.signing.sign.get()
+    }
     group = "compose desktop"
     dependsOn(
         "includeCore",
