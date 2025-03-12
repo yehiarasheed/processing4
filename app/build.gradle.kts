@@ -14,10 +14,6 @@ plugins{
     alias(libs.plugins.download)
 }
 
-group = rootProject.group
-version = rootProject.version
-val revision = rootProject.findProperty("revision") ?: "1300"
-
 repositories{
     mavenCentral()
     google()
@@ -40,8 +36,8 @@ compose.desktop {
         mainClass = "processing.app.ui.Start"
 
         jvmArgs(*listOf(
-            Pair("processing.version", version),
-            Pair("processing.revision", revision),
+            Pair("processing.version", rootProject.version),
+            Pair("processing.revision", findProperty("revision") ?: Int.MAX_VALUE),
             Pair("processing.contributions.source", "https://contributions-preview.processing.org/contribs.txt"),
             Pair("processing.download.page", "https://processing.org/download/"),
             Pair("processing.download.latest", "https://processing.org/download/latest.txt"),
@@ -167,6 +163,8 @@ tasks.register<Exec>("packageCustomMsi"){
     workingDir = file("windows")
     group = "compose desktop"
 
+    val version = if(version == "unspecified") "1.0.0" else version
+
     commandLine(
         "dotnet",
         "build",
@@ -187,10 +185,12 @@ tasks.register("generateSnapConfiguration"){
         else -> System.getProperty("os.arch")
     }
 
+    val version = if(version == "unspecified") "1.0.0" else version
+
     val dir = distributable.destinationDir.get()
     val content = """
     name: ${rootProject.name}
-    version: ${rootProject.version}
+    version: $version
     base: core22
     summary: A creative coding editor
     description: |

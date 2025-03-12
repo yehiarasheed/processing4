@@ -1,6 +1,3 @@
-group = project.findProperty("group") ?: "org.processing"
-version = project.findProperty("version") ?: "0.0.0"
-
 plugins {
     kotlin("jvm") version libs.versions.kotlin apply false
     alias(libs.plugins.kotlinMultiplatform) apply false

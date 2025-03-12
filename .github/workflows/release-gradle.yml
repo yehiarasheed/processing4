@@ -10,16 +10,16 @@ jobs:
       build_number: ${{ steps.tag_info.outputs.build_number }}
       version: ${{ steps.tag_info.outputs.version }}
     steps:
-      - name: Extract version and build number
+      - name: Extract version and revision
         id: tag_info
         shell: bash
         run: |
           TAG_NAME="${GITHUB_REF#refs/tags/}"
-          BUILD_NUMBER=$(echo "$TAG_NAME" | cut -d'-' -f2)
+          REVISION=$(echo "$TAG_NAME" | cut -d'-' -f2)
           VERSION=$(echo "$TAG_NAME" | cut -d'-' -f3)
 
           # Set outputs for use in later jobs or steps
-          echo "build_number=$BUILD_NUMBER" >> $GITHUB_OUTPUT
+          echo "revision=$REVISION" >> $GITHUB_OUTPUT
           echo "version=$VERSION" >> $GITHUB_OUTPUT
   reference:
     name: Publish Processing Reference to release
@@ -75,7 +75,7 @@ jobs:
         ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.SIGNING_IN_MEMORY_KEY_PASSWORD }}
 
         ORG_GRADLE_PROJECT_version: ${{ needs.version.outputs.version }}
-        ORG_GRADLE_PROJECT_group: ${{ vars.PROCESSING_GROUP }}
+        ORG_GRADLE_PROJECT_group: ${{ vars.GRADLE_GROUP }}
   build: 
     name: (${{ matrix.os_prefix }}/${{ matrix.arch }}) Create Processing Release
     runs-on: ${{ matrix.os }}
@@ -142,7 +142,8 @@ jobs:
         run: ./gradlew packageDistributionForCurrentOS
         env: 
           ORG_GRADLE_PROJECT_version: ${{ needs.version.outputs.version }}
-          ORG_GRADLE_PROJECT_group: ${{ vars.PROCESSING_GROUP }}
+          ORG_GRADLE_PROJECT_group: ${{ vars.GRADLE_GROUP }}
+          ORG_GRADLE_PROJECT_revision: ${{ needs.version.outputs.revision }}
 
       - name: Upload portables to release
         uses: svenstaro/upload-release-action@v2

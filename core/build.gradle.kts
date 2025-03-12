@@ -6,8 +6,6 @@ plugins {
     alias(libs.plugins.mavenPublish)
 }
 
-group = "org.processing"
-
 repositories {
     mavenCentral()
     maven { url = uri("https://jogamp.org/deployment/maven") }
@@ -21,6 +19,11 @@ sourceSets{
         resources{
             srcDirs("src")
             exclude("**/*.java")
+        }
+    }
+    test{
+        java{
+            srcDirs("test")
         }
     }
 }

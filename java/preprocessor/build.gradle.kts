@@ -5,7 +5,7 @@ plugins{
     alias(libs.plugins.mavenPublish)
 }
 
-group = "org.processing"
+group = "$group.java"
 
 repositories{
     mavenCentral()
