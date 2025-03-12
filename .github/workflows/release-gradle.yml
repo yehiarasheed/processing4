@@ -149,7 +149,6 @@ jobs:
           ORG_GRADLE_PROJECT_compose.desktop.mac.notarization.appleID: ${{ secrets.PROCESSING_APPLE_ID }}
           ORG_GRADLE_PROJECT_compose.desktop.mac.notarization.password: ${{ secrets.PROCESSING_APP_PASSWORD }}
           ORG_GRADLE_PROJECT_compose.desktop.mac.notarization.teamID: ${{ secrets.PROCESSING_TEAM_ID }}
-          SNAPCRAFT_STORE_CREDENTIALS: ${{ secrets.PROCESSING_SNAPCRAFT_TOKEN }}
           ORG_GRADLE_PROJECT_snapname: ${{ vars.SNAP_NAME }}
 
       - name: Upload portables to release
@@ -165,3 +164,9 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           asset_name: processing-${{ needs.version.outputs.version }}-${{ matrix.os_prefix }}-${{ matrix.arch }}.${{ matrix.extension }}
           file: app/build/compose/binaries/main/${{ matrix.binary }}.${{ matrix.extension }}
+
+      - name: Upload snap to Snap Store
+        if: runner.os == 'Linux'
+        run: snapcraft upload app/build/compose/binaries/main/${{ matrix.binary }}.${{ matrix.extension }}
+        env:
+          SNAPCRAFT_STORE_CREDENTIALS: ${{ secrets.PROCESSING_SNAPCRAFT_TOKEN }}

@@ -232,16 +232,6 @@ tasks.register<Exec>("packageSnap"){
     workingDir = distributable.destinationDir.dir("../").get().asFile
     commandLine("snapcraft")
 }
-tasks.register<Exec>("uploadSnap"){
-    onlyIf { org.gradle.internal.os.OperatingSystem.current().isLinux }
-    dependsOn("packageSnap")
-    group = "compose desktop"
-
-    val distributable = tasks.named<AbstractJPackageTask>("createDistributable").get()
-    workingDir = distributable.destinationDir.dir("../").get().asFile
-
-    commandLine("snapcraft upload ${snapname}_${version}_${snaparch}.snap")
-}
 tasks.register<Zip>("zipDistributable"){
     dependsOn("createDistributable")
     group = "compose desktop"
@@ -275,7 +265,7 @@ afterEvaluate{
         ){
             dependsOn("notarizeDmg")
         }
-        dependsOn("packageSnap", "uploadSnap")
+        dependsOn("packageSnap")
     }
 }
 
@@ -395,7 +385,7 @@ tasks.register<Copy>("renameWindres") {
     duplicatesStrategy = DuplicatesStrategy.INCLUDE
     into(dir)
 }
-tasks.register<Exec>("signResources"){
+tasks.register("signResources"){
     onlyIf { org.gradle.internal.os.OperatingSystem.current().isMacOsX }
     group = "compose desktop"
     dependsOn("prepareAppResources")
@@ -427,8 +417,23 @@ tasks.register<Exec>("signResources"){
             }
             jars.add(tempDir)
         }
+        fileTree(resourcesPath){
+            include("**/bin/**")
+            include("**/*.jnilib")
+            include("**/*.dylib")
+            include("**/*aarch64*")
+            include("**/*x86_64*")
+            exclude("jdk-*/**")
+            exclude("*.jar")
+            exclude("*.so")
+            exclude("*.dll")
+        }.forEach{ file ->
+            println("signign $file")
+            exec {
+                commandLine("codesign", "--timestamp", "--force", "--deep", "--sign", "Developer ID Application", file)
+            }
+        }
     }
-    commandLine("codesign","--timestamp", "--force","--deep", "--sign", "Developer ID Application", resourcesPath.get().asFile)
     doLast {
         jars.forEach { file ->
             zipTo(file.resolve(file.nameWithoutExtension), file)
