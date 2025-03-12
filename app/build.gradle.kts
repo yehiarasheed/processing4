@@ -398,6 +398,7 @@ tasks.register<Copy>("renameWindres") {
     into(dir)
 }
 tasks.register<Exec>("signResources"){
+    onlyIf { org.gradle.internal.os.OperatingSystem.current().isMacOsX }
     val distributable = tasks.named<AbstractJPackageTask>("createDistributable").get()
     dependsOn(distributable)
 
