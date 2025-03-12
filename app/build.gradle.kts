@@ -382,6 +382,18 @@ tasks.register<Copy>("renameWindres") {
     duplicatesStrategy = DuplicatesStrategy.INCLUDE
     into(dir)
 }
+tasks.register<Exec>("signResources"){
+    val distributable = tasks.named<AbstractJPackageTask>("createDistributable").get()
+    dependsOn(distributable)
+
+    commandLine(
+        "codesign",
+        "--force",
+        "--deep",
+        "--sign", "Developer ID Application",
+        distributable.destinationDir.get().file(distributable.packageName.get() + ".app").asFile
+    )
+}
 afterEvaluate {
     tasks.named("prepareAppResources").configure {
         dependsOn(
@@ -394,6 +406,7 @@ afterEvaluate {
             "includeJavaModeResources",
             "renameWindres"
         )
+        finalizedBy()
     }
     tasks.register("setExecutablePermissions") {
         description = "Sets executable permissions on binaries in Processing.app resources"
@@ -414,5 +427,5 @@ afterEvaluate {
             }
         }
     }
-    tasks.findByName("createDistributable")?.finalizedBy("setExecutablePermissions")
+    tasks.findByName("createDistributable")?.finalizedBy("setExecutablePermissions", "signResources")
 }
