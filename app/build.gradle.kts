@@ -50,7 +50,7 @@ compose.desktop {
 
         nativeDistributions{
             modules("jdk.jdi", "java.compiler", "jdk.accessibility")
-            targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
+            targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb, TargetFormat.Pkg)
             packageName = "Processing"
 
             macOS{
@@ -162,23 +162,23 @@ tasks.register<Exec>("packageCustomDmg"){
         app
     )
 }
-tasks.register<Exec>("packagePkg"){
-    onlyIf { org.gradle.internal.os.OperatingSystem.current().isMacOsX }
-    dependsOn("createDistributable")
-    group = "compose desktop"
-    val distributable = tasks.named<AbstractJPackageTask>("createDistributable").get()
-    val app = distributable.destinationDir.get().file("${distributable.packageName.get()}.app").asFile
-    val target = app.parentFile.parentFile.resolve("pkg/${distributable.packageName.get()}-$version.pkg")
-    target.parentFile.mkdirs()
-
-    commandLine("pkgbuild",
-        "--install-location", "/Applications",
-        "--identifier", "${rootProject.group}.app",
-        "--version", version,
-        "--component", app,
-        target
-    )
-}
+//tasks.register<Exec>("packagePkg"){
+//    onlyIf { org.gradle.internal.os.OperatingSystem.current().isMacOsX }
+//    dependsOn("createDistributable")
+//    group = "compose desktop"
+//    val distributable = tasks.named<AbstractJPackageTask>("createDistributable").get()
+//    val app = distributable.destinationDir.get().file("${distributable.packageName.get()}.app").asFile
+//    val target = app.parentFile.parentFile.resolve("pkg/${distributable.packageName.get()}-$version.pkg")
+//    target.parentFile.mkdirs()
+//
+//    commandLine("pkgbuild",
+//        "--install-location", "/Applications",
+//        "--identifier", "${rootProject.group}.app",
+//        "--version", version,
+//        "--component", app,
+//        target
+//    )
+//}
 
 tasks.register<Exec>("packageCustomMsi"){
     onlyIf { org.gradle.internal.os.OperatingSystem.current().isWindows }
@@ -223,21 +223,25 @@ tasks.register("generateSnapConfiguration"){
         command: opt/processing/bin/Processing
         desktop: opt/processing/lib/processing-Processing.desktop
         environment:
-            LD_LIBRARY_PATH: ${'$'}SNAP/lib:${'$'}LD_LIBRARY_PATH
+            LD_LIBRARY_PATH: ${'$'}SNAPopt/processing/lib/runtime/lib:${'$'}LD_LIBRARY_PATH
         plugs:
           - desktop
           - desktop-legacy
           - wayland
           - x11
+          - network
     
     parts:
       processing:
         plugin: dump
         source: deb/processing_$version-1_$snaparch.deb
         source-type: deb
+        stage-packages:
+          - openjdk-17-jdk
         override-prime: |
           snapcraftctl prime
           chmod -R +x opt/processing/lib/app/resources/jdk-*
+          rm -vf usr/lib/jvm/java-17-openjdk-*/lib/security/cacerts
     """.trimIndent()
     dir.file("../snapcraft.yaml").asFile.writeText(content)
 }
