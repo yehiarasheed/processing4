@@ -1,3 +1,4 @@
+import org.gradle.kotlin.dsl.support.zipTo
 import org.gradle.nativeplatform.platform.internal.DefaultNativePlatform
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.compose.desktop.application.tasks.AbstractJPackageTask
@@ -105,6 +106,8 @@ tasks.compileJava{
     options.encoding = "UTF-8"
 }
 
+val version = if(project.version == "unspecified") "1.0.0" else project.version
+
 tasks.register<Exec>("installCreateDmg") {
     onlyIf { org.gradle.internal.os.OperatingSystem.current().isMacOsX }
     commandLine("arch", "-arm64", "brew", "install", "--quiet", "create-dmg")
@@ -184,11 +187,6 @@ tasks.register("generateSnapConfiguration"){
     onlyIf { org.gradle.internal.os.OperatingSystem.current().isLinux }
     val distributable = tasks.named<AbstractJPackageTask>("createDistributable").get()
     dependsOn(distributable)
-
-
-
-    val version = if(version == "unspecified") "1.0.0" else version
-
 
     val dir = distributable.destinationDir.get()
     val content = """
@@ -399,16 +397,48 @@ tasks.register<Copy>("renameWindres") {
 }
 tasks.register<Exec>("signResources"){
     onlyIf { org.gradle.internal.os.OperatingSystem.current().isMacOsX }
-    val distributable = tasks.named<AbstractJPackageTask>("createDistributable").get()
-    dependsOn(distributable)
+    group = "compose desktop"
+    dependsOn("prepareAppResources")
 
-    commandLine(
-        "codesign",
-        "--force",
-        "--deep",
-        "--sign", "Developer ID Application",
-        distributable.destinationDir.get().file(distributable.packageName.get() + ".app").asFile
-    )
+    val resourcesPath = composeResources("")
+
+
+
+    // find jars in the resources directory
+    val jars = mutableListOf<File>()
+    doFirst{
+        fileTree(resourcesPath)
+            .matching { include("**/Info.plist") }
+            .singleOrNull()
+            ?.let { file ->
+                copy {
+                    from(file)
+                    into(resourcesPath)
+                }
+            }
+        fileTree(resourcesPath) {
+            include("**/*.jar")
+            exclude("**/*.jar.tmp/**")
+        }.forEach { file ->
+            val tempDir = file.parentFile.resolve("${file.name}.tmp")
+            copy {
+                from(zipTree(file))
+                into(tempDir)
+            }
+            jars.add(tempDir)
+        }
+    }
+    commandLine("codesign","--timestamp", "--force","--deep", "--sign", "Developer ID Application", resourcesPath.get().asFile)
+    doLast {
+        jars.forEach { file ->
+            zipTo(file.resolve(file.nameWithoutExtension), file)
+
+            file.deleteRecursively()
+        }
+        file(composeResources("Info.plist")).delete()
+    }
+
+
 }
 afterEvaluate {
     tasks.named("prepareAppResources").configure {
@@ -443,5 +473,8 @@ afterEvaluate {
             }
         }
     }
-    tasks.findByName("createDistributable")?.finalizedBy("setExecutablePermissions", "signResources")
+    tasks.named("createDistributable").configure {
+        dependsOn("signResources")
+        finalizedBy("setExecutablePermissions")
+    }
 }
