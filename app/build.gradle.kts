@@ -259,6 +259,9 @@ afterEvaluate{
         actions = emptyList()
     }
     tasks.named("packageDistributionForCurrentOS").configure {
+        if(compose.desktop.application.nativeDistributions.macOS.notarization.appleID.isPresent){
+            dependsOn("notarizeDmg")
+        }
         dependsOn("packageSnap")
     }
 }

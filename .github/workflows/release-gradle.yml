@@ -146,6 +146,9 @@ jobs:
           ORG_GRADLE_PROJECT_revision: ${{ needs.version.outputs.revision }}
           ORG_GRADLE_PROJECT_compose.desktop.mac.sign: ${{ secrets.PROCESSING_SIGNING }}
           ORG_GRADLE_PROJECT_compose.desktop.mac.signing.identity: ${{ secrets.PROCESSING_SIGNING_IDENTITY }}
+          ORG_GRADLE_PROJECT_compose.desktop.mac.notarization.appleID: ${{ secrets.PROCESSING_APPLE_ID }}
+          ORG_GRADLE_PROJECT_compose.desktop.mac.notarization.password: ${{ secrets.PROCESSING_APP_PASSWORD }}
+          ORG_GRADLE_PROJECT_compose.desktop.mac.notarization.teamID: ${{ secrets.PROCESSING_TEAM_ID }}
 
       - name: Upload portables to release
         uses: svenstaro/upload-release-action@v2
@@ -160,11 +163,3 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           asset_name: processing-${{ needs.version.outputs.version }}-${{ matrix.os_prefix }}-${{ matrix.arch }}.${{ matrix.extension }}
           file: app/build/compose/binaries/main/${{ matrix.binary }}.${{ matrix.extension }}
-
-      - name: Notarize DMG
-        if: runner.os == 'macOS'
-        run: ./gradlew notarizeDmg
-        env:
-          ORG_GRADLE_PROJECT_compose.desktop.mac.notarization.appleID: ${{ secrets.PROCESSING_APPLE_ID }}
-          ORG_GRADLE_PROJECT_compose.desktop.mac.notarization.password: ${{ secrets.PROCESSING_APP_PASSWORD }}
-          ORG_GRADLE_PROJECT_compose.desktop.mac.notarization.teamID: ${{ secrets.PROCESSING_TEAM_ID }}
