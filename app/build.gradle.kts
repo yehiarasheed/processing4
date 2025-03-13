@@ -436,6 +436,7 @@ tasks.register("signResources"){
                 into(tempDir)
             }
             file.delete()
+            jars.add(tempDir)
         }
         fileTree(resourcesPath){
             include("**/bin/**")
