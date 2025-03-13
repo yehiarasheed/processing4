@@ -70,7 +70,7 @@ compose.desktop {
             }
             linux {
                 appCategory = "Programming"
-                menuGroup = "Processing"
+                menuGroup = "Development;Programming;"
                 iconFile = rootProject.file("build/linux/processing.png")
                 // Fix fonts on some Linux distributions
                 jvmArgs("-Dawt.useSystemAAFontSettings=on")
