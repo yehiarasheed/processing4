@@ -844,7 +844,6 @@ public abstract class Editor extends JFrame implements RunnerListener {
     editMenuUpdatable.add(action);
     menu.add(item);
 
-
     // Update copy/cut state on selection/de-selection
     menu.addMenuListener(new MenuListener() {
       // UndoAction and RedoAction do this for themselves.
@@ -1889,7 +1888,6 @@ public abstract class Editor extends JFrame implements RunnerListener {
   }
 
 
-
   public void handleIndent() {
     handleIndentOutdent(true);
   }
@@ -1943,6 +1941,8 @@ public abstract class Editor extends JFrame implements RunnerListener {
     stopCompoundEdit();
     sketch.setModified(true);
   }
+
+  
   /**
    * Moves the selected lines up or down in the text editor.
    *
@@ -2045,6 +2045,7 @@ public abstract class Editor extends JFrame implements RunnerListener {
       SwingUtilities.invokeLater(() -> textarea.setCaretPosition(newCaretPos));
     }
 }
+
 
   static public boolean checkParen(char[] array, int index, int stop) {
     while (index < stop) {
