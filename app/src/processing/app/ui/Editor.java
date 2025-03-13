@@ -1959,7 +1959,7 @@ public abstract class Editor extends JFrame implements RunnerListener {
     startCompoundEdit();
     boolean isSelected = false;
 
-    if(textarea.isSelectionActive())
+    if (textarea.isSelectionActive())
       isSelected = true;
 
     int caretPos = textarea.getCaretPosition();
@@ -2031,7 +2031,7 @@ public abstract class Editor extends JFrame implements RunnerListener {
     }
     stopCompoundEdit();
 
-    if(isSelected)
+    if (isSelected)
       SwingUtilities.invokeLater(() -> {
         textarea.select(newSelectionStart, newSelectionEnd-1);
       });
