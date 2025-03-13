@@ -7,6 +7,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.MaterialTheme.colors
+import androidx.compose.material.MaterialTheme.typography
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
@@ -29,6 +30,13 @@ import androidx.compose.ui.window.WindowPosition
 import androidx.compose.ui.window.application
 import androidx.compose.ui.window.rememberWindowState
 import com.formdev.flatlaf.util.SystemInfo
+import com.mikepenz.markdown.compose.Markdown
+import com.mikepenz.markdown.m2.markdownColor
+import com.mikepenz.markdown.m2.markdownTypography
+import com.mikepenz.markdown.model.MarkdownColors
+import com.mikepenz.markdown.model.MarkdownTypography
+import processing.app.Base.getRevision
+import processing.app.Base.getVersionName
 import processing.app.ui.theme.LocalLocale
 import processing.app.ui.theme.LocalTheme
 import processing.app.ui.theme.Locale
@@ -112,8 +120,17 @@ class WelcomeToBeta {
                         text = locale["beta.title"],
                         style = MaterialTheme.typography.subtitle1,
                     )
-                    Text(
-                        text = locale["beta.message"]
+                    val text = locale["beta.message"]
+                        .replace('$' + "version", getVersionName())
+                        .replace('$' + "revision", getRevision().toString())
+                    Markdown(
+                        text,
+                        colors = markdownColor(
+                            text = colors.onSurface,
+                            linkText = colors.primary,
+                        ),
+                        typography = markdownTypography(text = typography.body1),
+                        modifier = Modifier.background(Color.Transparent)
                     )
                     Row {
                         Spacer(modifier = Modifier.weight(1f))

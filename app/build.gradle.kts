@@ -104,6 +104,8 @@ dependencies {
 
     implementation(libs.compottie)
     implementation(libs.kaml)
+    implementation(libs.markdown)
+    implementation(libs.markdownJVM)
 }
 
 tasks.compileJava{
