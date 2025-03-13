@@ -23,6 +23,11 @@ sourceSets{
             exclude("**/*.java")
         }
     }
+    test{
+        java{
+            srcDirs("test")
+        }
+    }
 }
 
 dependencies {
