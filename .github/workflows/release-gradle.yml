@@ -168,6 +168,6 @@ jobs:
 
       - name: Upload snap to Snap Store
         if: runner.os == 'Linux'
-        run: snapcraft upload app/build/compose/binaries/main/${{ matrix.binary }}.${{ matrix.extension }}
+        run: snapcraft upload --release=beta app/build/compose/binaries/main/${{ matrix.binary }}.${{ matrix.extension }}
         env:
           SNAPCRAFT_STORE_CREDENTIALS: ${{ secrets.PROCESSING_SNAPCRAFT_TOKEN }}
