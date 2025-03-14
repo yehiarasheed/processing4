@@ -8,6 +8,8 @@ import java.io.FileOutputStream
 import java.util.zip.ZipEntry
 import java.util.zip.ZipOutputStream
 
+// TODO: Update to 2.10.20 and add hot-reloading: https://github.com/JetBrains/compose-hot-reload
+
 plugins{
     id("java")
     kotlin("jvm") version libs.versions.kotlin
@@ -31,6 +33,9 @@ sourceSets{
         }
         kotlin{
             srcDirs("src")
+        }
+        resources{
+            srcDirs("resources", listOf("languages", "fonts", "theme").map { "../build/shared/lib/$it" })
         }
     }
     test{
@@ -108,6 +113,8 @@ dependencies {
 
     implementation(libs.compottie)
     implementation(libs.kaml)
+    implementation(libs.markdown)
+    implementation(libs.markdownJVM)
 
     testImplementation(kotlin("test"))
     testImplementation(libs.mockitoKotlin)
