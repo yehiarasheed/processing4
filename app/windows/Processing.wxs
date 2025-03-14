@@ -7,7 +7,7 @@
 
     <ui:WixUI Id="WixUI_Mondo" InstallDirectory="INSTALLFOLDER" />
 
-    <WixVariable Id="WixUILicenseRtf" Value="license.rtf" />
+    <WixVariable Id="WixUILicenseRtf" Value="LICENSE.rtf" />
     <WixVariable Id="WixUIDialogBmp" Value="background.png" />
     <WixVariable Id="WixUIBannerBmp" Value="banner.png" />
     <Feature Id="MainApplication" Title="Processing" Level="1">
