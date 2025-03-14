@@ -33,6 +33,7 @@ import processing.core.PApplet;
 
 
 public class LinuxPlatform extends DefaultPlatform {
+  // Switched to use ~ as the home directory for compatibility with snap
   String homeDir = "~";
 
 
