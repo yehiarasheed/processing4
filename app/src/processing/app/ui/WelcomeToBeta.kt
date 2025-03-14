@@ -101,36 +101,34 @@ class WelcomeToBeta {
             ){
                 val locale = LocalLocale.current
                 Image(
-                    painter = painterResource("logo.svg"),
+                    painter = painterResource("bird.svg"),
                     contentDescription = locale["beta.logo"],
                     modifier = Modifier
                         .align(Alignment.CenterVertically)
                         .size(100.dp, 100.dp)
+                        .offset(0.dp, (-25).dp)
                 )
                 Column(
                     modifier = Modifier
                         .fillMaxHeight(),
                     verticalArrangement = Arrangement
                         .spacedBy(
-                            MaterialTheme.typography.subtitle1.lineHeight.value.dp,
+                            10.dp,
                             alignment = Alignment.CenterVertically
                         )
                 ) {
                     Text(
                         text = locale["beta.title"],
-                        style = MaterialTheme.typography.subtitle1,
+                        style = typography.subtitle1,
                     )
                     val text = locale["beta.message"]
                         .replace('$' + "version", getVersionName())
                         .replace('$' + "revision", getRevision().toString())
                     Markdown(
                         text,
-                        colors = markdownColor(
-                            text = colors.onSurface,
-                            linkText = colors.primary,
-                        ),
-                        typography = markdownTypography(text = typography.body1),
-                        modifier = Modifier.background(Color.Transparent)
+                        colors = markdownColor(),
+                        typography = markdownTypography(text = typography.body1, link = typography.body1.copy(color = colors.primary)),
+                        modifier = Modifier.background(Color.Transparent).padding(bottom = 10.dp)
                     )
                     Row {
                         Spacer(modifier = Modifier.weight(1f))
